@@ -15,6 +15,7 @@ module.exports = {
     'gatsby-plugin-image',
     'gatsby-plugin-sharp',
     'gatsby-transformer-json',
+    'gatsby-transformer-remark',
     {
       resolve: 'gatsby-source-filesystem',
       options: {

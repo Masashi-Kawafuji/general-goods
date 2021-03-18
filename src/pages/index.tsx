@@ -5,7 +5,11 @@ import Container from '../components/Container';
 const Home: React.FC = () => (
   <>
     <Layout>
-      <Container>home</Container>
+      <Container>
+        <div>
+          <h2>Recently Updated News</h2>
+        </div>
+      </Container>
     </Layout>
   </>
 );

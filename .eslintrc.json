@@ -18,6 +18,7 @@
     "@typescript-eslint/quotes": ["error", "single"],
     "react/jsx-filename-extension": ["error", { "extensions": [".tsx"] }],
     "react/prop-types": ["off"],
+    "react/no-danger": ["off"],
     "import/extensions": ["error", { "tsx": "ignorePackages" }]
   },
   "parserOptions": {
