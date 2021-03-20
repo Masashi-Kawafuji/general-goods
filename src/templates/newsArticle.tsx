@@ -1,20 +1,12 @@
 import React from 'react';
 import { PageProps } from 'gatsby';
+import { Article } from '../types';
 import Layout from '../components/Layout';
 import Container from '../components/Container';
 
-type Article = {
-  id: string;
-  html: string;
-  frontmatter: {
-    title: string;
-    date: string;
-  };
-};
+type NewsArticlePageProps = PageProps<unknown, Omit<Article, 'excerpt'>>;
 
-type NewsArticlePageProps = PageProps<unknown, Article>;
-
-const newsArticle: React.FC<NewsArticlePageProps> = ({
+const NewsArticle: React.FC<NewsArticlePageProps> = ({
   pageContext: {
     html,
     frontmatter: { title, date },
@@ -31,4 +23,4 @@ const newsArticle: React.FC<NewsArticlePageProps> = ({
   </Layout>
 );
 
-export default newsArticle;
+export default NewsArticle;
