@@ -8,6 +8,6 @@
   }
 
   body {
-    @apply h-full bg-gray-900 text-gray-50 font-serif;
+    @apply h-full bg-gray-900 text-gray-50;
   }
 }

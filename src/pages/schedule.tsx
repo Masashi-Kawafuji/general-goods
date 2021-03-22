@@ -1,9 +1,11 @@
 import React from 'react';
 import Layout from '../components/Layout';
+import Head from '../components/Head';
 import Container from '../components/Container';
 
 const Schedule: React.FC = () => (
-  <Layout pageTitle="Schedule">
+  <Layout>
+    <Head title="Schedule" />
     <Container>schedule</Container>
   </Layout>
 );

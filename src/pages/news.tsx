@@ -2,6 +2,7 @@ import React from 'react';
 import { useStaticQuery, graphql, Link } from 'gatsby';
 import { Article } from '../types';
 import Layout from '../components/Layout';
+import Head from '../components/Head';
 import Container from '../components/Container';
 
 type GetArticlesQuery = {
@@ -27,7 +28,8 @@ const News: React.FC = () => {
   `);
 
   return (
-    <Layout pageTitle="News">
+    <Layout>
+      <Head title="News" />
       <Container>
         <ul>
           {allMarkdownRemark.nodes.map(({ id, excerpt, frontmatter }) => (
