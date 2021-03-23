@@ -3,7 +3,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 import { Helmet } from 'react-helmet';
 
 type HeadProps = {
-  title: string;
+  title?: string;
 };
 
 type Site = {
@@ -28,7 +28,8 @@ const Head: React.FC<HeadProps> = ({ title }) => {
   return (
     <Helmet>
       <title>
-        {site.siteMetadata.title} - {title}
+        {site.siteMetadata.title}
+        {title ? ` - ${title}` : ''}
       </title>
     </Helmet>
   );

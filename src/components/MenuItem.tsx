@@ -5,7 +5,9 @@ type MenuItemProps = ComponentProps<typeof Link>;
 
 const MenuItem: React.FC<MenuItemProps> = ({ children, to }) => (
   <li>
-    <Link to={to}>{children}</Link>
+    <Link to={to} style={{ fontFamily: 'Vollkorn' }}>
+      {children}
+    </Link>
   </li>
 );
 
