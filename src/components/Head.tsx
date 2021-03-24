@@ -28,8 +28,8 @@ const Head: React.FC<HeadProps> = ({ title }) => {
   return (
     <Helmet>
       <title>
+        {title ? `${title} - ` : ''}
         {site.siteMetadata.title}
-        {title ? ` - ${title}` : ''}
       </title>
     </Helmet>
   );

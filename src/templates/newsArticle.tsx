@@ -2,6 +2,7 @@ import React from 'react';
 import { PageProps } from 'gatsby';
 import { Article } from '../types';
 import Layout from '../components/Layout';
+import Head from '../components/Head';
 import Container from '../components/Container';
 
 type NewsArticlePageProps = PageProps<unknown, Omit<Article, 'excerpt'>>;
@@ -13,6 +14,7 @@ const NewsArticle: React.FC<NewsArticlePageProps> = ({
   },
 }) => (
   <Layout>
+    <Head title={title} />
     <Container>
       <div>
         <h1 className="text-4xl font-semibold mb-4">{title}</h1>
