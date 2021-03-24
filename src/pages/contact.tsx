@@ -12,7 +12,7 @@ const Contact: React.FC = () => (
       name="Contact"
       image={
         <StaticImage
-          src="../images/schedule-page-hero.jpg"
+          src="../images/contact-page-hero.jpg"
           alt="page hero"
           layout="fullWidth"
           className="h-full"

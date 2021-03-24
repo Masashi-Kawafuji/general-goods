@@ -1,7 +1,9 @@
 import React from 'react';
 
 const Menu: React.FC = ({ children }) => (
-  <ul className="flex justify-between">{children}</ul>
+  <ul className="sm:flex mx-auto px-2 sm:px-0 sm:my-0 sm:max-w-sm min-h-full justify-between">
+    {children}
+  </ul>
 );
 
 export default Menu;
