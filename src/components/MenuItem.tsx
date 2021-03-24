@@ -4,10 +4,11 @@ import { Link } from 'gatsby';
 type MenuItemProps = ComponentProps<typeof Link>;
 
 const MenuItem: React.FC<MenuItemProps> = ({ children, to }) => (
-  <li>
-    <Link to={to} style={{ fontFamily: 'Vollkorn' }}>
-      {children}
-    </Link>
+  <li
+    className="text-lg mb-3 sm:mb-0 transition-colors duration-300 hover:text-gray-400"
+    style={{ fontFamily: 'Vollkorn' }}
+  >
+    <Link to={to}>{children}</Link>
   </li>
 );
 

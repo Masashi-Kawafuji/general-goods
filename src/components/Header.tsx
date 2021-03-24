@@ -16,7 +16,7 @@ const Header: React.FC = () => {
       <div className="sm:py-6">
         <button
           type="button"
-          className="sm:hidden float-left ml-3 w-7"
+          className="sm:hidden float-left w-7 ml-3"
           onClick={handleDrawerClick}
         >
           <svg
@@ -38,13 +38,13 @@ const Header: React.FC = () => {
       <Drawer isOpen={isDrawerOpen}>
         <button
           type="button"
-          className="sm:hidden ml-3 w-7 mb-4"
+          className="sm:hidden w-7 mb-5"
           onClick={handleDrawerClick}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
-            viewBox="0 0 24 24"
+            viewBox="0 0 20 20"
             stroke="currentColor"
           >
             <path

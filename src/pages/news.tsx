@@ -1,28 +1,28 @@
-import React from 'react';
-import { useStaticQuery, graphql, Link } from 'gatsby';
+import React, { ComponentProps } from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
 import { StaticImage } from 'gatsby-plugin-image';
-import { Article } from '../types';
 import Layout from '../components/Layout';
 import Head from '../components/Head';
 import Container from '../components/Container';
 import PageHero from '../components/PageHero';
+import NewsItem from '../components/NewsItem';
 
 type GetArticlesQuery = {
   allMarkdownRemark: {
-    nodes: Omit<Article, 'html'>[];
+    nodes: ComponentProps<typeof NewsItem>[];
   };
 };
 
 const News: React.FC = () => {
   const { allMarkdownRemark } = useStaticQuery<GetArticlesQuery>(graphql`
     query {
-      allMarkdownRemark {
+      allMarkdownRemark(sort: { fields: frontmatter___date, order: DESC }) {
         nodes {
           excerpt
           id
           frontmatter {
             title
-            date
+            date(formatString: "YYYY.MM.DD")
           }
         }
       }
@@ -44,16 +44,16 @@ const News: React.FC = () => {
         }
       />
       <Container>
-        <ul>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-12 gap-y-6 sm:gap-y-10">
           {allMarkdownRemark.nodes.map(({ id, excerpt, frontmatter }) => (
-            <li key={id}>
-              <p>{frontmatter.date}</p>
-              <Link to={`/news/${id}`}>{frontmatter.title}</Link>
-              <p>{excerpt}</p>
-              <hr />
-            </li>
+            <NewsItem
+              key={id}
+              id={id}
+              excerpt={excerpt}
+              frontmatter={frontmatter}
+            />
           ))}
-        </ul>
+        </div>
       </Container>
     </Layout>
   );
