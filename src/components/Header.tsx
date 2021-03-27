@@ -12,7 +12,7 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header className="py-4">
+    <header className="py-4 bg-gray-900">
       <div className="sm:py-6">
         <button
           type="button"

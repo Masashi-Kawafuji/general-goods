@@ -4,7 +4,11 @@ module.exports = {
   purge: ['./src/**/*.tsx'],
   darkMode: false,
   theme: {
-    extend: {},
+    extend: {
+      zIndex: {
+        '-10': '-10',
+      },
+    },
   },
   variants: {
     extend: {},

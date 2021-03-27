@@ -5,9 +5,10 @@ import Layout from '../components/Layout';
 import Head from '../components/Head';
 import Container from '../components/Container';
 import PageHero from '../components/PageHero';
+import Grid from '../components/Grid';
 import NewsItem from '../components/NewsItem';
 
-type GetArticlesQuery = {
+export type GetArticlesQuery = {
   allMarkdownRemark: {
     nodes: ComponentProps<typeof NewsItem>[];
   };
@@ -44,7 +45,7 @@ const News: React.FC = () => {
         }
       />
       <Container>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-12 gap-y-6 sm:gap-y-10">
+        <Grid mobile={1} tablet={2} desktop={3}>
           {allMarkdownRemark.nodes.map(({ id, excerpt, frontmatter }) => (
             <NewsItem
               key={id}
@@ -53,7 +54,7 @@ const News: React.FC = () => {
               frontmatter={frontmatter}
             />
           ))}
-        </div>
+        </Grid>
       </Container>
     </Layout>
   );

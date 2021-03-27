@@ -17,12 +17,12 @@ const NewsArticle: React.FC<NewsArticlePageProps> = ({
     <Head title={title} />
     <Container>
       <div>
-        <h1 className="text-4xl font-semibold mb-4">{title}</h1>
-        <p className="text-sm text-gray-400">{date}</p>
+        <h1 className="text-xl sm:text-4xl font-semibold mb-4">{title}</h1>
+        <p className="text-xs sm:text-sm text-gray-400">{date}</p>
       </div>
       <hr className="my-4 border-gray-400" />
       <div
-        className="text-gray-300 text-sm lg:text-base font-light"
+        className="text-gray-300 text-xs sm:text-sm lg:text-base font-light"
         dangerouslySetInnerHTML={{ __html: html }}
       />
     </Container>
