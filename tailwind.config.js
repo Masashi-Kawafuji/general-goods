@@ -9,6 +9,10 @@ module.exports = {
         '-10': '-10',
       },
     },
+    fontFamily: {
+      sans: ['Noto Sans JP', 'sans-serif'],
+      vollkorn: ['Vollkorn', 'Noto Sans JP', 'sans-serif'],
+    },
   },
   variants: {
     extend: {},

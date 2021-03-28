@@ -7,6 +7,7 @@ import PageHero from '../components/PageHero';
 import Label from '../components/Label';
 import Input from '../components/Input';
 import TextArea from '../components/TextArea';
+import Button from '../components/Button';
 
 type ContactForm = {
   name: string;

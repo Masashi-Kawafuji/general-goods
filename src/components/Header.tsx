@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'gatsby';
+import { VscMenu } from '@react-icons/all-files/vsc/VscMenu';
+import { VscChromeClose } from '@react-icons/all-files/vsc/VscChromeClose';
 import Drawer from './Drawer';
 import Menu from './Menu';
 import MenuItem from './MenuItem';
@@ -12,24 +14,14 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header className="py-4 bg-gray-900">
+    <header className="p-4 bg-gray-900">
       <div className="sm:py-6">
         <button
           type="button"
-          className="sm:hidden float-left w-7 ml-3"
+          className="sm:hidden float-right"
           onClick={handleDrawerClick}
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-          >
-            <path
-              fillRule="evenodd"
-              d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-              clipRule="evenodd"
-            />
-          </svg>
+          <VscMenu size="1.5rem" />
         </button>
         <div className="text-center">
           <Link to="/">General Goods</Link>
@@ -41,19 +33,7 @@ const Header: React.FC = () => {
           className="sm:hidden w-7 mb-5"
           onClick={handleDrawerClick}
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 20 20"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
+          <VscChromeClose size="1.5rem" />
         </button>
         <Menu>
           <MenuItem to="/news/">News</MenuItem>
