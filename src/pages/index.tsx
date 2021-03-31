@@ -10,6 +10,8 @@ import PageHero from '../components/PageHero';
 import Container from '../components/Container';
 import Grid from '../components/Grid';
 import NewsItem from '../components/NewsItem';
+import Divider from '../components/Divider';
+import SocialLink from '../components/SocialLink';
 import { GetArticlesQuery } from './news';
 
 const Home: React.FC = () => {
@@ -70,7 +72,7 @@ const Home: React.FC = () => {
           </Link>
         </div>
       </Container>
-      <hr className="my-8 border-gray-600" />
+      <Divider />
       <Container>
         <h2 className="mb-8 text-center text-3xl font-vollkorn font-semibold">
           Recently Released
@@ -86,20 +88,26 @@ const Home: React.FC = () => {
           />
         </div>
       </Container>
-      <hr className="my-8 border-gray-600" />
+      <Divider />
       <Container>
         <h2 className="mb-8 text-center text-3xl font-vollkorn font-semibold">
           Follow Us!
         </h2>
         <ul className="flex justify-evenly">
           <li>
-            <FaTwitter size="2rem" />
+            <SocialLink url="https://twitter.com/_General_Goods_">
+              <FaTwitter size="2rem" />
+            </SocialLink>
           </li>
           <li>
-            <FaInstagram size="2rem" />
+            <SocialLink url="https://www.instagram.com/_general_goods_">
+              <FaInstagram size="2rem" />
+            </SocialLink>
           </li>
           <li>
-            <FaYoutube size="2rem" />
+            <SocialLink url="https://www.instagram.com/_general_goods_">
+              <FaYoutube size="2rem" />
+            </SocialLink>
           </li>
         </ul>
       </Container>

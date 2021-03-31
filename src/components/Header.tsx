@@ -27,7 +27,7 @@ const Header: React.FC = () => {
         </div>
       </div>
       <Drawer isOpen={isDrawerOpen} setIsOpen={setIsDrawerOpen}>
-        <p className="mb-4 text-center">General Goods</p>
+        <p className="sm:hidden mb-4 text-center">General Goods</p>
         <Menu>
           <MenuItem to="/news/">News</MenuItem>
           <MenuItem to="/schedule/">Schedule</MenuItem>

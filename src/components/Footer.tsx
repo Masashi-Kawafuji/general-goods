@@ -1,8 +1,9 @@
 import React from 'react';
+import Divider from './Divider';
 
 const Footer: React.FC = () => (
   <footer>
-    <hr className="my-8 border-gray-600" />
+    <Divider />
   </footer>
 );
 

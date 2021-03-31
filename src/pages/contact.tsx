@@ -7,7 +7,6 @@ import PageHero from '../components/PageHero';
 import Label from '../components/Label';
 import Input from '../components/Input';
 import TextArea from '../components/TextArea';
-import Button from '../components/Button';
 
 type ContactForm = {
   name: string;
@@ -72,7 +71,7 @@ const Contact: React.FC = () => {
             </div>
             <button
               type="submit"
-              className="block w-full px-3 py-1 bg-gray-300 hover:bg-gray-400 text-gray-900 sm:text-lg font-medium tracking-widest"
+              className="block w-full px-3 py-1 bg-gray-300 hover:bg-gray-400 text-gray-900 sm:text-lg font-medium tracking-widest transition-colors duration-300"
             >
               送信
             </button>

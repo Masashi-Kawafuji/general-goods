@@ -1,6 +1,7 @@
 ---
 title: 'article-7'
 date: '2021-12-18'
+featuredImage: '../../images/hero.jpg'
 ---
 
 # Article 7

@@ -6,7 +6,7 @@ type HeadProps = {
   title?: string;
 };
 
-type Site = {
+type SiteQuery = {
   site: {
     siteMetadata: {
       title: string;
@@ -15,8 +15,8 @@ type Site = {
 };
 
 const Head: React.FC<HeadProps> = ({ title }) => {
-  const { site } = useStaticQuery<Site>(graphql`
-    query SiteQuery {
+  const { site } = useStaticQuery<SiteQuery>(graphql`
+    query {
       site {
         siteMetadata {
           title

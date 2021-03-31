@@ -1,3 +1,6 @@
+/* eslint-disable jsx-a11y/interactive-supports-focus */
+/* eslint-disable jsx-a11y/control-has-associated-label */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { SetStateAction } from 'react';
 
 type DrawerProps = {
@@ -7,12 +10,13 @@ type DrawerProps = {
 
 const Drawer: React.FC<DrawerProps> = ({ children, isOpen, setIsOpen }) => (
   <>
-    {isOpen && (
-      <div
-        className="fixed inset-0 z-10 bg-gray-900 bg-opacity-50"
-        onClick={() => setIsOpen(false)}
-      />
-    )}
+    <div
+      className={`${
+        !isOpen && 'hidden'
+      } fixed inset-0 z-10 bg-gray-900 bg-opacity-50`}
+      role="button"
+      onClick={() => setIsOpen(false)}
+    />
     <div
       className={`${
         !isOpen && '-left-full'
