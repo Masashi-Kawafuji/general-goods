@@ -1,3 +1,5 @@
+import { IGatsbyImageData } from 'gatsby-plugin-image';
+
 export type Article = {
   id: string;
   html: string;
@@ -5,5 +7,6 @@ export type Article = {
   frontmatter: {
     title: string;
     date: string;
+    featuredImage: IGatsbyImageData;
   };
 };

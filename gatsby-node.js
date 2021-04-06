@@ -11,6 +11,11 @@ exports.createPages = async ({ actions, graphql }) => {
           frontmatter {
             title
             date(formatString: "YYYY.MM.DD")
+            featuredImage {
+              childImageSharp {
+                gatsbyImageData(layout: FULL_WIDTH)
+              }
+            }
           }
         }
       }

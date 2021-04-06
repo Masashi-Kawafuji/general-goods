@@ -1,5 +1,6 @@
 import React from 'react';
 import { PageProps } from 'gatsby';
+import { getImage, GatsbyImage } from 'gatsby-plugin-image';
 import { Article } from '../types';
 import Layout from '../components/Layout';
 import Head from '../components/Head';
@@ -10,23 +11,36 @@ type NewsArticlePageProps = PageProps<unknown, Omit<Article, 'excerpt'>>;
 const NewsArticle: React.FC<NewsArticlePageProps> = ({
   pageContext: {
     html,
-    frontmatter: { title, date },
+    frontmatter: { title, date, featuredImage },
   },
-}) => (
-  <Layout>
-    <Head title={title} />
-    <Container>
-      <div>
-        <h1 className="text-xl sm:text-4xl font-semibold mb-4">{title}</h1>
-        <p className="text-xs sm:text-sm text-gray-400">{date}</p>
-      </div>
-      <hr className="my-4 border-gray-400" />
-      <div
-        className="text-gray-300 text-xs sm:text-sm lg:text-base font-light"
-        dangerouslySetInnerHTML={{ __html: html }}
-      />
-    </Container>
-  </Layout>
-);
+}) => {
+  const image = getImage(featuredImage);
+
+  return (
+    <Layout>
+      <Head title={title} />
+      <Container>
+        <div>
+          <h1 className="mb-2 sm:mb-4 text-xl sm:text-4xl font-semibold">
+            {title}
+          </h1>
+          <p className="text-xs sm:text-sm text-gray-400">{date}</p>
+        </div>
+        <hr className="my-4 sm:my-6 border-gray-400" />
+        {image && (
+          <GatsbyImage
+            image={image}
+            alt={`${title} featured image.`}
+            className="mb-4 sm:mb-6"
+          />
+        )}
+        <div
+          className="text-gray-300 text-xs sm:text-sm lg:text-base font-light"
+          dangerouslySetInnerHTML={{ __html: html }}
+        />
+      </Container>
+    </Layout>
+  );
+};
 
 export default NewsArticle;
