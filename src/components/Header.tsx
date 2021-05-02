@@ -23,11 +23,15 @@ const Header: React.FC = () => {
           <VscMenu size="1.5rem" />
         </button>
         <div className="text-center">
-          <Link to="/">General Goods</Link>
+          <Link to="/" className="font-vollkorn text-xl">
+            General Goods
+          </Link>
         </div>
       </div>
       <Drawer isOpen={isDrawerOpen} setIsOpen={setIsDrawerOpen}>
-        <p className="sm:hidden mb-4 text-center">General Goods</p>
+        <p className="sm:hidden mb-4 font-vollkorn text-center">
+          General Goods
+        </p>
         <Menu>
           <MenuItem to="/news/">News</MenuItem>
           <MenuItem to="/schedule/">Schedule</MenuItem>

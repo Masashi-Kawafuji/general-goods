@@ -37,7 +37,7 @@ const News: React.FC = () => {
         name="News"
         image={
           <StaticImage
-            src="../images/schedule-page-hero.jpg"
+            src="../images/concert-2.jpg"
             alt="page hero"
             layout="fullWidth"
             className="h-full"

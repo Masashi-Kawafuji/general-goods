@@ -35,7 +35,7 @@ const Schedule: React.FC = () => {
         name="Schedule"
         image={
           <StaticImage
-            src="../images/schedule-page-hero.jpg"
+            src="../images/concert-1.jpg"
             alt="page hero"
             layout="fullWidth"
             className="h-full"
