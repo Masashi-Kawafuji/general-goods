@@ -22,10 +22,10 @@ exports.createPages = async ({ actions, graphql }) => {
     }
   `);
 
-  data.allMarkdownRemark.nodes.forEach((node) => {
+  data?.allMarkdownRemark.nodes.forEach((node) => {
     createPage({
       path: `/news/${node.id}`,
-      component: path.resolve('./src/templates/NewsArticle.tsx'),
+      component: path.resolve('./src/templates/Article.tsx'),
       context: node,
     });
   });

@@ -30,6 +30,11 @@ const News: React.FC = () => {
     }
   `);
 
+  const articles = allMarkdownRemark.nodes.slice(
+    1,
+    allMarkdownRemark.nodes.length
+  );
+
   return (
     <Layout>
       <Head title="News" />
@@ -46,7 +51,7 @@ const News: React.FC = () => {
       />
       <Container>
         <Grid mobile={1} tablet={2} desktop={3}>
-          {allMarkdownRemark.nodes.map(({ id, excerpt, frontmatter }) => (
+          {articles.map(({ id, excerpt, frontmatter }) => (
             <NewsItem
               key={id}
               id={id}

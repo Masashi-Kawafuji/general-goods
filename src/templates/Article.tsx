@@ -1,14 +1,14 @@
 import React from 'react';
 import { PageProps } from 'gatsby';
 import { getImage, GatsbyImage } from 'gatsby-plugin-image';
-import { Article } from '../types';
+import { Article as ArticleType } from '../types';
 import Layout from '../components/Layout';
 import Head from '../components/Head';
 import Container from '../components/Container';
 
-type NewsArticlePageProps = PageProps<unknown, Omit<Article, 'excerpt'>>;
+type ArticlePageProps = PageProps<unknown, Omit<ArticleType, 'excerpt'>>;
 
-const NewsArticle: React.FC<NewsArticlePageProps> = ({
+const Article: React.FC<ArticlePageProps> = ({
   pageContext: {
     html,
     frontmatter: { title, date, featuredImage },
@@ -43,4 +43,4 @@ const NewsArticle: React.FC<NewsArticlePageProps> = ({
   );
 };
 
-export default NewsArticle;
+export default Article;

@@ -33,6 +33,11 @@ const Home: React.FC = () => {
     }
   `);
 
+  const articles = allMarkdownRemark.nodes.slice(
+    1,
+    allMarkdownRemark.nodes.length
+  );
+
   return (
     <Layout>
       <Head />
@@ -53,7 +58,7 @@ const Home: React.FC = () => {
         </h2>
         <div className="mb-12">
           <Grid mobile={1} tablet={2} desktop={3}>
-            {allMarkdownRemark.nodes.map(({ id, excerpt, frontmatter }) => (
+            {articles.map(({ id, excerpt, frontmatter }) => (
               <NewsItem
                 key={id}
                 id={id}
@@ -105,7 +110,7 @@ const Home: React.FC = () => {
             </SocialLink>
           </li>
           <li>
-            <SocialLink url="https://www.instagram.com/_general_goods_">
+            <SocialLink url="https://www.youtube.com/channel/UC2NSO7mxY2L7C9ft0FL5htw">
               <FaYoutube size="2rem" />
             </SocialLink>
           </li>

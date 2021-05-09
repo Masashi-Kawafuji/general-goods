@@ -31,5 +31,12 @@ module.exports = {
         path: `${__dirname}/src/data/`,
       },
     },
+    {
+      resolve: `gatsby-plugin-s3`,
+      options: {
+        bucketName: 'general-goods-official-website',
+        acl: null,
+      },
+    },
   ],
 };

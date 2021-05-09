@@ -12,7 +12,7 @@ const About: React.FC = () => (
       name="About"
       image={
         <StaticImage
-          src="../images/schedule-page-hero.jpg"
+          src="../images/hero.jpg"
           alt="page hero"
           layout="fullWidth"
           className="h-full"
@@ -21,10 +21,7 @@ const About: React.FC = () => (
     />
     <Container>
       <p className="text-center text-gray-300 font-light">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam sequi
-        ducimus sunt consequatur qui quam, nulla repellendus neque dolores
-        laboriosam, ipsam, quidem nobis fugiat repellat recusandae doloribus.
-        Dicta, vitae velit.
+        都内で活動するロック・ポップバンド。メンバーはyuta.(Vo/Gt)、wataru(Gt)、masa(Ba)、yura(Dr)。
       </p>
     </Container>
   </Layout>
