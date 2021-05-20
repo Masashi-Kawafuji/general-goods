@@ -35,7 +35,7 @@ const Article: React.FC<ArticlePageProps> = ({
           />
         )}
         <div
-          className="text-gray-300 text-xs sm:text-sm lg:text-base font-light"
+          className="prose-sm lg:prose font-light"
           dangerouslySetInnerHTML={{ __html: html }}
         />
       </Container>

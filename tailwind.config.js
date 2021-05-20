@@ -8,6 +8,25 @@ module.exports = {
       zIndex: {
         '-10': '-10',
       },
+      typography: (theme) => ({
+        DEFAULT: {
+          css: {
+            color: theme('colors.gray.300'),
+            h1: {
+              color: theme('colors.gray.300'),
+            },
+            h2: {
+              color: theme('colors.gray.300'),
+            },
+            a: {
+              color: theme('colors.gray.400'),
+            },
+            strong: {
+              color: theme('colors.gray.300'),
+            },
+          },
+        },
+      }),
     },
     fontFamily: {
       sans: ['Noto Sans JP', 'sans-serif'],
