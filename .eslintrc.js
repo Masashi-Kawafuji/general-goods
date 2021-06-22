@@ -28,6 +28,13 @@ module.exports = {
     },
     project: './tsconfig.eslint.json',
   },
+  settings: {
+    'import/resolver': {
+      node: {
+        moduleDirectory: ['node_modules', 'src'],
+      },
+    },
+  },
   overrides: [
     {
       files: ['*.js'],

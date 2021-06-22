@@ -1,6 +1,6 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import { ScheduleFieldsFragment } from '../types/generated/graphql';
+import { ScheduleFieldsFragment } from 'types/generated/graphql';
 
 type ScheduleItemProps = { schedule: ScheduleFieldsFragment };
 

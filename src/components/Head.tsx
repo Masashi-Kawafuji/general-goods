@@ -1,7 +1,7 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import { Helmet } from 'react-helmet';
-import { GetSiteMetadataQuery } from '../types/generated/graphql';
+import { GetSiteMetadataQuery } from 'types/generated/graphql';
 
 type HeadProps = {
   pageTitle?: string;

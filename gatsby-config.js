@@ -4,6 +4,12 @@ module.exports = {
     description: 'General Goods オフィシャルウェブサイト',
   },
   plugins: [
+    'gatsby-plugin-resolve-src',
+    'gatsby-plugin-image',
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
+    'gatsby-transformer-json',
+    'gatsby-transformer-remark',
     {
       resolve: 'gatsby-plugin-typescript',
       options: {
@@ -12,11 +18,6 @@ module.exports = {
         allExtensions: true,
       },
     },
-    'gatsby-plugin-image',
-    'gatsby-plugin-sharp',
-    'gatsby-transformer-sharp',
-    'gatsby-transformer-json',
-    'gatsby-transformer-remark',
     {
       resolve: 'gatsby-source-filesystem',
       options: {

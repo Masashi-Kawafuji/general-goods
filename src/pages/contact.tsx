@@ -1,12 +1,12 @@
 import React, { ReactEventHandler, useState } from 'react';
 import { StaticImage } from 'gatsby-plugin-image';
 import axios from 'axios';
-import Layout from '../components/Layout';
-import Head from '../components/Head';
-import Container from '../components/Container';
-import PageHero from '../components/PageHero';
-import Input from '../components/Input';
-import TextArea from '../components/TextArea';
+import Layout from 'components/Layout';
+import Head from 'components/Head';
+import Container from 'components/Container';
+import PageHero from 'components/PageHero';
+import Input from 'components/Input';
+import TextArea from 'components/TextArea';
 
 type ContactForm = {
   name: string;

@@ -4,15 +4,15 @@ import { StaticImage } from 'gatsby-plugin-image';
 import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter';
 import { FaInstagram } from '@react-icons/all-files/fa/FaInstagram';
 import { FaYoutube } from '@react-icons/all-files/fa/FaYoutube';
-import Layout from '../components/Layout';
-import Head from '../components/Head';
-import PageHero from '../components/PageHero';
-import Container from '../components/Container';
-import Grid from '../components/Grid';
-import NewsItem from '../components/NewsItem';
-import Divider from '../components/Divider';
-import SocialLink from '../components/SocialLink';
-import { GetFewArticlesQuery } from '../types/generated/graphql';
+import Layout from 'components/Layout';
+import Head from 'components/Head';
+import PageHero from 'components/PageHero';
+import Container from 'components/Container';
+import Grid from 'components/Grid';
+import NewsItem from 'components/NewsItem';
+import Divider from 'components/Divider';
+import SocialLink from 'components/SocialLink';
+import { GetFewArticlesQuery } from 'types/generated/graphql';
 
 const Home: React.FC = () => {
   const { allMarkdownRemark } = useStaticQuery<GetFewArticlesQuery>(graphql`

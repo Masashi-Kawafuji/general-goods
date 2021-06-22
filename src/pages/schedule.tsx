@@ -1,12 +1,12 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import { StaticImage } from 'gatsby-plugin-image';
-import Layout from '../components/Layout';
-import Head from '../components/Head';
-import Container from '../components/Container';
-import PageHero from '../components/PageHero';
-import ScheduleItem from '../components/ScheduleItem';
-import { GetSchedulesQuery } from '../types/generated/graphql';
+import Layout from 'components/Layout';
+import Head from 'components/Head';
+import Container from 'components/Container';
+import PageHero from 'components/PageHero';
+import ScheduleItem from 'components/ScheduleItem';
+import { GetSchedulesQuery } from 'types/generated/graphql';
 
 const Schedule: React.FC = () => {
   const { allSchedulesJson } = useStaticQuery<GetSchedulesQuery>(graphql`

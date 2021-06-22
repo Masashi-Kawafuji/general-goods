@@ -1,6 +1,6 @@
 import { graphql, Link } from 'gatsby';
 import React from 'react';
-import { ArticleItemFieldsFragment } from '../types/generated/graphql';
+import { ArticleItemFieldsFragment } from 'types/generated/graphql';
 
 type NewsItemProps = { article: ArticleItemFieldsFragment };
 

@@ -1,27 +1,12 @@
 import React from 'react';
-import { graphql, PageProps } from 'gatsby';
+import { PageProps } from 'gatsby';
 import { getImage, GatsbyImage, ImageDataLike } from 'gatsby-plugin-image';
-import Layout from '../components/Layout';
-import Head from '../components/Head';
-import Container from '../components/Container';
-import { ArticleFieldsFragment } from '../types/generated/graphql';
+import Layout from 'components/Layout';
+import Head from 'components/Head';
+import Container from 'components/Container';
+import { ArticleFieldsFragment } from 'types/generated/graphql';
 
 type ArticlePageProps = PageProps<unknown, ArticleFieldsFragment>;
-
-export const ARTICLE_FIELDS = graphql`
-  fragment ArticleFields on MarkdownRemark {
-    html
-    frontmatter {
-      title
-      date(formatString: "YYYY.MM.DD")
-      featuredImage {
-        childImageSharp {
-          gatsbyImageData(layout: FULL_WIDTH)
-        }
-      }
-    }
-  }
-`;
 
 const Article: React.FC<ArticlePageProps> = ({
   pageContext: {

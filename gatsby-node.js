@@ -22,7 +22,16 @@ exports.createPages = async ({ actions, graphql }) => {
       allMarkdownRemark {
         nodes {
           id
-          ...ArticleFields
+          html
+          frontmatter {
+            title
+            date(formatString: "YYYY.MM.DD")
+            featuredImage {
+              childImageSharp {
+                gatsbyImageData(layout: FULL_WIDTH)
+              }
+            }
+          }
         }
       }
     }
