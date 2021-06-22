@@ -1,12 +1,27 @@
 import React from 'react';
-import { PageProps } from 'gatsby';
-import { getImage, GatsbyImage } from 'gatsby-plugin-image';
-import { Article as ArticleType } from '../types';
+import { graphql, PageProps } from 'gatsby';
+import { getImage, GatsbyImage, ImageDataLike } from 'gatsby-plugin-image';
 import Layout from '../components/Layout';
 import Head from '../components/Head';
 import Container from '../components/Container';
+import { ArticleFieldsFragment } from '../types/generated/graphql';
 
-type ArticlePageProps = PageProps<unknown, Omit<ArticleType, 'excerpt'>>;
+type ArticlePageProps = PageProps<unknown, ArticleFieldsFragment>;
+
+export const ARTICLE_FIELDS = graphql`
+  fragment ArticleFields on MarkdownRemark {
+    html
+    frontmatter {
+      title
+      date(formatString: "YYYY.MM.DD")
+      featuredImage {
+        childImageSharp {
+          gatsbyImageData(layout: FULL_WIDTH)
+        }
+      }
+    }
+  }
+`;
 
 const Article: React.FC<ArticlePageProps> = ({
   pageContext: {
@@ -14,11 +29,11 @@ const Article: React.FC<ArticlePageProps> = ({
     frontmatter: { title, date, featuredImage },
   },
 }) => {
-  const image = getImage(featuredImage);
+  const image = getImage(featuredImage as ImageDataLike);
 
   return (
     <Layout>
-      <Head title={title} />
+      <Head pageTitle={title} />
       <Container>
         <div>
           <h1 className="mb-2 sm:mb-4 text-xl sm:text-4xl font-semibold">
@@ -36,7 +51,7 @@ const Article: React.FC<ArticlePageProps> = ({
         )}
         <div
           className="prose-sm lg:prose font-light"
-          dangerouslySetInnerHTML={{ __html: html }}
+          dangerouslySetInnerHTML={{ __html: html! }}
         />
       </Container>
     </Layout>

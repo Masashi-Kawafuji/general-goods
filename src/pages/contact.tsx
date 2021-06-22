@@ -69,7 +69,7 @@ const Contact: React.FC = () => {
 
         setContactForm(initialContactFromValue);
       } catch (error) {
-        console.error(error.message);
+        console.error(error);
       }
     } else {
       setIsInputEmpty({
@@ -82,7 +82,7 @@ const Contact: React.FC = () => {
 
   return (
     <Layout>
-      <Head title="Contact" />
+      <Head pageTitle="Contact" />
       <PageHero
         name="Contact"
         image={

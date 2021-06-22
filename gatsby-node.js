@@ -18,20 +18,11 @@ exports.createSchemaCustomization = ({ actions }) => {
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions;
   const { data } = await graphql(`
-    query getArticles {
+    query GetArticles {
       allMarkdownRemark {
         nodes {
           id
-          html
-          frontmatter {
-            title
-            date(formatString: "YYYY.MM.DD")
-            featuredImage {
-              childImageSharp {
-                gatsbyImageData(layout: FULL_WIDTH)
-              }
-            }
-          }
+          ...ArticleFields
         }
       }
     }

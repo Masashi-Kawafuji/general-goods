@@ -1,3 +1,4 @@
 public
 .cache
+src/types/generated
 **/*.md

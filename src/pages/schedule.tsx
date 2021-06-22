@@ -1,4 +1,4 @@
-import React, { ComponentProps } from 'react';
+import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import { StaticImage } from 'gatsby-plugin-image';
 import Layout from '../components/Layout';
@@ -6,23 +6,15 @@ import Head from '../components/Head';
 import Container from '../components/Container';
 import PageHero from '../components/PageHero';
 import ScheduleItem from '../components/ScheduleItem';
-
-type GetSchedulesQuery = {
-  allSchedulesJson: {
-    nodes: ComponentProps<typeof ScheduleItem>[];
-  };
-};
+import { GetSchedulesQuery } from '../types/generated/graphql';
 
 const Schedule: React.FC = () => {
   const { allSchedulesJson } = useStaticQuery<GetSchedulesQuery>(graphql`
-    query {
+    query GetSchedules {
       allSchedulesJson(sort: { order: ASC, fields: date }) {
         nodes {
           id
-          event
-          date(formatString: "YYYY.MM.DD")
-          venue
-          venueUrl
+          ...ScheduleFields
         }
       }
     }
@@ -30,7 +22,7 @@ const Schedule: React.FC = () => {
 
   return (
     <Layout>
-      <Head title="Schedule" />
+      <Head pageTitle="Schedule" />
       <PageHero
         name="Schedule"
         image={
@@ -44,18 +36,9 @@ const Schedule: React.FC = () => {
       />
       <Container>
         <ul>
-          {allSchedulesJson.nodes.map(
-            ({ id, event, date, venue, venueUrl }) => (
-              <ScheduleItem
-                key={id}
-                id={id}
-                event={event}
-                date={date}
-                venue={venue}
-                venueUrl={venueUrl}
-              />
-            )
-          )}
+          {allSchedulesJson.nodes.map((schedule) => (
+            <ScheduleItem key={schedule.id} schedule={schedule} />
+          ))}
         </ul>
       </Container>
     </Layout>

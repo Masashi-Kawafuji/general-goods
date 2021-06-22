@@ -1,22 +1,15 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import { Helmet } from 'react-helmet';
+import { GetSiteMetadataQuery } from '../types/generated/graphql';
 
 type HeadProps = {
-  title?: string;
+  pageTitle?: string;
 };
 
-type SiteQuery = {
-  site: {
-    siteMetadata: {
-      title: string;
-    };
-  };
-};
-
-const Head: React.FC<HeadProps> = ({ title }) => {
-  const { site } = useStaticQuery<SiteQuery>(graphql`
-    query {
+const Head: React.FC<HeadProps> = ({ pageTitle }) => {
+  const { site } = useStaticQuery<GetSiteMetadataQuery>(graphql`
+    query GetSiteMetadata {
       site {
         siteMetadata {
           title
@@ -28,8 +21,9 @@ const Head: React.FC<HeadProps> = ({ title }) => {
   return (
     <Helmet>
       <title>
-        {title ? `${title} - ` : ''}
-        {site.siteMetadata.title}
+        {pageTitle
+          ? `${pageTitle} | ${site?.siteMetadata?.title}`
+          : site?.siteMetadata?.title}
       </title>
     </Helmet>
   );

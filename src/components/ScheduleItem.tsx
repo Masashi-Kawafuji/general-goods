@@ -1,18 +1,20 @@
 import React from 'react';
+import { graphql } from 'gatsby';
+import { ScheduleFieldsFragment } from '../types/generated/graphql';
 
-type ScheduleItemProps = {
-  id: string;
-  event: string;
-  date: string;
-  venue: string;
-  venueUrl: string;
-};
+type ScheduleItemProps = { schedule: ScheduleFieldsFragment };
+
+export const SCHEDULE_FIELDS = graphql`
+  fragment ScheduleFields on SchedulesJson {
+    event
+    date(formatString: "YYYY.MM.DD")
+    venue
+    venueUrl
+  }
+`;
 
 const ScheduleItem: React.FC<ScheduleItemProps> = ({
-  event,
-  date,
-  venue,
-  venueUrl,
+  schedule: { event, date, venue, venueUrl },
 }) => (
   <li>
     <div className="flex px-3 py-6 space-x-6 sm:space-x-20 xl:space-x-32">
@@ -23,7 +25,7 @@ const ScheduleItem: React.FC<ScheduleItemProps> = ({
         <dt className="text-sm sm:text-lg text-gray-200">{event}</dt>
         <dd className="">
           <a
-            href={venueUrl}
+            href={venueUrl || ''}
             className="text-xs sm:text-sm text-gray-400 hover:underline"
           >
             {venue}

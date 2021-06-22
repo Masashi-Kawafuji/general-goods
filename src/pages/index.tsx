@@ -12,22 +12,17 @@ import Grid from '../components/Grid';
 import NewsItem from '../components/NewsItem';
 import Divider from '../components/Divider';
 import SocialLink from '../components/SocialLink';
-import { GetArticlesQuery } from './news';
+import { GetFewArticlesQuery } from '../types/generated/graphql';
 
 const Home: React.FC = () => {
-  const { allMarkdownRemark } = useStaticQuery<GetArticlesQuery>(graphql`
-    query {
+  const { allMarkdownRemark } = useStaticQuery<GetFewArticlesQuery>(graphql`
+    query GetFewArticles {
       allMarkdownRemark(
         sort: { fields: frontmatter___date, order: DESC }
         limit: 3
       ) {
         nodes {
-          excerpt
-          id
-          frontmatter {
-            title
-            date(formatString: "YYYY.MM.DD")
-          }
+          ...ArticleItemFields
         }
       }
     }
@@ -58,13 +53,8 @@ const Home: React.FC = () => {
         </h2>
         <div className="mb-12">
           <Grid mobile={1} tablet={2} desktop={3}>
-            {articles.map(({ id, excerpt, frontmatter }) => (
-              <NewsItem
-                key={id}
-                id={id}
-                excerpt={excerpt}
-                frontmatter={frontmatter}
-              />
+            {articles.map((article) => (
+              <NewsItem key={article.id} article={article} />
             ))}
           </Grid>
         </div>

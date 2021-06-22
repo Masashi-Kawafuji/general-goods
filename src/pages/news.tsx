@@ -1,4 +1,4 @@
-import React, { ComponentProps } from 'react';
+import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import { StaticImage } from 'gatsby-plugin-image';
 import Layout from '../components/Layout';
@@ -7,24 +7,14 @@ import Container from '../components/Container';
 import PageHero from '../components/PageHero';
 import Grid from '../components/Grid';
 import NewsItem from '../components/NewsItem';
-
-export type GetArticlesQuery = {
-  allMarkdownRemark: {
-    nodes: ComponentProps<typeof NewsItem>[];
-  };
-};
+import { GetArticleListQuery } from '../types/generated/graphql';
 
 const News: React.FC = () => {
-  const { allMarkdownRemark } = useStaticQuery<GetArticlesQuery>(graphql`
-    query {
+  const { allMarkdownRemark } = useStaticQuery<GetArticleListQuery>(graphql`
+    query GetArticleList {
       allMarkdownRemark(sort: { fields: frontmatter___date, order: DESC }) {
         nodes {
-          excerpt
-          id
-          frontmatter {
-            title
-            date(formatString: "YYYY.MM.DD")
-          }
+          ...ArticleItemFields
         }
       }
     }
@@ -37,7 +27,7 @@ const News: React.FC = () => {
 
   return (
     <Layout>
-      <Head title="News" />
+      <Head pageTitle="News" />
       <PageHero
         name="News"
         image={
@@ -51,13 +41,8 @@ const News: React.FC = () => {
       />
       <Container>
         <Grid mobile={1} tablet={2} desktop={3}>
-          {articles.map(({ id, excerpt, frontmatter }) => (
-            <NewsItem
-              key={id}
-              id={id}
-              excerpt={excerpt}
-              frontmatter={frontmatter}
-            />
+          {articles.map((article) => (
+            <NewsItem key={article.id} article={article} />
           ))}
         </Grid>
       </Container>

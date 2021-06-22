@@ -7,7 +7,7 @@ import PageHero from '../components/PageHero';
 
 const About: React.FC = () => (
   <Layout>
-    <Head title="About" />
+    <Head pageTitle="About" />
     <PageHero
       name="About"
       image={
