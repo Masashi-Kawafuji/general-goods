@@ -32,7 +32,7 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-s3`,
+      resolve: 'gatsby-plugin-s3',
       options: {
         bucketName: 'general-goods-official-website',
         acl: null,

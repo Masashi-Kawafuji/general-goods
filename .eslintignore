@@ -1,2 +1,2 @@
-src/types/generated/
-*.js
+public
+src/types/generated
