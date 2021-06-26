@@ -28,13 +28,6 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: 'data',
-        path: `${__dirname}/src/data/`,
-      },
-    },
-    {
       resolve: 'gatsby-source-datocms',
       options: {
         apiToken: process.env.DATOCMS_ACCESS_TOKEN,

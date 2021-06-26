@@ -1,5 +1,6 @@
-import { graphql, Link } from 'gatsby';
 import React from 'react';
+import { graphql, Link } from 'gatsby';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import { ArticleItemFieldsFragment } from 'types/generated/graphql';
 
 type ArticleItemProps = { article: ArticleItemFieldsFragment };
@@ -12,15 +13,23 @@ export const ARTICLE_ITEM_FIELDS = graphql`
     originalId
     title
     excerpt
+    featuredImage {
+      gatsbyImageData
+      alt
+    }
   }
 `;
 
 const ArticleItem: React.FC<ArticleItemProps> = ({
-  article: { meta, originalId, title, excerpt },
+  article: { meta, originalId, title, excerpt, featuredImage },
 }) => (
   <div className="py-2">
     <Link to={`/news/${originalId}`}>
-      <div className="mb-2">
+      <GatsbyImage
+        image={featuredImage.gatsbyImageData}
+        alt={featuredImage.alt}
+      />
+      <div className="my-2">
         <p className="text-xs text-gray-400">{meta?.firstPublishedAt}</p>
         <p className="text-xl font-semibold">{title}</p>
       </div>
