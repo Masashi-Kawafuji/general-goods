@@ -29,9 +29,12 @@ const Header: React.FC = () => {
         </div>
       </div>
       <Drawer isOpen={isDrawerOpen} setIsOpen={setIsDrawerOpen}>
-        <p className="sm:hidden mb-4 font-vollkorn text-center">
+        <Link
+          to="/"
+          className="sm:hidden inline-block py-4 mb-4 font-vollkorn text-xl text-center"
+        >
           General Goods
-        </p>
+        </Link>
         <Menu>
           <MenuItem to="/news/">News</MenuItem>
           <MenuItem to="/schedule/">Schedule</MenuItem>

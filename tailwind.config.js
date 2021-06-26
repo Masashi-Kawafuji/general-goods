@@ -1,4 +1,4 @@
-const colors = require('tailwindcss/colors');
+/* eslint-disable global-require */
 
 module.exports = {
   purge: ['./src/**/*.tsx'],

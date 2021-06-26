@@ -20,7 +20,7 @@ const Drawer: React.FC<DrawerProps> = ({ children, isOpen, setIsOpen }) => (
     <div
       className={`${
         !isOpen && '-left-full'
-      } fixed left-0 inset-y-0 sm:block sm:static z-20 transition-all duration-500 w-3/4 sm:w-full px-4 pt-4 bg-gray-900`}
+      } fixed left-0 inset-y-0 sm:block sm:static z-20 transition-all duration-500 w-3/4 sm:w-full px-6 sm:px-4 pt-4 bg-gray-900`}
     >
       {children}
     </div>
