@@ -9,29 +9,21 @@ import Head from 'components/Head';
 import PageHero from 'components/PageHero';
 import Container from 'components/Container';
 import Grid from 'components/Grid';
-import NewsItem from 'components/NewsItem';
+import NewsItem from 'components/ArticleItem';
 import Divider from 'components/Divider';
 import SocialLink from 'components/SocialLink';
-import { GetFewArticlesQuery } from 'types/generated/graphql';
+import { GetRecentArticlesQuery } from 'types/generated/graphql';
 
 const Home: React.FC = () => {
-  const { allMarkdownRemark } = useStaticQuery<GetFewArticlesQuery>(graphql`
-    query GetFewArticles {
-      allMarkdownRemark(
-        sort: { fields: frontmatter___date, order: DESC }
-        limit: 3
-      ) {
+  const { allDatoCmsArticle } = useStaticQuery<GetRecentArticlesQuery>(graphql`
+    query GetRecentArticles {
+      allDatoCmsArticle(limit: 3) {
         nodes {
           ...ArticleItemFields
         }
       }
     }
   `);
-
-  const articles = allMarkdownRemark.nodes.slice(
-    1,
-    allMarkdownRemark.nodes.length
-  );
 
   return (
     <Layout>
@@ -53,8 +45,8 @@ const Home: React.FC = () => {
         </h2>
         <div className="mb-12">
           <Grid mobile={1} tablet={2} desktop={3}>
-            {articles.map((article) => (
-              <NewsItem key={article.id} article={article} />
+            {allDatoCmsArticle.nodes.map((article) => (
+              <NewsItem key={article.originalId} article={article} />
             ))}
           </Grid>
         </div>

@@ -1,34 +1,29 @@
 const path = require('path');
 
-exports.createSchemaCustomization = ({ actions }) => {
-  const { createTypes } = actions;
-  const typeDefs = `
-    type Frontmatter {
-      title: String!
-      featuredImage: File @link(by: "relativePath")
-    }
-
-    type MarkdownRemark implements Node {
-      frontmatter: Frontmatter!
-    }
-  `;
-  createTypes(typeDefs);
-};
-
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions;
   const { data } = await graphql(`
     query GetArticles {
-      allMarkdownRemark {
+      allDatoCmsArticle {
         nodes {
-          id
-          html
-          frontmatter {
-            title
-            date(formatString: "YYYY.MM.DD")
-            featuredImage {
-              childImageSharp {
-                gatsbyImageData(layout: FULL_WIDTH)
+          meta {
+            firstPublishedAt(formatString: "YYYY.MM.DD")
+          }
+          originalId
+          title
+          featuredImage {
+            gatsbyImageData
+          }
+          body {
+            value
+            blocks {
+              ... on DatoCmsImage {
+                __typename
+                id: originalId
+                image {
+                  url
+                  alt
+                }
               }
             }
           }
@@ -37,9 +32,13 @@ exports.createPages = async ({ actions, graphql }) => {
     }
   `);
 
-  data?.allMarkdownRemark.nodes.forEach((node) => {
+  data.allDatoCmsArticle.nodes.forEach((node) => {
+    const article = node;
+    const { originalId } = article;
+    delete article.originalId;
+
     createPage({
-      path: `/news/${node.id}`,
+      path: `/news/${originalId}`,
       component: path.resolve('./src/templates/Article.tsx'),
       context: node,
     });

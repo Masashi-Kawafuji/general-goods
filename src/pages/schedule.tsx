@@ -9,12 +9,17 @@ import ScheduleItem from 'components/ScheduleItem';
 import { GetSchedulesQuery } from 'types/generated/graphql';
 
 const Schedule: React.FC = () => {
-  const { allSchedulesJson } = useStaticQuery<GetSchedulesQuery>(graphql`
+  const { allDatoCmsSchedule } = useStaticQuery<GetSchedulesQuery>(graphql`
     query GetSchedules {
-      allSchedulesJson(sort: { order: ASC, fields: date }) {
+      allDatoCmsSchedule {
         nodes {
           id
-          ...ScheduleFields
+          heldOn
+          title
+          venue {
+            name
+            url
+          }
         }
       }
     }
@@ -36,7 +41,7 @@ const Schedule: React.FC = () => {
       />
       <Container>
         <ul>
-          {allSchedulesJson.nodes.map((schedule) => (
+          {allDatoCmsSchedule.nodes.map((schedule) => (
             <ScheduleItem key={schedule.id} schedule={schedule} />
           ))}
         </ul>

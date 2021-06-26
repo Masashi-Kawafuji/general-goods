@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 module.exports = {
   siteMetadata: {
     title: 'General Goods',
@@ -30,6 +32,18 @@ module.exports = {
       options: {
         name: 'data',
         path: `${__dirname}/src/data/`,
+      },
+    },
+    {
+      resolve: 'gatsby-source-datocms',
+      options: {
+        apiToken: process.env.DATOCMS_ACCESS_TOKEN,
+        environment: 'main',
+        previewMode: process.env.NODE_ENV !== 'production',
+        disableLiveReload: false,
+        localeFallbacks: {
+          it: ['en'],
+        },
       },
     },
     {

@@ -6,24 +6,19 @@ import Head from 'components/Head';
 import Container from 'components/Container';
 import PageHero from 'components/PageHero';
 import Grid from 'components/Grid';
-import NewsItem from 'components/NewsItem';
+import ArticleItem from 'components/ArticleItem';
 import { GetArticleListQuery } from 'types/generated/graphql';
 
 const News: React.FC = () => {
-  const { allMarkdownRemark } = useStaticQuery<GetArticleListQuery>(graphql`
+  const { allDatoCmsArticle } = useStaticQuery<GetArticleListQuery>(graphql`
     query GetArticleList {
-      allMarkdownRemark(sort: { fields: frontmatter___date, order: DESC }) {
+      allDatoCmsArticle {
         nodes {
           ...ArticleItemFields
         }
       }
     }
   `);
-
-  const articles = allMarkdownRemark.nodes.slice(
-    1,
-    allMarkdownRemark.nodes.length
-  );
 
   return (
     <Layout>
@@ -41,8 +36,8 @@ const News: React.FC = () => {
       />
       <Container>
         <Grid mobile={1} tablet={2} desktop={3}>
-          {articles.map((article) => (
-            <NewsItem key={article.id} article={article} />
+          {allDatoCmsArticle.nodes.map((article) => (
+            <ArticleItem key={article.originalId} article={article} />
           ))}
         </Grid>
       </Container>

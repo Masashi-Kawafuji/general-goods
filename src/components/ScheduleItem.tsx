@@ -5,30 +5,33 @@ import { ScheduleFieldsFragment } from 'types/generated/graphql';
 type ScheduleItemProps = { schedule: ScheduleFieldsFragment };
 
 export const SCHEDULE_FIELDS = graphql`
-  fragment ScheduleFields on SchedulesJson {
-    event
-    date(formatString: "YYYY.MM.DD")
-    venue
-    venueUrl
+  fragment ScheduleFields on DatoCmsSchedule {
+    id
+    heldOn(formatString: "YYYY.MM.DD")
+    title
+    venue {
+      name
+      url
+    }
   }
 `;
 
 const ScheduleItem: React.FC<ScheduleItemProps> = ({
-  schedule: { event, date, venue, venueUrl },
+  schedule: { title, heldOn, venue },
 }) => (
   <li>
     <div className="flex px-3 py-6 space-x-6 sm:space-x-20 xl:space-x-32">
       <div className="flex flex-col justify-center">
-        <p className="text-sm sm:text-xl font-semibold">{date}</p>
+        <p className="text-sm sm:text-xl font-semibold">{heldOn}</p>
       </div>
       <dl>
-        <dt className="text-sm sm:text-lg text-gray-200">{event}</dt>
+        <dt className="text-sm sm:text-lg text-gray-200">{title}</dt>
         <dd className="">
           <a
-            href={venueUrl || ''}
+            href={venue?.url || ''}
             className="text-xs sm:text-sm text-gray-400 hover:underline"
           >
-            {venue}
+            {venue?.name}
             <span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
