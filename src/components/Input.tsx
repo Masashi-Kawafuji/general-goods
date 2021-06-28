@@ -20,7 +20,7 @@ const Input: React.FC<InputProps> = ({
 }) => {
   const isInvalid = error || false;
 
-  const borderColor = isInvalid ? 'border-red-500' : 'border-gray-400';
+  const borderColor = isInvalid ? 'border-red-500' : 'border-gray-300';
 
   return (
     <div>
@@ -29,7 +29,7 @@ const Input: React.FC<InputProps> = ({
       </Label>
       <input
         id={name}
-        className={`block w-full px-2 py-2 bg-transparent text-gray-300 text-xs sm:text-sm font-light border-2 ${borderColor} focus:border-gray-200`}
+        className={`block w-full px-2 py-2 bg-transparent text-gray-300 text-xs sm:text-sm font-light border-2 ${borderColor} focus:border-gray-50`}
         name={name}
         type="text"
         value={value}

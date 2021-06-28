@@ -25,11 +25,11 @@ const ScheduleItem: React.FC<ScheduleItemProps> = ({
         <p className="text-sm sm:text-xl font-semibold">{heldOn}</p>
       </div>
       <dl>
-        <dt className="text-sm sm:text-lg text-gray-200">{title}</dt>
+        <dt className="text-sm sm:text-lg text-darken">{title}</dt>
         <dd className="">
           <a
             href={venue?.url || ''}
-            className="text-xs sm:text-sm text-gray-400 hover:underline"
+            className="text-xs sm:text-sm text-darken hover:underline"
           >
             {venue?.name}
             <span>

@@ -1,9 +1,15 @@
 /* eslint-disable global-require */
+const colors = require('tailwindcss/colors');
 
 module.exports = {
   purge: ['./src/**/*.tsx'],
   darkMode: false,
   theme: {
+    textColor: {
+      lighten: colors.gray['50'],
+      darken: colors.gray['300'],
+      inverse: colors.gray['900'],
+    },
     extend: {
       zIndex: {
         '-10': '-10',
@@ -13,16 +19,13 @@ module.exports = {
           css: {
             color: theme('colors.gray.300'),
             h1: {
-              color: theme('colors.gray.300'),
+              color: theme('colors.gray.50'),
             },
             h2: {
-              color: theme('colors.gray.300'),
-            },
-            a: {
-              color: theme('colors.gray.400'),
+              color: theme('colors.gray.50'),
             },
             strong: {
-              color: theme('colors.gray.300'),
+              color: theme('colors.gray.50'),
             },
           },
         },

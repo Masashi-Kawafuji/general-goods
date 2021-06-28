@@ -20,7 +20,7 @@ const About: React.FC = () => (
       }
     />
     <Container>
-      <p className="text-center text-gray-300 font-light">
+      <p className="text-center text-darken font-light">
         都内で活動するロック・ポップバンド。メンバーはyuta.(Vo/Gt)、wataru(Gt)、masa(Ba)、yura(Dr)。
       </p>
     </Container>

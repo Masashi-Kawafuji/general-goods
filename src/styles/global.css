@@ -4,11 +4,10 @@
 
 @layer base {
   html {
-    @apply h-full;
+    @apply h-full font-sans;
   }
 
   body {
-    @apply h-full bg-gray-900 text-gray-50;
-    font-family: 'Noto Sans JP', sans-serif;
+    @apply h-full bg-gray-900 text-lighten;
   }
 }

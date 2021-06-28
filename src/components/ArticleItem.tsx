@@ -30,10 +30,10 @@ const ArticleItem: React.FC<ArticleItemProps> = ({
         alt={featuredImage.alt}
       />
       <div className="my-2">
-        <p className="text-xs text-gray-400">{meta?.firstPublishedAt}</p>
+        <p className="text-xs text-darken">{meta.firstPublishedAt}</p>
         <p className="text-xl font-semibold">{title}</p>
       </div>
-      <div className="text-sm text-gray-300 font-light">{excerpt}</div>
+      <div className="text-sm text-darken font-light">{excerpt}</div>
     </Link>
   </div>
 );

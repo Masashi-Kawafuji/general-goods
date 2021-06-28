@@ -48,7 +48,7 @@ const Article: React.FC<ArticlePageProps> = ({
           <h1 className="mb-2 sm:mb-4 text-xl sm:text-4xl font-semibold">
             {title}
           </h1>
-          <p className="text-xs sm:text-sm text-gray-400">
+          <p className="text-xs sm:text-sm text-darken">
             {meta?.firstPublishedAt}
           </p>
         </div>
@@ -60,7 +60,7 @@ const Article: React.FC<ArticlePageProps> = ({
             className="mb-4 sm:mb-6"
           />
         )}
-        <div className="prose prose-sm sm:prose">
+        <div className="prose prose-sm sm:prose min-w-full">
           <StructuredText
             data={body}
             renderBlock={({ record }) => {

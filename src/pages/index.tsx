@@ -29,7 +29,6 @@ const Home: React.FC = () => {
     <Layout>
       <Head />
       <PageHero
-        name=""
         image={
           <StaticImage
             src="../images/hero.jpg"
@@ -53,7 +52,7 @@ const Home: React.FC = () => {
         <div className="text-center">
           <Link
             to="/news/"
-            className="inline-block px-3 py-1 bg-gray-900 text-gray-400 border-gray-400 hover:text-gray-200 hover:border-gray-200 border-2 font-medium tracking-wide transition-colors duration-300"
+            className="inline-block px-3 py-1 bg-gray-900 text-darken border-gray-400 hover:text-lighten hover:border-gray-200 border-2 font-medium tracking-wide transition-colors duration-300"
           >
             All News
           </Link>

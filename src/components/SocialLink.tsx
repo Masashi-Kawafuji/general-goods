@@ -9,7 +9,7 @@ const SocialLink: React.FC<SocialLinkProps> = ({ children, url }) => (
     href={url}
     rel="noreferrer"
     target="_blank"
-    className="text-gray-300 transition-colors duration-300 hover:text-gray-50"
+    className="text-darken transition-colors duration-300 hover:text-lighten"
   >
     {children}
   </a>
