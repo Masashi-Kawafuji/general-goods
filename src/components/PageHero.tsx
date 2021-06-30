@@ -11,9 +11,7 @@ const PageHero: React.FC<PageHeroProps> = ({ name, image }) => (
     {image}
     <div className="absolute inset-0 flex flex-col justify-center bg-gray-900 bg-opacity-50">
       {name && (
-        <h1 className="text-center text-2xl md:text-3xl lg:text-4xl font-vollkorn font-bold">
-          {name}
-        </h1>
+        <p className="text-center text-4xl font-vollkorn font-bold">{name}</p>
       )}
     </div>
   </div>

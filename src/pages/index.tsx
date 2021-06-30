@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { useStaticQuery, graphql, Link } from 'gatsby';
 import { StaticImage } from 'gatsby-plugin-image';
 import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter';
@@ -13,8 +13,15 @@ import NewsItem from 'components/ArticleItem';
 import Divider from 'components/Divider';
 import SocialLink from 'components/SocialLink';
 import { GetRecentArticlesQuery } from 'types/generated/graphql';
+import Button from 'components/Button';
 
-const Home: React.FC = () => {
+const SectionTitle: FC = ({ children }) => (
+  <h2 className="mb-8 text-center text-3xl font-vollkorn font-semibold">
+    {children}
+  </h2>
+);
+
+const Home: FC = () => {
   const { allDatoCmsArticle } = useStaticQuery<GetRecentArticlesQuery>(graphql`
     query GetRecentArticles {
       allDatoCmsArticle(limit: 3) {
@@ -39,9 +46,7 @@ const Home: React.FC = () => {
         }
       />
       <Container>
-        <h2 className="mb-8 text-center text-3xl font-vollkorn font-semibold">
-          News
-        </h2>
+        <SectionTitle>News</SectionTitle>
         <div className="mb-12">
           <Grid mobile={1} tablet={2} desktop={3}>
             {allDatoCmsArticle.nodes.map((article) => (
@@ -50,19 +55,14 @@ const Home: React.FC = () => {
           </Grid>
         </div>
         <div className="text-center">
-          <Link
-            to="/news/"
-            className="inline-block px-3 py-1 bg-gray-900 text-darken border-gray-400 hover:text-lighten hover:border-gray-200 border-2 font-medium tracking-wide transition-colors duration-300"
-          >
+          <Button as={Link} to="/news/" inverse className="mx-auto">
             All News
-          </Link>
+          </Button>
         </div>
       </Container>
       <Divider />
       <Container>
-        <h2 className="mb-8 text-center text-3xl font-vollkorn font-semibold">
-          Recently Released
-        </h2>
+        <SectionTitle>Recently Released</SectionTitle>
         <div className="relative" style={{ paddingBottom: '56.25%' }}>
           <iframe
             className="absolute top-0 left-0 w-full h-full"
@@ -76,9 +76,7 @@ const Home: React.FC = () => {
       </Container>
       <Divider />
       <Container>
-        <h2 className="mb-8 text-center text-3xl font-vollkorn font-semibold">
-          Follow Us!
-        </h2>
+        <SectionTitle>Follow Us!</SectionTitle>
         <ul className="flex justify-evenly">
           <li>
             <SocialLink url="https://twitter.com/_General_Goods_">

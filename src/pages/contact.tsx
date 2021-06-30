@@ -7,6 +7,7 @@ import Container from 'components/Container';
 import PageHero from 'components/PageHero';
 import Input from 'components/Input';
 import TextArea from 'components/TextArea';
+import Button from 'components/Button';
 
 type ContactForm = {
   name: string;
@@ -127,12 +128,9 @@ const Contact: React.FC = () => {
                 errorMessage="本文を入力してください。"
               />
             </div>
-            <button
-              type="submit"
-              className="block w-full px-3 py-1 bg-gray-300 hover:bg-gray-50 text-inverse sm:text-lg font-medium tracking-widest transition-colors duration-300"
-            >
+            <Button type="submit" className="w-full">
               送信
-            </button>
+            </Button>
           </form>
         </div>
       </Container>
