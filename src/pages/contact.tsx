@@ -81,6 +81,8 @@ const Contact: React.FC = () => {
     }
   };
 
+  const { name, email, body } = contactForm;
+
   return (
     <Layout>
       <Head pageTitle="Contact" />
@@ -101,30 +103,30 @@ const Contact: React.FC = () => {
             <div className="mb-4 sm:mb-6">
               <Input
                 name="name"
-                value={contactForm.name}
+                value={name}
                 onChange={handleContactFormChange}
                 label="お名前"
-                error={isInputEmpty.name}
+                error={!name}
                 errorMessage="お名前を入力してください。"
               />
             </div>
             <div className="mb-4 sm:mb-6">
               <Input
                 name="email"
-                value={contactForm.email}
+                value={email}
                 onChange={handleContactFormChange}
                 label="メールアドレス"
-                error={isInputEmpty.email}
+                error={!email}
                 errorMessage="メールアドレスを入力してください。"
               />
             </div>
             <div className="mb-4 sm:mb-6">
               <TextArea
                 name="body"
-                value={contactForm.body}
+                value={body}
                 onChange={handleContactFormChange}
                 label="本文"
-                error={isInputEmpty.body}
+                error={!body}
                 errorMessage="本文を入力してください。"
               />
             </div>

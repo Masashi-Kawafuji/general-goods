@@ -6,11 +6,11 @@ import Menu from './Menu';
 import MenuItem from './MenuItem';
 
 const Header: React.FC = () => {
-  const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
-  const handleDrawerClick = () => {
+  function handleToggleDrawerOpen() {
     setIsDrawerOpen(!isDrawerOpen);
-  };
+  }
 
   return (
     <header className="p-4 bg-gray-900">
@@ -18,7 +18,7 @@ const Header: React.FC = () => {
         <button
           type="button"
           className="sm:hidden float-right"
-          onClick={handleDrawerClick}
+          onClick={handleToggleDrawerOpen}
         >
           <VscMenu size="1.5rem" />
         </button>

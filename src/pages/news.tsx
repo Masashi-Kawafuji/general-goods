@@ -5,14 +5,15 @@ import Layout from 'components/Layout';
 import Head from 'components/Head';
 import Container from 'components/Container';
 import PageHero from 'components/PageHero';
-import Grid from 'components/Grid';
-import ArticleItem from 'components/ArticleItem';
+import ArticleList from 'components/ArticleList';
 import { GetArticleListQuery } from 'types/generated/graphql';
 
 const News: React.FC = () => {
   const { allDatoCmsArticle } = useStaticQuery<GetArticleListQuery>(graphql`
     query GetArticleList {
-      allDatoCmsArticle {
+      allDatoCmsArticle(
+        sort: { order: DESC, fields: meta___firstPublishedAt }
+      ) {
         nodes {
           ...ArticleItemFields
         }
@@ -35,11 +36,7 @@ const News: React.FC = () => {
         }
       />
       <Container>
-        <Grid mobile={1} tablet={2} desktop={3}>
-          {allDatoCmsArticle.nodes.map((article) => (
-            <ArticleItem key={article.originalId} article={article} />
-          ))}
-        </Grid>
+        <ArticleList articles={allDatoCmsArticle.nodes} />
       </Container>
     </Layout>
   );

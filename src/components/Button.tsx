@@ -4,12 +4,16 @@ import {
   FunctionComponent,
   ComponentClass,
   HTMLAttributes,
+  ComponentPropsWithoutRef,
 } from 'react';
 
+type SubstitutionalComponent = FunctionComponent<any> | ComponentClass<any>;
+
 type ButtonProps = {
-  as?: FunctionComponent<any> | ComponentClass<any>;
+  as?: SubstitutionalComponent;
   inverse?: boolean;
-} & HTMLAttributes<HTMLButtonElement> & { [key: string]: any };
+} & HTMLAttributes<HTMLButtonElement> &
+  ComponentPropsWithoutRef<SubstitutionalComponent>;
 
 const Button: FC<ButtonProps> = ({
   as,

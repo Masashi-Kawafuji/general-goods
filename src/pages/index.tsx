@@ -8,12 +8,11 @@ import Layout from 'components/Layout';
 import Head from 'components/Head';
 import PageHero from 'components/PageHero';
 import Container from 'components/Container';
-import Grid from 'components/Grid';
-import NewsItem from 'components/ArticleItem';
+import ArticleList from 'components/ArticleList';
 import Divider from 'components/Divider';
 import SocialLink from 'components/SocialLink';
-import { GetRecentArticlesQuery } from 'types/generated/graphql';
 import Button from 'components/Button';
+import { GetRecentArticlesQuery } from 'types/generated/graphql';
 
 const SectionTitle: FC = ({ children }) => (
   <h2 className="mb-8 text-center text-3xl font-vollkorn font-semibold">
@@ -24,7 +23,10 @@ const SectionTitle: FC = ({ children }) => (
 const Home: FC = () => {
   const { allDatoCmsArticle } = useStaticQuery<GetRecentArticlesQuery>(graphql`
     query GetRecentArticles {
-      allDatoCmsArticle(limit: 3) {
+      allDatoCmsArticle(
+        limit: 3
+        sort: { order: DESC, fields: meta___firstPublishedAt }
+      ) {
         nodes {
           ...ArticleItemFields
         }
@@ -48,14 +50,15 @@ const Home: FC = () => {
       <Container>
         <SectionTitle>News</SectionTitle>
         <div className="mb-12">
-          <Grid mobile={1} tablet={2} desktop={3}>
-            {allDatoCmsArticle.nodes.map((article) => (
-              <NewsItem key={article.originalId} article={article} />
-            ))}
-          </Grid>
+          <ArticleList articles={allDatoCmsArticle.nodes} />
         </div>
         <div className="text-center">
-          <Button as={Link} to="/news/" inverse className="mx-auto">
+          <Button
+            as={Link}
+            to="/news/"
+            inverse
+            className="mx-auto font-vollkorn"
+          >
             All News
           </Button>
         </div>

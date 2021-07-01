@@ -28,10 +28,10 @@ const ScheduleItem: React.FC<ScheduleItemProps> = ({
         <dt className="text-sm sm:text-lg text-darken">{title}</dt>
         <dd className="">
           <a
-            href={venue?.url || ''}
+            href={venue.url}
             className="text-xs sm:text-sm text-darken hover:underline"
           >
-            {venue?.name}
+            {venue.name}
             <span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"

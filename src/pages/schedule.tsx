@@ -11,7 +11,7 @@ import { GetSchedulesQuery } from 'types/generated/graphql';
 const Schedule: React.FC = () => {
   const { allDatoCmsSchedule } = useStaticQuery<GetSchedulesQuery>(graphql`
     query GetSchedules {
-      allDatoCmsSchedule {
+      allDatoCmsSchedule(sort: { order: DESC, fields: heldOn }) {
         nodes {
           id
           heldOn

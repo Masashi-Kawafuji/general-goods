@@ -18,9 +18,7 @@ const Input: React.FC<InputProps> = ({
   error,
   errorMessage,
 }) => {
-  const isInvalid = error || false;
-
-  const borderColor = isInvalid ? 'border-red-500' : 'border-gray-300';
+  const borderColor = error ? 'border-red-500' : 'border-gray-300';
 
   return (
     <div>
@@ -35,7 +33,7 @@ const Input: React.FC<InputProps> = ({
         value={value}
         onChange={onChange}
       />
-      {isInvalid && <small className="text-red-500">{errorMessage}</small>}
+      {error && <small className="text-red-500">{errorMessage}</small>}
     </div>
   );
 };
