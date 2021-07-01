@@ -9,16 +9,11 @@ import Head from 'components/Head';
 import PageHero from 'components/PageHero';
 import Container from 'components/Container';
 import ArticleList from 'components/ArticleList';
+import Section from 'components/Section';
 import Divider from 'components/Divider';
 import SocialLink from 'components/SocialLink';
 import Button from 'components/Button';
 import { GetRecentArticlesQuery } from 'types/generated/graphql';
-
-const SectionTitle: FC = ({ children }) => (
-  <h2 className="mb-8 text-center text-3xl font-vollkorn font-semibold">
-    {children}
-  </h2>
-);
 
 const Home: FC = () => {
   const { allDatoCmsArticle } = useStaticQuery<GetRecentArticlesQuery>(graphql`
@@ -48,55 +43,58 @@ const Home: FC = () => {
         }
       />
       <Container>
-        <SectionTitle>News</SectionTitle>
-        <div className="mb-12">
-          <ArticleList articles={allDatoCmsArticle.nodes} />
-        </div>
-        <div className="text-center">
-          <Button
-            as={Link}
-            to="/news/"
-            inverse
-            className="mx-auto font-vollkorn"
-          >
-            All News
-          </Button>
-        </div>
+        <Section title="News">
+          <div className="mb-12">
+            <ArticleList articles={allDatoCmsArticle.nodes} />
+          </div>
+          <div className="text-center">
+            <Button
+              as={Link}
+              to="/news/"
+              inverse
+              className="mx-auto font-vollkorn"
+            >
+              All News
+            </Button>
+          </div>
+        </Section>
       </Container>
       <Divider />
       <Container>
-        <SectionTitle>Recently Released</SectionTitle>
-        <div className="relative" style={{ paddingBottom: '56.25%' }}>
-          <iframe
-            className="absolute top-0 left-0 w-full h-full"
-            src="https://www.youtube.com/embed/tsKeeG7-jCw"
-            title="YouTube video player"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          />
-        </div>
+        <Section title="Recently Released">
+          <div className="relative" style={{ paddingBottom: '56.25%' }}>
+            <iframe
+              className="absolute top-0 left-0 w-full h-full"
+              src="https://www.youtube.com/embed/tsKeeG7-jCw"
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+        </Section>
       </Container>
       <Divider />
       <Container>
-        <SectionTitle>Follow Us!</SectionTitle>
-        <ul className="flex justify-evenly">
-          <li>
-            <SocialLink url="https://twitter.com/_General_Goods_">
-              <FaTwitter size="2rem" />
-            </SocialLink>
-          </li>
-          <li>
-            <SocialLink url="https://www.instagram.com/_general_goods_">
-              <FaInstagram size="2rem" />
-            </SocialLink>
-          </li>
-          <li>
-            <SocialLink url="https://www.youtube.com/channel/UC2NSO7mxY2L7C9ft0FL5htw">
-              <FaYoutube size="2rem" />
-            </SocialLink>
-          </li>
-        </ul>
+        <Section title="Follow Us!">
+          <ul className="flex justify-evenly">
+            <li>
+              <SocialLink url="https://twitter.com/_General_Goods_">
+                <FaTwitter size="2rem" />
+              </SocialLink>
+            </li>
+            <li>
+              <SocialLink url="https://www.instagram.com/_general_goods_">
+                <FaInstagram size="2rem" />
+              </SocialLink>
+            </li>
+            <li>
+              <SocialLink url="https://www.youtube.com/channel/UC2NSO7mxY2L7C9ft0FL5htw">
+                <FaYoutube size="2rem" />
+              </SocialLink>
+            </li>
+          </ul>
+        </Section>
       </Container>
     </Layout>
   );

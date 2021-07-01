@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'gatsby';
 import { VscMenu } from '@react-icons/all-files/vsc/VscMenu';
+import logo from 'images/logo.png';
 import Drawer from './Drawer';
 import Menu from './Menu';
 import MenuItem from './MenuItem';
