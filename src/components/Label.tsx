@@ -8,7 +8,7 @@ type LabelProps = {
 const Label: React.FC<LabelProps> = ({ children, name, error }) => {
   const invalid = error || false;
 
-  const textColor = invalid ? 'text-red-500' : 'text-gray-300';
+  const textColor = invalid ? 'text-danger' : 'text-lighten';
 
   return (
     <label

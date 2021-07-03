@@ -1,4 +1,4 @@
-import React, { ReactEventHandler } from 'react';
+import React, { ReactEventHandler, useEffect, useState } from 'react';
 import Label from './Label';
 
 type InputProps = {
@@ -6,8 +6,10 @@ type InputProps = {
   value: string;
   onChange: ReactEventHandler<HTMLInputElement | HTMLTextAreaElement>;
   label: string;
-  error?: boolean;
-  errorMessage?: string;
+  validations?: {
+    validate: (value: string) => boolean;
+    message: string;
+  }[];
 };
 
 const Input: React.FC<InputProps> = ({
@@ -15,10 +17,30 @@ const Input: React.FC<InputProps> = ({
   value,
   onChange,
   label,
-  error,
-  errorMessage,
+  validations,
 }) => {
-  const borderColor = error ? 'border-red-500' : 'border-gray-300';
+  const [isInitialValue, setIsInitialValue] = useState(true);
+  const [errorMessages, setErrorMessages] = useState<string[]>([]);
+
+  useEffect(() => {
+    if (!isInitialValue) {
+      validations?.forEach(({ validate, message }) => {
+        if (validate(value)) {
+          setErrorMessages(
+            errorMessages.filter((errorMessage) => errorMessage !== message)
+          );
+        } else {
+          setErrorMessages([...errorMessages, message]);
+        }
+      });
+    }
+
+    setIsInitialValue(false);
+  }, [value]);
+
+  const error = errorMessages.length > 0;
+
+  const borderColor = error ? 'border-red-500' : 'border-lighten';
 
   return (
     <div>
@@ -27,13 +49,16 @@ const Input: React.FC<InputProps> = ({
       </Label>
       <input
         id={name}
-        className={`block w-full px-2 py-2 bg-transparent text-gray-300 text-xs sm:text-sm font-light border-2 ${borderColor} focus:border-gray-50`}
+        className={`block w-full px-2 py-2 bg-transparent text-lighten text-xs sm:text-sm font-light border-2 ${borderColor} focus:border-gray-50`}
         name={name}
         type="text"
         value={value}
         onChange={onChange}
       />
-      {error && <small className="text-red-500">{errorMessage}</small>}
+      {error &&
+        errorMessages.map((errorMessage) => (
+          <small className="text-danger">{errorMessage}</small>
+        ))}
     </div>
   );
 };

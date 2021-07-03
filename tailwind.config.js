@@ -9,6 +9,7 @@ module.exports = {
       lighten: colors.gray['50'],
       darken: colors.gray['300'],
       inverse: colors.gray['900'],
+      danger: colors.red['500'],
     },
     extend: {
       zIndex: {
