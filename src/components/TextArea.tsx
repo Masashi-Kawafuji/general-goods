@@ -1,4 +1,5 @@
-import React, { ReactEventHandler, useEffect, useState } from 'react';
+import React, { ReactEventHandler } from 'react';
+import useValidation, { Validation } from 'hooks/useValidation';
 import Label from './Label';
 
 type TextAreaProps = {
@@ -6,10 +7,7 @@ type TextAreaProps = {
   value: string;
   onChange: ReactEventHandler<HTMLInputElement | HTMLTextAreaElement>;
   label: string;
-  validations?: {
-    validate: (value: string) => boolean;
-    message: string;
-  }[];
+  validations?: Validation<string>[];
 };
 
 const TextArea: React.FC<TextAreaProps> = ({
@@ -19,24 +17,7 @@ const TextArea: React.FC<TextAreaProps> = ({
   label,
   validations,
 }) => {
-  const [isInitialValue, setIsInitialValue] = useState(true);
-  const [errorMessages, setErrorMessages] = useState<string[]>([]);
-
-  useEffect(() => {
-    if (!isInitialValue) {
-      validations?.forEach(({ validate, message }) => {
-        if (validate(value)) {
-          setErrorMessages(
-            errorMessages.filter((errorMessage) => errorMessage !== message)
-          );
-        } else {
-          setErrorMessages([...errorMessages, message]);
-        }
-      });
-    }
-
-    setIsInitialValue(false);
-  }, [value]);
+  const errorMessages = useValidation<string>(validations, value);
 
   const error = errorMessages.length > 0;
 
@@ -57,7 +38,9 @@ const TextArea: React.FC<TextAreaProps> = ({
       />
       {error &&
         errorMessages.map((errorMessage) => (
-          <small className="text-danger">{errorMessage}</small>
+          <small key={errorMessage} className="text-danger">
+            {errorMessage}
+          </small>
         ))}
     </div>
   );
