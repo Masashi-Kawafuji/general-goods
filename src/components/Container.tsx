@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { HTMLAttributes } from 'react';
+import mergeCssClassName from 'utils/mergeCssClassName';
 
-const Container: React.FC = ({ children }) => (
-  <div className="container mx-auto max-w-screen-lg px-8">{children}</div>
+type ContainerProps = Pick<HTMLAttributes<HTMLDivElement>, 'className'>;
+
+const Container: React.FC<ContainerProps> = ({ className, children }) => (
+  <div
+    className={mergeCssClassName(
+      className,
+      'container mx-auto max-w-screen-lg px-8'
+    )}
+  >
+    {children}
+  </div>
 );
 
 export default Container;

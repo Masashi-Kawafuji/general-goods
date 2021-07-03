@@ -4,7 +4,7 @@ import { StaticImage } from 'gatsby-plugin-image';
 import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter';
 import { FaInstagram } from '@react-icons/all-files/fa/FaInstagram';
 import { FaYoutube } from '@react-icons/all-files/fa/FaYoutube';
-import Layout from 'components/Layout';
+import Layout from 'layout/Layout';
 import Head from 'components/Head';
 import PageHero from 'components/PageHero';
 import Container from 'components/Container';

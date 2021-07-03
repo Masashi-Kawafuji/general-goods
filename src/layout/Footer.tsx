@@ -1,5 +1,5 @@
 import React from 'react';
-import Divider from './Divider';
+import Divider from 'components/Divider';
 
 const Footer: React.FC = () => {
   const year = new Date().getFullYear();

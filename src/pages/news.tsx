@@ -1,7 +1,7 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import { StaticImage } from 'gatsby-plugin-image';
-import Layout from 'components/Layout';
+import Layout from 'layout/Layout';
 import Head from 'components/Head';
 import Container from 'components/Container';
 import PageHero from 'components/PageHero';

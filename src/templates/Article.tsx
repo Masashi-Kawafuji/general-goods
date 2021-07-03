@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql, PageProps } from 'gatsby';
 import { getImage, GatsbyImage } from 'gatsby-plugin-image';
-import Layout from 'components/Layout';
+import Layout from 'layout/Layout';
 import Head from 'components/Head';
 import Container from 'components/Container';
 import { StructuredText } from 'react-datocms';
