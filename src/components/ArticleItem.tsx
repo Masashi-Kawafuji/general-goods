@@ -14,7 +14,7 @@ export const ARTICLE_ITEM_FIELDS = graphql`
     title
     excerpt
     featuredImage {
-      gatsbyImageData
+      gatsbyImageData(aspectRatio: 1.77)
       alt
     }
   }
