@@ -4,8 +4,8 @@ import { VscMenu } from '@react-icons/all-files/vsc/VscMenu';
 import logo from 'images/logo.png';
 import Container from 'components/Container';
 import Drawer from 'components/Drawer';
-import Menu from 'components/Menu';
-import MenuItem from 'components/MenuItem';
+import Nav from 'components/Nav';
+import NavItem from 'components/NavItem';
 
 const Header: React.FC = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -29,12 +29,12 @@ const Header: React.FC = () => {
             </span>
           </Link>
           <div className="hidden sm:block flex-grow max-w-xs">
-            <Menu>
-              <MenuItem to="/news/">News</MenuItem>
-              <MenuItem to="/schedule/">Schedule</MenuItem>
-              <MenuItem to="/about/">About</MenuItem>
-              <MenuItem to="/contact/">Contact</MenuItem>
-            </Menu>
+            <Nav>
+              <NavItem to="/news/">News</NavItem>
+              <NavItem to="/schedule/">Schedule</NavItem>
+              <NavItem to="/about/">About</NavItem>
+              <NavItem to="/contact/">Contact</NavItem>
+            </Nav>
           </div>
           <button
             type="button"
@@ -56,12 +56,12 @@ const Header: React.FC = () => {
             General Goods
           </span>
         </Link>
-        <Menu vertical>
-          <MenuItem to="/news/">News</MenuItem>
-          <MenuItem to="/schedule/">Schedule</MenuItem>
-          <MenuItem to="/about/">About</MenuItem>
-          <MenuItem to="/contact/">Contact</MenuItem>
-        </Menu>
+        <Nav vertical>
+          <NavItem to="/news/">News</NavItem>
+          <NavItem to="/schedule/">Schedule</NavItem>
+          <NavItem to="/about/">About</NavItem>
+          <NavItem to="/contact/">Contact</NavItem>
+        </Nav>
       </Drawer>
     </header>
   );
