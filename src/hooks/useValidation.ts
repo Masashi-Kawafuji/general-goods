@@ -12,7 +12,7 @@ export default function useValidation<T>(
   value: T
 ): ErrorMessage[] {
   const [isInitialValue, setIsInitialValue] = useState(true);
-  const [errorMessages, setErrorMessages] = useState<string[]>([]);
+  const [errorMessages, setErrorMessages] = useState<ErrorMessage[]>([]);
 
   useEffect(() => {
     if (!isInitialValue) {
@@ -25,9 +25,9 @@ export default function useValidation<T>(
           setErrorMessages([...errorMessages, message]);
         }
       });
+    } else {
+      setIsInitialValue(false);
     }
-
-    setIsInitialValue(false);
   }, [value]);
 
   return errorMessages;

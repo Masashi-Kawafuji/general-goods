@@ -27,7 +27,7 @@ const Schedule: React.FC = () => {
 
   return (
     <Layout>
-      <Head pageTitle="Schedule" />
+      <Head title="Schedule" />
       <PageHero
         name="Schedule"
         image={

@@ -3,7 +3,8 @@ require('dotenv').config();
 module.exports = {
   siteMetadata: {
     title: 'General Goods',
-    description: 'General Goods オフィシャルウェブサイト',
+    description:
+      '首都圏で活動する4人組ロックバンド、General Goods のオフィシャルウェブサイト。最新情報、ライブ情報などを掲載しています。',
   },
   plugins: [
     'gatsby-plugin-resolve-src',

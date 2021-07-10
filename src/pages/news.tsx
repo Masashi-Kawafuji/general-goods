@@ -23,7 +23,7 @@ const News: React.FC = () => {
 
   return (
     <Layout>
-      <Head pageTitle="News" />
+      <Head title="News" />
       <PageHero
         name="News"
         image={

@@ -5,15 +5,17 @@ import { GetSiteMetadataQuery } from 'types/generated/graphql';
 import favicon from 'images/favicon.ico';
 
 type HeadProps = {
-  pageTitle?: string;
+  title?: string;
+  description?: string;
 };
 
-const Head: React.FC<HeadProps> = ({ pageTitle }) => {
+const Head: React.FC<HeadProps> = ({ title, description }) => {
   const { site } = useStaticQuery<GetSiteMetadataQuery>(graphql`
     query GetSiteMetadata {
       site {
         siteMetadata {
           title
+          description
         }
       }
     }
@@ -24,8 +26,12 @@ const Head: React.FC<HeadProps> = ({ pageTitle }) => {
       defaultTitle={site.siteMetadata.title}
       titleTemplate={`%s | ${site.siteMetadata.title}`}
     >
-      <title>{pageTitle}</title>
-      <link rel="icon" type="image/png" href={favicon} />
+      <link rel="icon" href={favicon} />
+      <title>{title}</title>
+      <meta
+        name="description"
+        content={description ?? site.siteMetadata.description}
+      />
     </Helmet>
   );
 };

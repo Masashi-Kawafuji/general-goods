@@ -14,6 +14,7 @@ export const ARTICLE_FIELDS = graphql`
     }
     originalId
     title
+    excerpt
     featuredImage {
       gatsbyImageData
     }
@@ -35,14 +36,14 @@ export const ARTICLE_FIELDS = graphql`
 
 type ArticlePageProps = PageProps<unknown, ArticleFieldsFragment>;
 
-const Article: React.FC<ArticlePageProps> = ({
-  pageContext: { meta, title, featuredImage, body },
+const ArticleTemplate: React.FC<ArticlePageProps> = ({
+  pageContext: { meta, title, excerpt, featuredImage, body },
 }) => {
   const image = getImage(featuredImage.gatsbyImageData);
 
   return (
     <Layout>
-      <Head pageTitle={title} />
+      <Head title={title} description={excerpt} />
       <Container>
         <div>
           <h1 className="mb-2 sm:mb-4 text-xl sm:text-4xl font-semibold">
@@ -78,4 +79,4 @@ const Article: React.FC<ArticlePageProps> = ({
   );
 };
 
-export default Article;
+export default ArticleTemplate;

@@ -69,7 +69,7 @@ const Contact: React.FC = () => {
 
   return (
     <Layout>
-      <Head pageTitle="Contact" />
+      <Head title="Contact" />
       <PageHero
         name="Contact"
         image={

@@ -11,6 +11,7 @@ exports.createPages = async ({ actions, graphql }) => {
           }
           originalId
           title
+          excerpt
           featuredImage {
             gatsbyImageData
           }
@@ -39,7 +40,7 @@ exports.createPages = async ({ actions, graphql }) => {
 
     createPage({
       path: `/news/${originalId}`,
-      component: path.resolve('./src/templates/Article.tsx'),
+      component: path.resolve('./src/templates/ArticleTemplate.tsx'),
       context: node,
     });
   });
