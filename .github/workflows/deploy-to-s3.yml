@@ -1,0 +1,30 @@
+name: Deploy to S3
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy-to-s3:
+    name: Deploy to S3
+    runs-on: macos-11
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+          cache: 'npm'
+      - name: Install Dependencies
+        run: npm install
+      - name: Build Pages
+        env:
+          DATOCMS_ACCESS_TOKEN: ${{ secrets.DATOCMS_ACCESS_TOKEN }}
+          LAMBDA_FUNCTION_URL: ${{ secrets.LAMBDA_FUNCTION_URL }}
+          GOOGLE_ANALYTICS_TRACKING_ID: ${{ secrets.GOOGLE_ANALYTICS_TRACKING_ID }}
+        run: npm run build
+      - name: Upload Files to S3
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        run: npm run deploy
