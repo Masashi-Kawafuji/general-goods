@@ -37,13 +37,19 @@ export const ARTICLE_FIELDS = graphql`
 type ArticlePageProps = PageProps<unknown, ArticleFieldsFragment>;
 
 const ArticleTemplate: React.FC<ArticlePageProps> = ({
+  path,
   pageContext: { meta, title, excerpt, featuredImage, body },
 }) => {
   const image = getImage(featuredImage.gatsbyImageData);
 
   return (
     <Layout>
-      <Head title={title} description={excerpt} />
+      <Head
+        title={title}
+        description={excerpt}
+        pathname={path}
+        ogImageUrl={featuredImage.gatsbyImageData.images.fallback.src}
+      />
       <Container>
         <div>
           <h1 className="mb-2 sm:mb-4 text-xl sm:text-4xl font-semibold">

@@ -33,7 +33,9 @@ const ArticleItem: React.FC<ArticleItemProps> = ({
         <p className="text-xs text-darken">{meta.firstPublishedAt}</p>
         <p className="text-xl font-semibold">{title}</p>
       </div>
-      <div className="text-sm text-darken font-light">{excerpt}</div>
+      <div className="text-sm text-darken font-light break-words">
+        {excerpt}
+      </div>
     </Link>
   </div>
 );

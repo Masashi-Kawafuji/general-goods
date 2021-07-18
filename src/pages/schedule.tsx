@@ -1,5 +1,5 @@
-import React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
+import React, { FC } from 'react';
+import { useStaticQuery, graphql, PageProps } from 'gatsby';
 import { StaticImage } from 'gatsby-plugin-image';
 import Layout from 'layout/Layout';
 import Head from 'components/Head';
@@ -8,7 +8,7 @@ import PageHero from 'components/PageHero';
 import ScheduleItem from 'components/ScheduleItem';
 import { GetSchedulesQuery } from 'types/generated/graphql';
 
-const Schedule: React.FC = () => {
+const Schedule: FC<PageProps> = ({ path }) => {
   const { allDatoCmsSchedule } = useStaticQuery<GetSchedulesQuery>(graphql`
     query GetSchedules {
       allDatoCmsSchedule(sort: { order: DESC, fields: heldOn }) {
@@ -27,7 +27,7 @@ const Schedule: React.FC = () => {
 
   return (
     <Layout>
-      <Head title="Schedule" />
+      <Head title="Schedule" pathname={path} />
       <PageHero
         name="Schedule"
         image={

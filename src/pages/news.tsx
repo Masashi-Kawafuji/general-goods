@@ -1,5 +1,5 @@
-import React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
+import React, { FC } from 'react';
+import { PageProps, useStaticQuery, graphql } from 'gatsby';
 import { StaticImage } from 'gatsby-plugin-image';
 import Layout from 'layout/Layout';
 import Head from 'components/Head';
@@ -8,7 +8,7 @@ import PageHero from 'components/PageHero';
 import ArticleList from 'components/ArticleList';
 import { GetArticleListQuery } from 'types/generated/graphql';
 
-const News: React.FC = () => {
+const News: FC<PageProps> = ({ path }) => {
   const { allDatoCmsArticle } = useStaticQuery<GetArticleListQuery>(graphql`
     query GetArticleList {
       allDatoCmsArticle(
@@ -23,7 +23,7 @@ const News: React.FC = () => {
 
   return (
     <Layout>
-      <Head title="News" />
+      <Head title="News" pathname={path} />
       <PageHero
         name="News"
         image={

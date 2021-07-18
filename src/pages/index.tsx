@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { useStaticQuery, graphql, Link } from 'gatsby';
+import { useStaticQuery, graphql, Link, PageProps } from 'gatsby';
 import { StaticImage } from 'gatsby-plugin-image';
 import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter';
 import { FaInstagram } from '@react-icons/all-files/fa/FaInstagram';
@@ -15,7 +15,7 @@ import SocialLink from 'components/SocialLink';
 import Button from 'components/Button';
 import { GetRecentArticlesQuery } from 'types/generated/graphql';
 
-const Home: FC = () => {
+const Home: FC<PageProps> = () => {
   const { allDatoCmsArticle } = useStaticQuery<GetRecentArticlesQuery>(graphql`
     query GetRecentArticles {
       allDatoCmsArticle(

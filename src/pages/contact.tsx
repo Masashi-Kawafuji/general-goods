@@ -1,4 +1,4 @@
-import React, { ComponentProps, ReactEventHandler, useState } from 'react';
+import React, { FC, ComponentProps, ReactEventHandler, useState } from 'react';
 import { StaticImage } from 'gatsby-plugin-image';
 import axios from 'axios';
 import Layout from 'layout/Layout';
@@ -8,6 +8,7 @@ import PageHero from 'components/PageHero';
 import Input from 'components/Input';
 import TextArea from 'components/TextArea';
 import Button from 'components/Button';
+import { PageProps } from 'gatsby';
 
 type ContactForm = {
   name: string;
@@ -19,7 +20,7 @@ type EnquiryResponseData = {
   statusCode: number | string;
 };
 
-const Contact: React.FC = () => {
+const Contact: FC<PageProps> = ({ path }) => {
   const initialContactFromValue: ContactForm = {
     name: '',
     email: '',
@@ -69,7 +70,7 @@ const Contact: React.FC = () => {
 
   return (
     <Layout>
-      <Head title="Contact" />
+      <Head title="Contact" pathname={path} />
       <PageHero
         name="Contact"
         image={

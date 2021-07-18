@@ -5,6 +5,8 @@ module.exports = {
     title: 'General Goods',
     description:
       '首都圏で活動する4人組ロックバンド、General Goods のオフィシャルウェブサイト。最新情報、ライブ情報などを掲載しています。',
+    siteURL: 'https://www.generalgoodsmusic.com',
+    twitterUserName: '@_General_Goods_',
   },
   plugins: [
     'gatsby-plugin-resolve-src',
