@@ -8,16 +8,16 @@ import favicon from 'images/favicon.ico';
 type HeadProps = {
   title?: string;
   description?: string;
-  type?: string;
   pathname?: string;
+  ogType?: string;
   ogImageUrl?: string;
 };
 
 const Head: React.FC<HeadProps> = ({
   title,
   description,
-  type,
   pathname,
+  ogType,
   ogImageUrl,
 }) => {
   const { site, file } = useStaticQuery<GetSiteMetadataQuery>(graphql`
@@ -40,37 +40,62 @@ const Head: React.FC<HeadProps> = ({
 
   return (
     <Helmet
+      title={title}
       defaultTitle={site.siteMetadata.title}
       titleTemplate={`%s | ${site.siteMetadata.title}`}
-    >
-      <link rel="icon" href={favicon} />
-      <link rel="canonical" href={canonicalUrl} />
-      <title>{title}</title>
-      <meta
-        name="description"
-        content={description ?? site.siteMetadata.description}
-      />
-      {/* Metadata for OGP */}
-      <meta property="og:title" content={title ?? site.siteMetadata.title} />
-      {type && <meta property="og:type" content={type} />}
-      <meta property="og:url" content={canonicalUrl} />
-      <meta
-        property="og:description"
-        content={description ?? site.siteMetadata.description}
-      />
-      <meta property="og:image" content={ogImageUrl ?? file.publicURL} />
-      <meta property="og:locale" content="ja_JP " />
-      <meta property="og:site_name" content={site.siteMetadata.title} />
-      {/* Metadata for being shared by Twitter */}
-      <meta name="twitter:card" content="summary" />
-      <meta name="twitter:site" content={site.siteMetadata.twitterUserName} />
-      <meta name="twitter:title" content={title ?? site.siteMetadata.title} />
-      <meta
-        name="twitter:description"
-        content={description ?? site.siteMetadata.description}
-      />
-      <meta name="twitter:image" content={ogImageUrl ?? file.publicURL} />
-    </Helmet>
+      link={[
+        {
+          rel: 'icon',
+          href: favicon,
+        },
+        {
+          rel: 'canonical',
+          href: canonicalUrl,
+        },
+      ]}
+      meta={[
+        {
+          name: 'description',
+          content: description ?? site.siteMetadata.description,
+        },
+        {
+          property: 'og:type',
+          content: ogType ?? 'website',
+        },
+        {
+          property: 'og:title',
+          content: title ?? site.siteMetadata.title,
+        },
+        {
+          property: 'og:url',
+          content: canonicalUrl,
+        },
+        {
+          property: 'og:description',
+          content: description ?? site.siteMetadata.description,
+        },
+        {
+          property: 'og:image',
+          content: ogImageUrl ?? file.publicURL,
+        },
+        {
+          property: 'og:locale',
+          content: 'ja_JP',
+        },
+        {
+          property: 'og:site_name',
+          content: site.siteMetadata.title,
+        },
+        {
+          name: 'twitter:card',
+          content: 'summary',
+        },
+        {
+          name: 'twitter:site',
+          content: site.siteMetadata.twitterUserName,
+        },
+      ]}
+    />
   );
 };
 

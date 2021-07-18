@@ -48,6 +48,7 @@ const ArticleTemplate: React.FC<ArticlePageProps> = ({
         title={title}
         description={excerpt}
         pathname={path}
+        ogType="article"
         ogImageUrl={featuredImage.gatsbyImageData.images.fallback.src}
       />
       <Container>
