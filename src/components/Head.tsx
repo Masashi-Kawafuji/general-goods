@@ -43,6 +43,7 @@ const Head: React.FC<HeadProps> = ({
       title={title}
       defaultTitle={site.siteMetadata.title}
       titleTemplate={`%s | ${site.siteMetadata.title}`}
+      htmlAttributes={{ lang: 'ja' }}
       link={[
         {
           rel: 'icon',
@@ -76,7 +77,7 @@ const Head: React.FC<HeadProps> = ({
         },
         {
           property: 'og:image',
-          content: ogImageUrl ?? file.publicURL,
+          content: ogImageUrl ?? site.siteMetadata.siteURL + file.publicURL,
         },
         {
           property: 'og:locale',
