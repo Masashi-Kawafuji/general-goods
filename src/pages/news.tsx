@@ -23,7 +23,7 @@ const News: FC<PageProps> = ({ path }) => {
 
   return (
     <Layout>
-      <Head title="News" pathname={path} />
+      <Head title="News" pathname="/news/" />
       <PageHero
         name="News"
         image={

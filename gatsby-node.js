@@ -35,11 +35,9 @@ exports.createPages = async ({ actions, graphql }) => {
 
   data.allDatoCmsArticle.nodes.forEach((node) => {
     const article = node;
-    const { originalId } = article;
-    delete article.originalId;
 
     createPage({
-      path: `/news/${originalId}`,
+      path: `/news/${article.originalId}`,
       component: path.resolve('./src/templates/ArticleTemplate.tsx'),
       context: node,
     });

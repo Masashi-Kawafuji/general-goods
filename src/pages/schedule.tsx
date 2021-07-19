@@ -27,7 +27,7 @@ const Schedule: FC<PageProps> = ({ path }) => {
 
   return (
     <Layout>
-      <Head title="Schedule" pathname={path} />
+      <Head title="Schedule" pathname="/schedule/" />
       <PageHero
         name="Schedule"
         image={

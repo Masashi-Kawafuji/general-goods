@@ -28,7 +28,7 @@ const About: FC<PageProps> = ({ path }) => {
 
   return (
     <Layout>
-      <Head title="About" description={excerpt} pathname={path} />
+      <Head title="About" description={excerpt} pathname="/about/" />
       <PageHero
         name="About"
         image={

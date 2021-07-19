@@ -70,7 +70,7 @@ const Contact: FC<PageProps> = ({ path }) => {
 
   return (
     <Layout>
-      <Head title="Contact" pathname={path} />
+      <Head title="Contact" pathname="/contact/" />
       <PageHero
         name="Contact"
         image={
