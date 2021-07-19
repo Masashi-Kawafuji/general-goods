@@ -89,7 +89,7 @@ const Head: React.FC<HeadProps> = ({
         },
         {
           name: 'twitter:card',
-          content: 'summary',
+          content: ogType === 'article' ? 'summary_large_image' : 'summary',
         },
         {
           name: 'twitter:site',
