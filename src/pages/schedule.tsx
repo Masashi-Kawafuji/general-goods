@@ -8,7 +8,7 @@ import PageHero from 'components/PageHero';
 import ScheduleItem from 'components/ScheduleItem';
 import { GetSchedulesQuery } from 'types/generated/graphql';
 
-const Schedule: FC<PageProps> = ({ path }) => {
+const Schedule: FC<PageProps> = () => {
   const { allDatoCmsSchedule } = useStaticQuery<GetSchedulesQuery>(graphql`
     query GetSchedules {
       allDatoCmsSchedule(sort: { order: DESC, fields: heldOn }) {

@@ -1,12 +1,23 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React, { ComponentPropsWithoutRef } from 'react';
 import { Link } from 'gatsby';
+import mergeCssClassName from 'utils/mergeCssClassName';
 
 type NavItemProps = ComponentPropsWithoutRef<typeof Link>;
 
-const NavItem: React.FC<NavItemProps> = ({ children, to }) => (
+const NavItem: React.FC<NavItemProps> = ({
+  to,
+  className,
+  children,
+  ...otherProps
+}) => (
   <Link
     to={to}
-    className="block mb-3 sm:mb-0 w-max text-lg font-vollkorn text-darken hover:text-lighten transition-colors duration-300"
+    className={mergeCssClassName(
+      className,
+      'block sm:mb-0 w-max font-oswald hover:text-darken transition-colors duration-300'
+    )}
+    {...otherProps}
   >
     {children}
   </Link>

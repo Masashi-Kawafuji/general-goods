@@ -2,12 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&family=Oswald:wght@200;300;400;500;600;700&display=swap');
+
 @layer base {
   html {
     @apply h-full font-sans;
   }
 
   body {
-    @apply h-full bg-gray-900 text-lighten;
+    @apply h-full bg-black text-lighten;
   }
 }

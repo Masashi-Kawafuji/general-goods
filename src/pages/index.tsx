@@ -11,7 +11,7 @@ import Container from 'components/Container';
 import ArticleList from 'components/ArticleList';
 import Section from 'components/Section';
 import Divider from 'components/Divider';
-import SocialLink from 'components/SocialLink';
+import SocialLink from 'components/ExternalLink';
 import Button from 'components/Button';
 import { GetRecentArticlesQuery } from 'types/generated/graphql';
 

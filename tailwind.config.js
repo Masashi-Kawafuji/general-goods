@@ -8,7 +8,7 @@ module.exports = {
     textColor: {
       lighten: colors.gray['50'],
       darken: colors.gray['300'],
-      inverse: colors.gray['900'],
+      inverse: colors.black,
       danger: colors.red['500'],
     },
     extend: {
@@ -37,7 +37,7 @@ module.exports = {
     },
     fontFamily: {
       sans: ['Noto Sans JP', 'sans-serif'],
-      vollkorn: ['Vollkorn', 'Noto Sans JP', 'sans-serif'],
+      oswald: ['Oswald', 'Noto Sans JP', 'sans-serif'],
     },
   },
   variants: {

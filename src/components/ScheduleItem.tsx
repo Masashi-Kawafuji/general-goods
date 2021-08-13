@@ -22,7 +22,7 @@ const ScheduleItem: React.FC<ScheduleItemProps> = ({
   <li>
     <div className="flex px-3 py-6 space-x-6 sm:space-x-20 xl:space-x-32">
       <div className="flex flex-col justify-center">
-        <p className="text-sm sm:text-xl font-semibold">{heldOn}</p>
+        <p className="text-sm sm:text-xl font-bold">{heldOn}</p>
       </div>
       <dl>
         <dt className="text-sm sm:text-lg text-darken">{title}</dt>
