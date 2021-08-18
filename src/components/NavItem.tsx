@@ -8,6 +8,7 @@ type NavItemProps = ComponentPropsWithoutRef<typeof Link>;
 const NavItem: React.FC<NavItemProps> = ({
   to,
   className,
+  activeClassName,
   children,
   ...otherProps
 }) => (
@@ -17,6 +18,7 @@ const NavItem: React.FC<NavItemProps> = ({
       className,
       'block sm:mb-0 w-max font-oswald hover:text-darken transition-colors duration-300'
     )}
+    activeClassName={mergeCssClassName(activeClassName, 'text-darkest')}
     {...otherProps}
   >
     {children}

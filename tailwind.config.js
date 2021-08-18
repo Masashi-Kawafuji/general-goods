@@ -8,6 +8,7 @@ module.exports = {
     textColor: {
       lighten: colors.gray['50'],
       darken: colors.gray['300'],
+      darkest: colors.gray['400'],
       inverse: colors.black,
       danger: colors.red['500'],
     },

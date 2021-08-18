@@ -75,7 +75,7 @@ const Header: React.FC = () => {
           )}
         </Container>
       </div>
-      <MobileNav isOpen={isMobileNavOpen} className="sm:hidden ">
+      <MobileNav isOpen={isMobileNavOpen} className="sm:hidden">
         <button
           type="button"
           className="absolute top-4 right-8 sm:hidden z-20"
@@ -83,8 +83,8 @@ const Header: React.FC = () => {
         >
           <VscClose size="1.5rem" />
         </button>
-        <Container className="pt-24 h-full">
-          <Nav vertical className="items-center mb-6">
+        <Container className="pt-16 h-full">
+          <Nav vertical className="mb-6">
             <NavItem to="/" className="text-3xl mb-6">
               HOME
             </NavItem>
@@ -101,7 +101,7 @@ const Header: React.FC = () => {
               CONTACT
             </NavItem>
           </Nav>
-          <ul className="flex justify-evenly">
+          <ul className="flex justify-between">
             <li>
               <ExternalLink url="https://twitter.com/_General_Goods_">
                 <FaTwitter className="h-full" size="1.875rem" />

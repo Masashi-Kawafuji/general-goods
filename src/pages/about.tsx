@@ -1,13 +1,11 @@
 import React, { FC } from 'react';
 import { PageProps, graphql, useStaticQuery } from 'gatsby';
-import { StaticImage } from 'gatsby-plugin-image';
 import Layout from 'layout/Layout';
 import Head from 'components/Head';
 import Container from 'components/Container';
-import PageHero from 'components/PageHero';
 import { GetAboutPageContentQuery } from 'types/generated/graphql';
 
-const About: FC<PageProps> = ({ path }) => {
+const About: FC<PageProps> = () => {
   const { allDatoCmsAbout } = useStaticQuery<GetAboutPageContentQuery>(graphql`
     query GetAboutPageContent {
       allDatoCmsAbout {
@@ -29,17 +27,6 @@ const About: FC<PageProps> = ({ path }) => {
   return (
     <Layout>
       <Head title="About" description={excerpt} pathname="/about/" />
-      <PageHero
-        name="About"
-        image={
-          <StaticImage
-            src="../images/hero.jpg"
-            alt="page hero"
-            layout="fullWidth"
-            className="h-full"
-          />
-        }
-      />
       <Container>
         <div
           className="prose prose-sm sm:prose"

@@ -1,10 +1,8 @@
 import React, { FC, ComponentProps, ReactEventHandler, useState } from 'react';
-import { StaticImage } from 'gatsby-plugin-image';
 import axios from 'axios';
 import Layout from 'layout/Layout';
 import Head from 'components/Head';
 import Container from 'components/Container';
-import PageHero from 'components/PageHero';
 import Input from 'components/Input';
 import TextArea from 'components/TextArea';
 import Button from 'components/Button';
@@ -20,7 +18,7 @@ type EnquiryResponseData = {
   statusCode: number | string;
 };
 
-const Contact: FC<PageProps> = ({ path }) => {
+const Contact: FC<PageProps> = () => {
   const initialContactFromValue: ContactForm = {
     name: '',
     email: '',
@@ -71,17 +69,6 @@ const Contact: FC<PageProps> = ({ path }) => {
   return (
     <Layout>
       <Head title="Contact" pathname="/contact/" />
-      <PageHero
-        name="Contact"
-        image={
-          <StaticImage
-            src="../images/contact-page-hero.jpg"
-            alt="page hero"
-            layout="fullWidth"
-            className="h-full"
-          />
-        }
-      />
       <Container>
         <div className="mx-auto max-w-xl">
           <form onSubmit={handleContactFormSubmit}>

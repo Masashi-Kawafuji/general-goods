@@ -6,7 +6,6 @@ import { FaInstagram } from '@react-icons/all-files/fa/FaInstagram';
 import { FaYoutube } from '@react-icons/all-files/fa/FaYoutube';
 import Layout from 'layout/Layout';
 import Head from 'components/Head';
-import PageHero from 'components/PageHero';
 import Container from 'components/Container';
 import ArticleList from 'components/ArticleList';
 import Section from 'components/Section';
@@ -32,16 +31,6 @@ const Home: FC<PageProps> = () => {
   return (
     <Layout>
       <Head />
-      <PageHero
-        image={
-          <StaticImage
-            src="../images/hero.jpg"
-            alt="hero"
-            layout="fullWidth"
-            className="h-full"
-          />
-        }
-      />
       <Container>
         <Section title="News">
           <div className="mb-12">
