@@ -5,7 +5,7 @@ type ExternalLinkProps = {
 };
 
 const ExternalLink: FC<ExternalLinkProps> = ({ url, children }) => (
-  <a href={url} rel="noreferrer" target="_blank" className="text-darken">
+  <a href={url} rel="noreferrer" target="_blank" className="text-darkest">
     {children}
   </a>
 );

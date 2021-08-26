@@ -16,7 +16,7 @@ const NavItem: React.FC<NavItemProps> = ({
     to={to}
     className={mergeCssClassName(
       className,
-      'block sm:mb-0 w-max font-oswald hover:text-darken transition-colors duration-300'
+      'block sm:mb-0 w-max font-oswald hover:text-darkest transition-colors duration-300'
     )}
     activeClassName={mergeCssClassName(activeClassName, 'text-darkest')}
     {...otherProps}

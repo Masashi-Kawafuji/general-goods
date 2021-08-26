@@ -16,7 +16,7 @@ const Header: React.FC = () => {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
 
   return (
-    <header className="border-b border-gray-300">
+    <header className="border-b border-gray-500">
       <div className="py-4 sm:py-6">
         <Container className="relative flex">
           <Link to="/">

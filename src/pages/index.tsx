@@ -1,37 +1,52 @@
 import React, { FC } from 'react';
 import { useStaticQuery, graphql, Link, PageProps } from 'gatsby';
-import { StaticImage } from 'gatsby-plugin-image';
 import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter';
 import { FaInstagram } from '@react-icons/all-files/fa/FaInstagram';
 import { FaYoutube } from '@react-icons/all-files/fa/FaYoutube';
 import Layout from 'layout/Layout';
 import Head from 'components/Head';
 import Container from 'components/Container';
+import Carousel from 'components/Carousel/carousel';
 import ArticleList from 'components/ArticleList';
 import Section from 'components/Section';
-import Divider from 'components/Divider';
 import SocialLink from 'components/ExternalLink';
 import Button from 'components/Button';
-import { GetRecentArticlesQuery } from 'types/generated/graphql';
+import { GetTopPageContentQuery } from 'types/generated/graphql';
 
 const Home: FC<PageProps> = () => {
-  const { allDatoCmsArticle } = useStaticQuery<GetRecentArticlesQuery>(graphql`
-    query GetRecentArticles {
-      allDatoCmsArticle(
-        limit: 3
-        sort: { order: DESC, fields: meta___firstPublishedAt }
-      ) {
-        nodes {
-          ...ArticleItemFields
+  const { carouselContents, allDatoCmsArticle } =
+    useStaticQuery<GetTopPageContentQuery>(graphql`
+      query GetTopPageContent {
+        carouselContents: allDatoCmsArticle(
+          filter: { carousel: { eq: true } }
+          sort: { order: DESC, fields: meta___firstPublishedAt }
+          limit: 3
+        ) {
+          nodes {
+            ...CarouselContentFields
+          }
+        }
+        allDatoCmsArticle(
+          limit: 3
+          sort: { order: DESC, fields: meta___firstPublishedAt }
+        ) {
+          nodes {
+            ...ArticleItemFields
+          }
         }
       }
-    }
-  `);
+    `);
 
   return (
     <Layout>
       <Head />
+      <Section className="sm:hidden">
+        <Carousel contents={carouselContents.nodes} />
+      </Section>
       <Container>
+        <Section className="hidden sm:block py-12">
+          <Carousel contents={carouselContents.nodes} />
+        </Section>
         <Section title="News">
           <div className="mb-12">
             <ArticleList articles={allDatoCmsArticle.nodes} />
@@ -47,9 +62,6 @@ const Home: FC<PageProps> = () => {
             </Button>
           </div>
         </Section>
-      </Container>
-      <Divider />
-      <Container>
         <Section title="Recently Released">
           <div className="relative" style={{ paddingBottom: '56.25%' }}>
             <iframe
@@ -62,9 +74,6 @@ const Home: FC<PageProps> = () => {
             />
           </div>
         </Section>
-      </Container>
-      <Divider />
-      <Container>
         <Section title="Follow Us!">
           <ul className="flex justify-evenly">
             <li>

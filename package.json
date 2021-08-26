@@ -58,6 +58,7 @@
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
     "react-hook-form": "^7.10.1",
+    "react-responsive-carousel": "^3.2.21",
     "tailwindcss": "^2.2.7"
   }
 }
