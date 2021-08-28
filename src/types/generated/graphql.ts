@@ -2758,6 +2758,7 @@ export type DatoCmsSchedule = Node & {
   heldOn: Maybe<Scalars['Date']>;
   title: Maybe<Scalars['String']>;
   venue: Maybe<DatoCmsVenue>;
+  article: Maybe<DatoCmsArticle>;
   meta: Maybe<DatoCmsMetaField>;
   originalId: Maybe<Scalars['String']>;
   locale: Maybe<Scalars['String']>;
@@ -2917,6 +2918,176 @@ export enum DatoCmsScheduleFieldsEnum {
   VenueInternalMediaType = 'venue___internal___mediaType',
   VenueInternalOwner = 'venue___internal___owner',
   VenueInternalType = 'venue___internal___type',
+  ArticleTitle = 'article___title',
+  ArticleFeaturedImageSize = 'article___featuredImage___size',
+  ArticleFeaturedImageWidth = 'article___featuredImage___width',
+  ArticleFeaturedImageHeight = 'article___featuredImage___height',
+  ArticleFeaturedImagePath = 'article___featuredImage___path',
+  ArticleFeaturedImageFormat = 'article___featuredImage___format',
+  ArticleFeaturedImageIsImage = 'article___featuredImage___isImage',
+  ArticleFeaturedImageNotes = 'article___featuredImage___notes',
+  ArticleFeaturedImageAuthor = 'article___featuredImage___author',
+  ArticleFeaturedImageCopyright = 'article___featuredImage___copyright',
+  ArticleFeaturedImageTags = 'article___featuredImage___tags',
+  ArticleFeaturedImageSmartTags = 'article___featuredImage___smartTags',
+  ArticleFeaturedImageFilename = 'article___featuredImage___filename',
+  ArticleFeaturedImageBasename = 'article___featuredImage___basename',
+  ArticleFeaturedImageExifInfo = 'article___featuredImage___exifInfo',
+  ArticleFeaturedImageMimeType = 'article___featuredImage___mimeType',
+  ArticleFeaturedImageColors = 'article___featuredImage___colors',
+  ArticleFeaturedImageColorsRed = 'article___featuredImage___colors___red',
+  ArticleFeaturedImageColorsGreen = 'article___featuredImage___colors___green',
+  ArticleFeaturedImageColorsBlue = 'article___featuredImage___colors___blue',
+  ArticleFeaturedImageColorsAlpha = 'article___featuredImage___colors___alpha',
+  ArticleFeaturedImageColorsRgb = 'article___featuredImage___colors___rgb',
+  ArticleFeaturedImageColorsHex = 'article___featuredImage___colors___hex',
+  ArticleFeaturedImageBlurhash = 'article___featuredImage___blurhash',
+  ArticleFeaturedImageOriginalId = 'article___featuredImage___originalId',
+  ArticleFeaturedImageUrl = 'article___featuredImage___url',
+  ArticleFeaturedImageCreatedAt = 'article___featuredImage___createdAt',
+  ArticleFeaturedImageVideoMuxPlaybackId = 'article___featuredImage___video___muxPlaybackId',
+  ArticleFeaturedImageVideoFrameRate = 'article___featuredImage___video___frameRate',
+  ArticleFeaturedImageVideoDuration = 'article___featuredImage___video___duration',
+  ArticleFeaturedImageVideoStreamingUrl = 'article___featuredImage___video___streamingUrl',
+  ArticleFeaturedImageVideoThumbnailUrl = 'article___featuredImage___video___thumbnailUrl',
+  ArticleFeaturedImageVideoMp4Url = 'article___featuredImage___video___mp4Url',
+  ArticleFeaturedImageFluidBase64 = 'article___featuredImage___fluid___base64',
+  ArticleFeaturedImageFluidTracedSvg = 'article___featuredImage___fluid___tracedSVG',
+  ArticleFeaturedImageFluidAspectRatio = 'article___featuredImage___fluid___aspectRatio',
+  ArticleFeaturedImageFluidWidth = 'article___featuredImage___fluid___width',
+  ArticleFeaturedImageFluidHeight = 'article___featuredImage___fluid___height',
+  ArticleFeaturedImageFluidSrc = 'article___featuredImage___fluid___src',
+  ArticleFeaturedImageFluidSrcSet = 'article___featuredImage___fluid___srcSet',
+  ArticleFeaturedImageFluidSizes = 'article___featuredImage___fluid___sizes',
+  ArticleFeaturedImageSizesBase64 = 'article___featuredImage___sizes___base64',
+  ArticleFeaturedImageSizesTracedSvg = 'article___featuredImage___sizes___tracedSVG',
+  ArticleFeaturedImageSizesAspectRatio = 'article___featuredImage___sizes___aspectRatio',
+  ArticleFeaturedImageSizesWidth = 'article___featuredImage___sizes___width',
+  ArticleFeaturedImageSizesHeight = 'article___featuredImage___sizes___height',
+  ArticleFeaturedImageSizesSrc = 'article___featuredImage___sizes___src',
+  ArticleFeaturedImageSizesSrcSet = 'article___featuredImage___sizes___srcSet',
+  ArticleFeaturedImageSizesSizes = 'article___featuredImage___sizes___sizes',
+  ArticleFeaturedImageFixedBase64 = 'article___featuredImage___fixed___base64',
+  ArticleFeaturedImageFixedTracedSvg = 'article___featuredImage___fixed___tracedSVG',
+  ArticleFeaturedImageFixedAspectRatio = 'article___featuredImage___fixed___aspectRatio',
+  ArticleFeaturedImageFixedWidth = 'article___featuredImage___fixed___width',
+  ArticleFeaturedImageFixedHeight = 'article___featuredImage___fixed___height',
+  ArticleFeaturedImageFixedSrc = 'article___featuredImage___fixed___src',
+  ArticleFeaturedImageFixedSrcSet = 'article___featuredImage___fixed___srcSet',
+  ArticleFeaturedImageFixedSizes = 'article___featuredImage___fixed___sizes',
+  ArticleFeaturedImageResolutionsBase64 = 'article___featuredImage___resolutions___base64',
+  ArticleFeaturedImageResolutionsTracedSvg = 'article___featuredImage___resolutions___tracedSVG',
+  ArticleFeaturedImageResolutionsAspectRatio = 'article___featuredImage___resolutions___aspectRatio',
+  ArticleFeaturedImageResolutionsWidth = 'article___featuredImage___resolutions___width',
+  ArticleFeaturedImageResolutionsHeight = 'article___featuredImage___resolutions___height',
+  ArticleFeaturedImageResolutionsSrc = 'article___featuredImage___resolutions___src',
+  ArticleFeaturedImageResolutionsSrcSet = 'article___featuredImage___resolutions___srcSet',
+  ArticleFeaturedImageResolutionsSizes = 'article___featuredImage___resolutions___sizes',
+  ArticleFeaturedImageGatsbyImageData = 'article___featuredImage___gatsbyImageData',
+  ArticleFeaturedImageAlt = 'article___featuredImage___alt',
+  ArticleFeaturedImageTitle = 'article___featuredImage___title',
+  ArticleFeaturedImageCustomData = 'article___featuredImage___customData',
+  ArticleFeaturedImageFocalPointX = 'article___featuredImage___focalPoint___x',
+  ArticleFeaturedImageFocalPointY = 'article___featuredImage___focalPoint___y',
+  ArticleExcerpt = 'article___excerpt',
+  ArticleBodyValue = 'article___body___value',
+  ArticleBodyBlocks = 'article___body___blocks',
+  ArticleBodyBlocksOriginalId = 'article___body___blocks___originalId',
+  ArticleBodyBlocksLocale = 'article___body___blocks___locale',
+  ArticleBodyBlocksId = 'article___body___blocks___id',
+  ArticleBodyBlocksChildren = 'article___body___blocks___children',
+  ArticleBodyLinks = 'article___body___links',
+  ArticleCarousel = 'article___carousel',
+  ArticleMetaCreatedAt = 'article___meta___createdAt',
+  ArticleMetaUpdatedAt = 'article___meta___updatedAt',
+  ArticleMetaPublishedAt = 'article___meta___publishedAt',
+  ArticleMetaFirstPublishedAt = 'article___meta___firstPublishedAt',
+  ArticleMetaIsValid = 'article___meta___isValid',
+  ArticleMetaStatus = 'article___meta___status',
+  ArticleOriginalId = 'article___originalId',
+  ArticleLocale = 'article___locale',
+  ArticleSeoMetaTagsTags = 'article___seoMetaTags___tags',
+  ArticleSeoMetaTagsId = 'article___seoMetaTags___id',
+  ArticleSeoMetaTagsParentId = 'article___seoMetaTags___parent___id',
+  ArticleSeoMetaTagsParentChildren = 'article___seoMetaTags___parent___children',
+  ArticleSeoMetaTagsChildren = 'article___seoMetaTags___children',
+  ArticleSeoMetaTagsChildrenId = 'article___seoMetaTags___children___id',
+  ArticleSeoMetaTagsChildrenChildren = 'article___seoMetaTags___children___children',
+  ArticleSeoMetaTagsInternalContent = 'article___seoMetaTags___internal___content',
+  ArticleSeoMetaTagsInternalContentDigest = 'article___seoMetaTags___internal___contentDigest',
+  ArticleSeoMetaTagsInternalDescription = 'article___seoMetaTags___internal___description',
+  ArticleSeoMetaTagsInternalFieldOwners = 'article___seoMetaTags___internal___fieldOwners',
+  ArticleSeoMetaTagsInternalIgnoreType = 'article___seoMetaTags___internal___ignoreType',
+  ArticleSeoMetaTagsInternalMediaType = 'article___seoMetaTags___internal___mediaType',
+  ArticleSeoMetaTagsInternalOwner = 'article___seoMetaTags___internal___owner',
+  ArticleSeoMetaTagsInternalType = 'article___seoMetaTags___internal___type',
+  ArticleModelName = 'article___model___name',
+  ArticleModelSingleton = 'article___model___singleton',
+  ArticleModelSortable = 'article___model___sortable',
+  ArticleModelApiKey = 'article___model___apiKey',
+  ArticleModelOrderingDirection = 'article___model___orderingDirection',
+  ArticleModelTree = 'article___model___tree',
+  ArticleModelModularBlock = 'article___model___modularBlock',
+  ArticleModelDraftModeActive = 'article___model___draftModeActive',
+  ArticleModelAllLocalesRequired = 'article___model___allLocalesRequired',
+  ArticleModelCollectionAppeareance = 'article___model___collectionAppeareance',
+  ArticleModelHasSingletonItem = 'article___model___hasSingletonItem',
+  ArticleModelOriginalId = 'article___model___originalId',
+  ArticleModelFieldsTags = 'article___model___fields___tags',
+  ArticleModelFieldsId = 'article___model___fields___id',
+  ArticleModelFieldsChildren = 'article___model___fields___children',
+  ArticleModelId = 'article___model___id',
+  ArticleModelParentId = 'article___model___parent___id',
+  ArticleModelParentChildren = 'article___model___parent___children',
+  ArticleModelChildren = 'article___model___children',
+  ArticleModelChildrenId = 'article___model___children___id',
+  ArticleModelChildrenChildren = 'article___model___children___children',
+  ArticleModelInternalContent = 'article___model___internal___content',
+  ArticleModelInternalContentDigest = 'article___model___internal___contentDigest',
+  ArticleModelInternalDescription = 'article___model___internal___description',
+  ArticleModelInternalFieldOwners = 'article___model___internal___fieldOwners',
+  ArticleModelInternalIgnoreType = 'article___model___internal___ignoreType',
+  ArticleModelInternalMediaType = 'article___model___internal___mediaType',
+  ArticleModelInternalOwner = 'article___model___internal___owner',
+  ArticleModelInternalType = 'article___model___internal___type',
+  ArticleId = 'article___id',
+  ArticleParentId = 'article___parent___id',
+  ArticleParentParentId = 'article___parent___parent___id',
+  ArticleParentParentChildren = 'article___parent___parent___children',
+  ArticleParentChildren = 'article___parent___children',
+  ArticleParentChildrenId = 'article___parent___children___id',
+  ArticleParentChildrenChildren = 'article___parent___children___children',
+  ArticleParentInternalContent = 'article___parent___internal___content',
+  ArticleParentInternalContentDigest = 'article___parent___internal___contentDigest',
+  ArticleParentInternalDescription = 'article___parent___internal___description',
+  ArticleParentInternalFieldOwners = 'article___parent___internal___fieldOwners',
+  ArticleParentInternalIgnoreType = 'article___parent___internal___ignoreType',
+  ArticleParentInternalMediaType = 'article___parent___internal___mediaType',
+  ArticleParentInternalOwner = 'article___parent___internal___owner',
+  ArticleParentInternalType = 'article___parent___internal___type',
+  ArticleChildren = 'article___children',
+  ArticleChildrenId = 'article___children___id',
+  ArticleChildrenParentId = 'article___children___parent___id',
+  ArticleChildrenParentChildren = 'article___children___parent___children',
+  ArticleChildrenChildren = 'article___children___children',
+  ArticleChildrenChildrenId = 'article___children___children___id',
+  ArticleChildrenChildrenChildren = 'article___children___children___children',
+  ArticleChildrenInternalContent = 'article___children___internal___content',
+  ArticleChildrenInternalContentDigest = 'article___children___internal___contentDigest',
+  ArticleChildrenInternalDescription = 'article___children___internal___description',
+  ArticleChildrenInternalFieldOwners = 'article___children___internal___fieldOwners',
+  ArticleChildrenInternalIgnoreType = 'article___children___internal___ignoreType',
+  ArticleChildrenInternalMediaType = 'article___children___internal___mediaType',
+  ArticleChildrenInternalOwner = 'article___children___internal___owner',
+  ArticleChildrenInternalType = 'article___children___internal___type',
+  ArticleInternalContent = 'article___internal___content',
+  ArticleInternalContentDigest = 'article___internal___contentDigest',
+  ArticleInternalDescription = 'article___internal___description',
+  ArticleInternalFieldOwners = 'article___internal___fieldOwners',
+  ArticleInternalIgnoreType = 'article___internal___ignoreType',
+  ArticleInternalMediaType = 'article___internal___mediaType',
+  ArticleInternalOwner = 'article___internal___owner',
+  ArticleInternalType = 'article___internal___type',
   MetaCreatedAt = 'meta___createdAt',
   MetaUpdatedAt = 'meta___updatedAt',
   MetaPublishedAt = 'meta___publishedAt',
@@ -3121,6 +3292,7 @@ export type DatoCmsScheduleFilterInput = {
   heldOn?: Maybe<DateQueryOperatorInput>;
   title?: Maybe<StringQueryOperatorInput>;
   venue?: Maybe<DatoCmsVenueFilterInput>;
+  article?: Maybe<DatoCmsArticleFilterInput>;
   meta?: Maybe<DatoCmsMetaFieldFilterInput>;
   originalId?: Maybe<StringQueryOperatorInput>;
   locale?: Maybe<StringQueryOperatorInput>;
@@ -6138,6 +6310,7 @@ export type QueryDatoCmsScheduleArgs = {
   heldOn?: Maybe<DateQueryOperatorInput>;
   title?: Maybe<StringQueryOperatorInput>;
   venue?: Maybe<DatoCmsVenueFilterInput>;
+  article?: Maybe<DatoCmsArticleFilterInput>;
   meta?: Maybe<DatoCmsMetaFieldFilterInput>;
   originalId?: Maybe<StringQueryOperatorInput>;
   locale?: Maybe<StringQueryOperatorInput>;
@@ -7828,6 +8001,16 @@ export type GetSiteMetadataQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type GetSiteMetadataQuery = { site: Maybe<{ siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'siteURL' | 'twitterUserName'>> }>, file: Maybe<Pick<File, 'publicURL'>> };
 
+export type LiveInfoItemFieldFragment = (
+  Pick<DatoCmsSchedule, 'title' | 'heldOn'>
+  & { venue: Maybe<Pick<DatoCmsVenue, 'name'>>, article: Maybe<Pick<DatoCmsArticle, 'originalId'>> }
+);
+
+export type LiveInfoListItemFieldFragment = (
+  Pick<DatoCmsSchedule, 'originalId'>
+  & LiveInfoItemFieldFragment
+);
+
 export type ScheduleFieldsFragment = (
   Pick<DatoCmsSchedule, 'id' | 'heldOn' | 'title'>
   & { venue: Maybe<Pick<DatoCmsVenue, 'name' | 'url'>> }
@@ -7841,7 +8024,7 @@ export type GetAboutPageContentQuery = { allDatoCmsAbout: { nodes: Array<{ bodyN
 export type GetTopPageContentQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetTopPageContentQuery = { carouselContents: { nodes: Array<CarouselContentFieldsFragment> }, allDatoCmsArticle: { nodes: Array<ArticleItemFieldsFragment> } };
+export type GetTopPageContentQuery = { carouselContents: { nodes: Array<CarouselContentFieldsFragment> }, allDatoCmsArticle: { nodes: Array<ArticleItemFieldsFragment> }, allDatoCmsSchedule: { nodes: Array<LiveInfoListItemFieldFragment> } };
 
 export type GetArticleListQueryVariables = Exact<{ [key: string]: never; }>;
 

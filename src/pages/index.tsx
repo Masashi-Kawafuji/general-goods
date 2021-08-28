@@ -1,20 +1,17 @@
 import React, { FC } from 'react';
 import { useStaticQuery, graphql, Link, PageProps } from 'gatsby';
-import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter';
-import { FaInstagram } from '@react-icons/all-files/fa/FaInstagram';
-import { FaYoutube } from '@react-icons/all-files/fa/FaYoutube';
 import Layout from 'layout/Layout';
 import Head from 'components/Head';
 import Container from 'components/Container';
-import Carousel from 'components/Carousel/carousel';
+import Carousel from 'components/Carousel';
 import ArticleList from 'components/ArticleList';
 import Section from 'components/Section';
-import SocialLink from 'components/ExternalLink';
 import Button from 'components/Button';
 import { GetTopPageContentQuery } from 'types/generated/graphql';
+import LiveInfoList from 'components/LiveInfoList';
 
 const Home: FC<PageProps> = () => {
-  const { carouselContents, allDatoCmsArticle } =
+  const { carouselContents, allDatoCmsArticle, allDatoCmsSchedule } =
     useStaticQuery<GetTopPageContentQuery>(graphql`
       query GetTopPageContent {
         carouselContents: allDatoCmsArticle(
@@ -34,6 +31,11 @@ const Home: FC<PageProps> = () => {
             ...ArticleItemFields
           }
         }
+        allDatoCmsSchedule(sort: { order: DESC, fields: heldOn }) {
+          nodes {
+            ...LiveInfoListItemField
+          }
+        }
       }
     `);
 
@@ -44,25 +46,26 @@ const Home: FC<PageProps> = () => {
         <Carousel contents={carouselContents.nodes} />
       </Section>
       <Container>
-        <Section className="hidden sm:block py-12">
+        <Section className="hidden sm:block pt-12">
           <Carousel contents={carouselContents.nodes} />
         </Section>
-        <Section title="News">
-          <div className="mb-12">
+        <Section title="NEWS">
+          <div className="mb-10">
             <ArticleList articles={allDatoCmsArticle.nodes} />
           </div>
-          <div className="text-center">
+          <div className="flex justify-end">
             <Button
               as={Link}
               to="/news/"
+              primitive
               inverse
-              className="mx-auto font-vollkorn"
+              className="font-vollkorn"
             >
-              All News
+              MORE NEWS
             </Button>
           </div>
         </Section>
-        <Section title="Recently Released">
+        <Section title="RECENTY RELASED">
           <div className="relative" style={{ paddingBottom: '56.25%' }}>
             <iframe
               className="absolute top-0 left-0 w-full h-full"
@@ -74,24 +77,8 @@ const Home: FC<PageProps> = () => {
             />
           </div>
         </Section>
-        <Section title="Follow Us!">
-          <ul className="flex justify-evenly">
-            <li>
-              <SocialLink url="https://twitter.com/_General_Goods_">
-                <FaTwitter size="2rem" />
-              </SocialLink>
-            </li>
-            <li>
-              <SocialLink url="https://www.instagram.com/_general_goods_">
-                <FaInstagram size="2rem" />
-              </SocialLink>
-            </li>
-            <li>
-              <SocialLink url="https://www.youtube.com/channel/UC2NSO7mxY2L7C9ft0FL5htw">
-                <FaYoutube size="2rem" />
-              </SocialLink>
-            </li>
-          </ul>
+        <Section title="LIVE INFO">
+          <LiveInfoList liveInfos={allDatoCmsSchedule.nodes} />
         </Section>
       </Container>
     </Layout>

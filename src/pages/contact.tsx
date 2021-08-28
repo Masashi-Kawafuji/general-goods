@@ -99,7 +99,7 @@ const Contact: FC<PageProps> = () => {
                 validations={validations}
               />
             </div>
-            <Button type="submit" className="w-full">
+            <Button type="submit" className="w-full font-medium">
               送信
             </Button>
           </form>

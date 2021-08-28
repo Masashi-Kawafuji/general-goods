@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import mergeCssClassName from 'utils/mergeCssClassName';
 
 type SectionProps = {
   title?: string;
@@ -6,11 +7,9 @@ type SectionProps = {
 };
 
 const Section: FC<SectionProps> = ({ title, className, children }) => (
-  <section className={className}>
+  <section className={mergeCssClassName('mb-14', className)}>
     {title && (
-      <h2 className="mb-8 text-center text-3xl font-vollkorn font-semibold">
-        {title}
-      </h2>
+      <h2 className="mb-8 text-4xl font-oswald font-semibold">{title}</h2>
     )}
     {children}
   </section>
