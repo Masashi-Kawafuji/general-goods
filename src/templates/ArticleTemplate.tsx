@@ -51,8 +51,8 @@ const ArticleTemplate: React.FC<ArticlePageProps> = ({
         ogImageUrl={featuredImage.gatsbyImageData.images.fallback.src}
       />
       <Container>
-        <div>
-          <h1 className="mb-2 sm:mb-4 text-xl sm:text-4xl font-semibold">
+        <div className="pt-8">
+          <h1 className="mb-2 sm:mb-4 text-lg sm:text-3xl font-semibold">
             {title}
           </h1>
           <p className="text-xs sm:text-sm text-darken">

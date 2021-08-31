@@ -7,6 +7,7 @@ import Input from 'components/Input';
 import TextArea from 'components/TextArea';
 import Button from 'components/Button';
 import { PageProps } from 'gatsby';
+import PageTitle from 'components/PageTitle';
 
 type ContactForm = {
   name: string;
@@ -70,40 +71,39 @@ const Contact: FC<PageProps> = () => {
     <Layout>
       <Head title="Contact" pathname="/contact/" />
       <Container>
-        <div className="mx-auto max-w-xl">
-          <form onSubmit={handleContactFormSubmit}>
-            <div className="mb-4 sm:mb-6">
-              <Input
-                name="name"
-                value={name}
-                onChange={handleContactFormChange}
-                label="お名前"
-                validations={validations}
-              />
-            </div>
-            <div className="mb-4 sm:mb-6">
-              <Input
-                name="email"
-                value={email}
-                onChange={handleContactFormChange}
-                label="メールアドレス"
-                validations={validations}
-              />
-            </div>
-            <div className="mb-4 sm:mb-6">
-              <TextArea
-                name="body"
-                value={body}
-                onChange={handleContactFormChange}
-                label="本文"
-                validations={validations}
-              />
-            </div>
-            <Button type="submit" className="w-full font-medium">
-              送信
-            </Button>
-          </form>
-        </div>
+        <PageTitle>CONTACT</PageTitle>
+        <form onSubmit={handleContactFormSubmit}>
+          <div className="mb-4 sm:mb-6">
+            <Input
+              name="name"
+              value={name}
+              onChange={handleContactFormChange}
+              label="お名前"
+              validations={validations}
+            />
+          </div>
+          <div className="mb-4 sm:mb-6">
+            <Input
+              name="email"
+              value={email}
+              onChange={handleContactFormChange}
+              label="メールアドレス"
+              validations={validations}
+            />
+          </div>
+          <div className="mb-4 sm:mb-6">
+            <TextArea
+              name="body"
+              value={body}
+              onChange={handleContactFormChange}
+              label="本文"
+              validations={validations}
+            />
+          </div>
+          <Button type="submit" className="w-full font-medium">
+            送信
+          </Button>
+        </form>
       </Container>
     </Layout>
   );

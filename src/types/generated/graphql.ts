@@ -8011,11 +8011,6 @@ export type LiveInfoListItemFieldFragment = (
   & LiveInfoItemFieldFragment
 );
 
-export type ScheduleFieldsFragment = (
-  Pick<DatoCmsSchedule, 'id' | 'heldOn' | 'title'>
-  & { venue: Maybe<Pick<DatoCmsVenue, 'name' | 'url'>> }
-);
-
 export type GetAboutPageContentQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -8026,18 +8021,15 @@ export type GetTopPageContentQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type GetTopPageContentQuery = { carouselContents: { nodes: Array<CarouselContentFieldsFragment> }, allDatoCmsArticle: { nodes: Array<ArticleItemFieldsFragment> }, allDatoCmsSchedule: { nodes: Array<LiveInfoListItemFieldFragment> } };
 
+export type GetLiveInfoPageContentQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetLiveInfoPageContentQuery = { allDatoCmsSchedule: { nodes: Array<LiveInfoListItemFieldFragment> } };
+
 export type GetArticleListQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type GetArticleListQuery = { allDatoCmsArticle: { nodes: Array<ArticleItemFieldsFragment> } };
-
-export type GetSchedulesQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type GetSchedulesQuery = { allDatoCmsSchedule: { nodes: Array<(
-      Pick<DatoCmsSchedule, 'id' | 'heldOn' | 'title'>
-      & { venue: Maybe<Pick<DatoCmsVenue, 'name' | 'url'>> }
-    )> } };
 
 export type ArticleFieldsFragment = (
   Pick<DatoCmsArticle, 'originalId' | 'title' | 'excerpt'>

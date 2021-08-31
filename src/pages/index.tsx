@@ -31,7 +31,7 @@ const Home: FC<PageProps> = () => {
             ...ArticleItemFields
           }
         }
-        allDatoCmsSchedule(sort: { order: DESC, fields: heldOn }) {
+        allDatoCmsSchedule(limit: 6, sort: { order: DESC, fields: heldOn }) {
           nodes {
             ...LiveInfoListItemField
           }
@@ -65,6 +65,20 @@ const Home: FC<PageProps> = () => {
             </Button>
           </div>
         </Section>
+        <Section title="LIVE INFO">
+          <LiveInfoList liveInfos={allDatoCmsSchedule.nodes} />
+          <div className="flex justify-end">
+            <Button
+              as={Link}
+              to="/live/"
+              primitive
+              inverse
+              className="font-vollkorn"
+            >
+              MORE INFO
+            </Button>
+          </div>
+        </Section>
         <Section title="RECENTY RELASED">
           <div className="relative" style={{ paddingBottom: '56.25%' }}>
             <iframe
@@ -76,9 +90,6 @@ const Home: FC<PageProps> = () => {
               allowFullScreen
             />
           </div>
-        </Section>
-        <Section title="LIVE INFO">
-          <LiveInfoList liveInfos={allDatoCmsSchedule.nodes} />
         </Section>
       </Container>
     </Layout>

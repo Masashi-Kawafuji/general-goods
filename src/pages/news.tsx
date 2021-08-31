@@ -5,6 +5,7 @@ import Head from 'components/Head';
 import Container from 'components/Container';
 import ArticleList from 'components/ArticleList';
 import { GetArticleListQuery } from 'types/generated/graphql';
+import PageTitle from 'components/PageTitle';
 
 const News: FC<PageProps> = () => {
   const { allDatoCmsArticle } = useStaticQuery<GetArticleListQuery>(graphql`
@@ -23,6 +24,7 @@ const News: FC<PageProps> = () => {
     <Layout>
       <Head title="News" pathname="/news/" />
       <Container>
+        <PageTitle>NEWS</PageTitle>
         <ArticleList articles={allDatoCmsArticle.nodes} />
       </Container>
     </Layout>

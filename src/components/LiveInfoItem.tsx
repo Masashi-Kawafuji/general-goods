@@ -30,8 +30,8 @@ const LiveInfoItem: FC<LiveInfoItemProps> = ({
     <dd className="mb-12">
       <Link to={`/news/${article.originalId}/`}>
         <dl className="pt-3">
-          <dt className="text-xl font-medium mb-3">{title}</dt>
-          <dd className="text-darken font-light">
+          <dt className="text-xl mb-2">{title}</dt>
+          <dd className="text-sm text-darken font-light">
             <span>
               <MdLocationOn className="inline mr-1" />
             </span>
