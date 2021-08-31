@@ -1,4 +1,4 @@
-import React from 'react';
+import { FC } from 'react';
 import { graphql, Link } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import { ArticleItemFieldsFragment } from 'types/generated/graphql';
@@ -20,7 +20,7 @@ export const ARTICLE_ITEM_FIELDS = graphql`
   }
 `;
 
-const ArticleItem: React.FC<ArticleItemProps> = ({
+const ArticleItem: FC<ArticleItemProps> = ({
   article: { meta, originalId, title, excerpt, featuredImage },
 }) => (
   <div className="py-2">

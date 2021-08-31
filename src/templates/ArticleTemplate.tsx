@@ -1,4 +1,4 @@
-import React from 'react';
+import { FC } from 'react';
 import { graphql, PageProps } from 'gatsby';
 import { getImage, GatsbyImage } from 'gatsby-plugin-image';
 import Layout from 'layout/Layout';
@@ -36,7 +36,7 @@ export const ARTICLE_FIELDS = graphql`
 
 type ArticlePageProps = PageProps<unknown, ArticleFieldsFragment>;
 
-const ArticleTemplate: React.FC<ArticlePageProps> = ({
+const ArticleTemplate: FC<ArticlePageProps> = ({
   pageContext: { originalId, meta, title, excerpt, featuredImage, body },
 }) => {
   const image = getImage(featuredImage.gatsbyImageData);

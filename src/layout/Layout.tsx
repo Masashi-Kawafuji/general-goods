@@ -1,8 +1,8 @@
-import React from 'react';
+import { FC } from 'react';
 import Footer from './Footer';
 import Header from './Header';
 
-const Layout: React.FC = ({ children }) => (
+const Layout: FC = ({ children }) => (
   <div className="flex flex-col min-h-screen">
     <Header />
     <main className="flex-1">{children}</main>

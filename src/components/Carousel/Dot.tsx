@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { VscCircleFilled } from '@react-icons/all-files/vsc/VscCircleFilled';
 
 type DotProps = {

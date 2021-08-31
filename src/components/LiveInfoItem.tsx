@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { graphql, Link } from 'gatsby';
 import { LiveInfoItemFieldFragment } from 'types/generated/graphql';
 import { MdLocationOn } from '@react-icons/all-files/md/MdLocationOn';

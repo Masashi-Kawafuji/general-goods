@@ -1,4 +1,4 @@
-import React, { ReactEventHandler } from 'react';
+import { FC, ReactEventHandler } from 'react';
 import useValidation, { Validation } from 'hooks/useValidation';
 import Label from './Label';
 
@@ -10,7 +10,7 @@ type TextAreaProps = {
   validations?: Validation<string>[];
 };
 
-const TextArea: React.FC<TextAreaProps> = ({
+const TextArea: FC<TextAreaProps> = ({
   name,
   value,
   onChange,

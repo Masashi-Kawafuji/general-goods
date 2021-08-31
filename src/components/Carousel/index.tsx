@@ -1,5 +1,5 @@
 /* eslint-disable react/no-array-index-key */
-import React, { ComponentPropsWithoutRef, FC, useState } from 'react';
+import { ComponentPropsWithoutRef, FC, useState } from 'react';
 import { graphql, Link } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import { Carousel as BaseCarousel } from 'react-responsive-carousel';

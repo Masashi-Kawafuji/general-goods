@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { graphql } from 'gatsby';
 import { LiveInfoListItemFieldFragment } from 'types/generated/graphql';
 import LiveInfoItem from './LiveInfoItem';

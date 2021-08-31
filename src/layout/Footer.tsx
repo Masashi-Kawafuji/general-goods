@@ -1,7 +1,7 @@
-import React from 'react';
+import { FC } from 'react';
 import Divider from 'components/Divider';
 
-const Footer: React.FC = () => {
+const Footer: FC = () => {
   const year = new Date().getFullYear();
 
   return (

@@ -1,11 +1,11 @@
-import React from 'react';
+import { FC } from 'react';
 
 type LabelProps = {
   name: string;
   error?: boolean;
 };
 
-const Label: React.FC<LabelProps> = ({ children, name, error }) => {
+const Label: FC<LabelProps> = ({ children, name, error }) => {
   const invalid = error || false;
 
   const textColor = invalid ? 'text-danger' : 'text-lighten';

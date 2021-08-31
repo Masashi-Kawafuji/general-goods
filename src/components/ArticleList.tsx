@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { ArticleItemFieldsFragment } from 'types/generated/graphql';
 import ArticleItem from './ArticleItem';
 

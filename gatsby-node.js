@@ -1,5 +1,16 @@
 const path = require('path');
 
+exports.onCreateBabelConfig = ({ actions }) => {
+  const { setBabelPlugin } = actions;
+
+  setBabelPlugin({
+    name: '@babel/plugin-transform-react-jsx',
+    options: {
+      runtime: 'automatic',
+    },
+  });
+};
+
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions;
   const { data } = await graphql(`

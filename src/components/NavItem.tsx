@@ -1,11 +1,11 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { ComponentPropsWithoutRef } from 'react';
+import { FC, ComponentPropsWithoutRef } from 'react';
 import { Link } from 'gatsby';
 import mergeCssClassName from 'utils/mergeCssClassName';
 
 type NavItemProps = ComponentPropsWithoutRef<typeof Link>;
 
-const NavItem: React.FC<NavItemProps> = ({
+const NavItem: FC<NavItemProps> = ({
   to,
   className,
   activeClassName,

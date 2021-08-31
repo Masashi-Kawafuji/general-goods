@@ -1,4 +1,4 @@
-import React, { ReactEventHandler } from 'react';
+import { FC, ReactEventHandler } from 'react';
 import useValidation, { Validation } from 'hooks/useValidation';
 import Label from './Label';
 
@@ -10,7 +10,7 @@ type InputProps = {
   validations?: Validation<string>[];
 };
 
-const Input: React.FC<InputProps> = ({
+const Input: FC<InputProps> = ({
   name,
   value,
   onChange,

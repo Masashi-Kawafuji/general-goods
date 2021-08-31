@@ -1,5 +1,5 @@
 /* eslint-disable no-restricted-globals */
-import React from 'react';
+import { FC } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import { Helmet } from 'react-helmet';
 import { GetSiteMetadataQuery } from 'types/generated/graphql';
@@ -13,7 +13,7 @@ type HeadProps = {
   ogImageUrl?: string;
 };
 
-const Head: React.FC<HeadProps> = ({
+const Head: FC<HeadProps> = ({
   title,
   description,
   pathname,

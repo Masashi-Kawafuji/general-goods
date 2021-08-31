@@ -1,4 +1,4 @@
-import React from 'react';
+import { FC } from 'react';
 import mergeCssClassName from 'utils/mergeCssClassName';
 
 type NavProps = {
@@ -6,7 +6,7 @@ type NavProps = {
   className?: string;
 };
 
-const Nav: React.FC<NavProps> = ({ vertical, className, children }) => (
+const Nav: FC<NavProps> = ({ vertical, className, children }) => (
   <nav
     className={mergeCssClassName(
       className,

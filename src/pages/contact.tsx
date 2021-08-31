@@ -1,4 +1,4 @@
-import React, { FC, ComponentProps, ReactEventHandler, useState } from 'react';
+import { FC, ComponentProps, ReactEventHandler, useState } from 'react';
 import axios from 'axios';
 import Layout from 'layout/Layout';
 import Head from 'components/Head';

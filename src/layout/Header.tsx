@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { FC, useState } from 'react';
 import { Link } from 'gatsby';
 import { VscMenu } from '@react-icons/all-files/vsc/VscMenu';
 import { VscClose } from '@react-icons/all-files/vsc/VscClose';
@@ -12,7 +12,7 @@ import Nav from 'components/Nav';
 import NavItem from 'components/NavItem';
 import ExternalLink from 'components/ExternalLink';
 
-const Header: React.FC = () => {
+const Header: FC = () => {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
 
   return (

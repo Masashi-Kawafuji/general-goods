@@ -1,15 +1,11 @@
-import React, { HTMLAttributes } from 'react';
+import { FC, HTMLAttributes } from 'react';
 import mergeCssClassName from 'utils/mergeCssClassName';
 
 type MobileNavProps = {
   isOpen: boolean;
 } & Pick<HTMLAttributes<HTMLDivElement>, 'className'>;
 
-const MobileNav: React.FC<MobileNavProps> = ({
-  isOpen,
-  className,
-  children,
-}) => (
+const MobileNav: FC<MobileNavProps> = ({ isOpen, className, children }) => (
   <div
     className={mergeCssClassName(
       className,

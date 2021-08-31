@@ -1,5 +1,5 @@
-import React from 'react';
+import { FC } from 'react';
 
-const Divider: React.FC = () => <hr className="my-11 border-gray-500" />;
+const Divider: FC = () => <hr className="my-11 border-gray-500" />;
 
 export default Divider;

@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { VscChevronLeft } from '@react-icons/all-files/vsc/VscChevronLeft';
 import { VscChevronRight } from '@react-icons/all-files/vsc/VscChevronRight';
 

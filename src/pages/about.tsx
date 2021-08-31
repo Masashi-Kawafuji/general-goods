@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { PageProps, graphql, useStaticQuery } from 'gatsby';
 import Layout from 'layout/Layout';
 import Head from 'components/Head';
