@@ -117,11 +117,13 @@ export type DatoCmsAboutEdge = {
 
 export enum DatoCmsAboutFieldsEnum {
   Body = 'body',
+  BodyNodeFieldsCustomField = 'bodyNode___fields___customField',
   BodyNodeChildrenMarkdownRemark = 'bodyNode___childrenMarkdownRemark',
   BodyNodeChildrenMarkdownRemarkId = 'bodyNode___childrenMarkdownRemark___id',
   BodyNodeChildrenMarkdownRemarkFrontmatterTitle = 'bodyNode___childrenMarkdownRemark___frontmatter___title',
   BodyNodeChildrenMarkdownRemarkExcerpt = 'bodyNode___childrenMarkdownRemark___excerpt',
   BodyNodeChildrenMarkdownRemarkRawMarkdownBody = 'bodyNode___childrenMarkdownRemark___rawMarkdownBody',
+  BodyNodeChildrenMarkdownRemarkFieldsCustomField = 'bodyNode___childrenMarkdownRemark___fields___customField',
   BodyNodeChildrenMarkdownRemarkHtml = 'bodyNode___childrenMarkdownRemark___html',
   BodyNodeChildrenMarkdownRemarkHtmlAst = 'bodyNode___childrenMarkdownRemark___htmlAst',
   BodyNodeChildrenMarkdownRemarkExcerptAst = 'bodyNode___childrenMarkdownRemark___excerptAst',
@@ -151,6 +153,7 @@ export enum DatoCmsAboutFieldsEnum {
   BodyNodeChildMarkdownRemarkFrontmatterTitle = 'bodyNode___childMarkdownRemark___frontmatter___title',
   BodyNodeChildMarkdownRemarkExcerpt = 'bodyNode___childMarkdownRemark___excerpt',
   BodyNodeChildMarkdownRemarkRawMarkdownBody = 'bodyNode___childMarkdownRemark___rawMarkdownBody',
+  BodyNodeChildMarkdownRemarkFieldsCustomField = 'bodyNode___childMarkdownRemark___fields___customField',
   BodyNodeChildMarkdownRemarkHtml = 'bodyNode___childMarkdownRemark___html',
   BodyNodeChildMarkdownRemarkHtmlAst = 'bodyNode___childMarkdownRemark___htmlAst',
   BodyNodeChildMarkdownRemarkExcerptAst = 'bodyNode___childMarkdownRemark___excerptAst',
@@ -3754,6 +3757,7 @@ export type DatoCmsSiteSortInput = {
 };
 
 export type DatoCmsTextNode = Node & {
+  fields: Maybe<DatoCmsTextNodeFields>;
   /** Returns all children nodes filtered by type MarkdownRemark */
   childrenMarkdownRemark: Maybe<Array<Maybe<MarkdownRemark>>>;
   /** Returns the first child node of type MarkdownRemark or null if there are no children of given type on this node */
@@ -3809,12 +3813,18 @@ export type DatoCmsTextNodeEdge = {
   previous: Maybe<DatoCmsTextNode>;
 };
 
+export type DatoCmsTextNodeFields = {
+  customField: Maybe<Scalars['String']>;
+};
+
 export enum DatoCmsTextNodeFieldsEnum {
+  FieldsCustomField = 'fields___customField',
   ChildrenMarkdownRemark = 'childrenMarkdownRemark',
   ChildrenMarkdownRemarkId = 'childrenMarkdownRemark___id',
   ChildrenMarkdownRemarkFrontmatterTitle = 'childrenMarkdownRemark___frontmatter___title',
   ChildrenMarkdownRemarkExcerpt = 'childrenMarkdownRemark___excerpt',
   ChildrenMarkdownRemarkRawMarkdownBody = 'childrenMarkdownRemark___rawMarkdownBody',
+  ChildrenMarkdownRemarkFieldsCustomField = 'childrenMarkdownRemark___fields___customField',
   ChildrenMarkdownRemarkHtml = 'childrenMarkdownRemark___html',
   ChildrenMarkdownRemarkHtmlAst = 'childrenMarkdownRemark___htmlAst',
   ChildrenMarkdownRemarkExcerptAst = 'childrenMarkdownRemark___excerptAst',
@@ -3868,6 +3878,7 @@ export enum DatoCmsTextNodeFieldsEnum {
   ChildMarkdownRemarkFrontmatterTitle = 'childMarkdownRemark___frontmatter___title',
   ChildMarkdownRemarkExcerpt = 'childMarkdownRemark___excerpt',
   ChildMarkdownRemarkRawMarkdownBody = 'childMarkdownRemark___rawMarkdownBody',
+  ChildMarkdownRemarkFieldsCustomField = 'childMarkdownRemark___fields___customField',
   ChildMarkdownRemarkHtml = 'childMarkdownRemark___html',
   ChildMarkdownRemarkHtmlAst = 'childMarkdownRemark___htmlAst',
   ChildMarkdownRemarkExcerptAst = 'childMarkdownRemark___excerptAst',
@@ -4005,7 +4016,12 @@ export enum DatoCmsTextNodeFieldsEnum {
   InternalType = 'internal___type'
 }
 
+export type DatoCmsTextNodeFieldsFilterInput = {
+  customField?: Maybe<StringQueryOperatorInput>;
+};
+
 export type DatoCmsTextNodeFilterInput = {
+  fields?: Maybe<DatoCmsTextNodeFieldsFilterInput>;
   childrenMarkdownRemark?: Maybe<MarkdownRemarkFilterListInput>;
   childMarkdownRemark?: Maybe<MarkdownRemarkFilterInput>;
   id?: Maybe<StringQueryOperatorInput>;
@@ -4371,6 +4387,7 @@ export type Directory = Node & {
   birthtimeMs: Maybe<Scalars['Float']>;
   blksize: Maybe<Scalars['Int']>;
   blocks: Maybe<Scalars['Int']>;
+  fields: Maybe<DirectoryFields>;
   id: Scalars['ID'];
   parent: Maybe<Node>;
   children: Array<Node>;
@@ -4478,6 +4495,10 @@ export type DirectoryEdge = {
   previous: Maybe<Directory>;
 };
 
+export type DirectoryFields = {
+  customField: Maybe<Scalars['String']>;
+};
+
 export enum DirectoryFieldsEnum {
   SourceInstanceName = 'sourceInstanceName',
   AbsolutePath = 'absolutePath',
@@ -4512,6 +4533,7 @@ export enum DirectoryFieldsEnum {
   BirthtimeMs = 'birthtimeMs',
   Blksize = 'blksize',
   Blocks = 'blocks',
+  FieldsCustomField = 'fields___customField',
   Id = 'id',
   ParentId = 'parent___id',
   ParentParentId = 'parent___parent___id',
@@ -4600,6 +4622,10 @@ export enum DirectoryFieldsEnum {
   InternalType = 'internal___type'
 }
 
+export type DirectoryFieldsFilterInput = {
+  customField?: Maybe<StringQueryOperatorInput>;
+};
+
 export type DirectoryFilterInput = {
   sourceInstanceName?: Maybe<StringQueryOperatorInput>;
   absolutePath?: Maybe<StringQueryOperatorInput>;
@@ -4634,6 +4660,7 @@ export type DirectoryFilterInput = {
   birthtimeMs?: Maybe<FloatQueryOperatorInput>;
   blksize?: Maybe<IntQueryOperatorInput>;
   blocks?: Maybe<IntQueryOperatorInput>;
+  fields?: Maybe<DirectoryFieldsFilterInput>;
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
@@ -4696,6 +4723,7 @@ export type File = Node & {
   birthtimeMs: Maybe<Scalars['Float']>;
   blksize: Maybe<Scalars['Int']>;
   blocks: Maybe<Scalars['Int']>;
+  fields: Maybe<FileFields>;
   /** Copy file to static directory and return public url to it */
   publicURL: Maybe<Scalars['String']>;
   /** Returns all children nodes filtered by type ImageSharp */
@@ -4809,6 +4837,10 @@ export type FileEdge = {
   previous: Maybe<File>;
 };
 
+export type FileFields = {
+  customField: Maybe<Scalars['String']>;
+};
+
 export enum FileFieldsEnum {
   SourceInstanceName = 'sourceInstanceName',
   AbsolutePath = 'absolutePath',
@@ -4843,6 +4875,7 @@ export enum FileFieldsEnum {
   BirthtimeMs = 'birthtimeMs',
   Blksize = 'blksize',
   Blocks = 'blocks',
+  FieldsCustomField = 'fields___customField',
   PublicUrl = 'publicURL',
   ChildrenImageSharp = 'childrenImageSharp',
   ChildrenImageSharpFixedBase64 = 'childrenImageSharp___fixed___base64',
@@ -4877,6 +4910,7 @@ export enum FileFieldsEnum {
   ChildrenImageSharpResizeHeight = 'childrenImageSharp___resize___height',
   ChildrenImageSharpResizeAspectRatio = 'childrenImageSharp___resize___aspectRatio',
   ChildrenImageSharpResizeOriginalName = 'childrenImageSharp___resize___originalName',
+  ChildrenImageSharpFieldsCustomField = 'childrenImageSharp___fields___customField',
   ChildrenImageSharpId = 'childrenImageSharp___id',
   ChildrenImageSharpParentId = 'childrenImageSharp___parent___id',
   ChildrenImageSharpParentParentId = 'childrenImageSharp___parent___parent___id',
@@ -4947,6 +4981,7 @@ export enum FileFieldsEnum {
   ChildImageSharpResizeHeight = 'childImageSharp___resize___height',
   ChildImageSharpResizeAspectRatio = 'childImageSharp___resize___aspectRatio',
   ChildImageSharpResizeOriginalName = 'childImageSharp___resize___originalName',
+  ChildImageSharpFieldsCustomField = 'childImageSharp___fields___customField',
   ChildImageSharpId = 'childImageSharp___id',
   ChildImageSharpParentId = 'childImageSharp___parent___id',
   ChildImageSharpParentParentId = 'childImageSharp___parent___parent___id',
@@ -5073,6 +5108,10 @@ export enum FileFieldsEnum {
   InternalType = 'internal___type'
 }
 
+export type FileFieldsFilterInput = {
+  customField?: Maybe<StringQueryOperatorInput>;
+};
+
 export type FileFilterInput = {
   sourceInstanceName?: Maybe<StringQueryOperatorInput>;
   absolutePath?: Maybe<StringQueryOperatorInput>;
@@ -5107,6 +5146,7 @@ export type FileFilterInput = {
   birthtimeMs?: Maybe<FloatQueryOperatorInput>;
   blksize?: Maybe<IntQueryOperatorInput>;
   blocks?: Maybe<IntQueryOperatorInput>;
+  fields?: Maybe<FileFieldsFilterInput>;
   publicURL?: Maybe<StringQueryOperatorInput>;
   childrenImageSharp?: Maybe<ImageSharpFilterListInput>;
   childImageSharp?: Maybe<ImageSharpFilterInput>;
@@ -5197,6 +5237,7 @@ export type ImageSharp = Node & {
   gatsbyImageData: Scalars['JSON'];
   original: Maybe<ImageSharpOriginal>;
   resize: Maybe<ImageSharpResize>;
+  fields: Maybe<ImageSharpFields>;
   id: Scalars['ID'];
   parent: Maybe<Node>;
   children: Array<Node>;
@@ -5341,6 +5382,10 @@ export type ImageSharpEdge = {
   previous: Maybe<ImageSharp>;
 };
 
+export type ImageSharpFields = {
+  customField: Maybe<Scalars['String']>;
+};
+
 export enum ImageSharpFieldsEnum {
   FixedBase64 = 'fixed___base64',
   FixedTracedSvg = 'fixed___tracedSVG',
@@ -5374,6 +5419,7 @@ export enum ImageSharpFieldsEnum {
   ResizeHeight = 'resize___height',
   ResizeAspectRatio = 'resize___aspectRatio',
   ResizeOriginalName = 'resize___originalName',
+  FieldsCustomField = 'fields___customField',
   Id = 'id',
   ParentId = 'parent___id',
   ParentParentId = 'parent___parent___id',
@@ -5462,12 +5508,17 @@ export enum ImageSharpFieldsEnum {
   InternalType = 'internal___type'
 }
 
+export type ImageSharpFieldsFilterInput = {
+  customField?: Maybe<StringQueryOperatorInput>;
+};
+
 export type ImageSharpFilterInput = {
   fixed?: Maybe<ImageSharpFixedFilterInput>;
   fluid?: Maybe<ImageSharpFluidFilterInput>;
   gatsbyImageData?: Maybe<JsonQueryOperatorInput>;
   original?: Maybe<ImageSharpOriginalFilterInput>;
   resize?: Maybe<ImageSharpResizeFilterInput>;
+  fields?: Maybe<ImageSharpFieldsFilterInput>;
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
@@ -5662,6 +5713,7 @@ export type MarkdownRemark = Node & {
   frontmatter: Maybe<MarkdownRemarkFrontmatter>;
   excerpt: Maybe<Scalars['String']>;
   rawMarkdownBody: Maybe<Scalars['String']>;
+  fields: Maybe<MarkdownRemarkFields>;
   html: Maybe<Scalars['String']>;
   htmlAst: Maybe<Scalars['JSON']>;
   excerptAst: Maybe<Scalars['JSON']>;
@@ -5745,11 +5797,16 @@ export type MarkdownRemarkEdge = {
   previous: Maybe<MarkdownRemark>;
 };
 
+export type MarkdownRemarkFields = {
+  customField: Maybe<Scalars['String']>;
+};
+
 export enum MarkdownRemarkFieldsEnum {
   Id = 'id',
   FrontmatterTitle = 'frontmatter___title',
   Excerpt = 'excerpt',
   RawMarkdownBody = 'rawMarkdownBody',
+  FieldsCustomField = 'fields___customField',
   Html = 'html',
   HtmlAst = 'htmlAst',
   ExcerptAst = 'excerptAst',
@@ -5849,11 +5906,16 @@ export enum MarkdownRemarkFieldsEnum {
   InternalType = 'internal___type'
 }
 
+export type MarkdownRemarkFieldsFilterInput = {
+  customField?: Maybe<StringQueryOperatorInput>;
+};
+
 export type MarkdownRemarkFilterInput = {
   id?: Maybe<StringQueryOperatorInput>;
   frontmatter?: Maybe<MarkdownRemarkFrontmatterFilterInput>;
   excerpt?: Maybe<StringQueryOperatorInput>;
   rawMarkdownBody?: Maybe<StringQueryOperatorInput>;
+  fields?: Maybe<MarkdownRemarkFieldsFilterInput>;
   html?: Maybe<StringQueryOperatorInput>;
   htmlAst?: Maybe<JsonQueryOperatorInput>;
   excerptAst?: Maybe<JsonQueryOperatorInput>;
@@ -6039,6 +6101,7 @@ export type QueryFileArgs = {
   birthtimeMs?: Maybe<FloatQueryOperatorInput>;
   blksize?: Maybe<IntQueryOperatorInput>;
   blocks?: Maybe<IntQueryOperatorInput>;
+  fields?: Maybe<FileFieldsFilterInput>;
   publicURL?: Maybe<StringQueryOperatorInput>;
   childrenImageSharp?: Maybe<ImageSharpFilterListInput>;
   childImageSharp?: Maybe<ImageSharpFilterInput>;
@@ -6091,6 +6154,7 @@ export type QueryDirectoryArgs = {
   birthtimeMs?: Maybe<FloatQueryOperatorInput>;
   blksize?: Maybe<IntQueryOperatorInput>;
   blocks?: Maybe<IntQueryOperatorInput>;
+  fields?: Maybe<DirectoryFieldsFilterInput>;
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
@@ -6113,6 +6177,7 @@ export type QuerySiteArgs = {
   host?: Maybe<StringQueryOperatorInput>;
   polyfill?: Maybe<BooleanQueryOperatorInput>;
   pathPrefix?: Maybe<StringQueryOperatorInput>;
+  fields?: Maybe<SiteFieldsFilterInput>;
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
@@ -6165,6 +6230,7 @@ export type QuerySitePageArgs = {
   context?: Maybe<SitePageContextFilterInput>;
   pluginCreator?: Maybe<SitePluginFilterInput>;
   pluginCreatorId?: Maybe<StringQueryOperatorInput>;
+  fields?: Maybe<SitePageFieldsFilterInput>;
 };
 
 
@@ -6182,6 +6248,7 @@ export type QueryImageSharpArgs = {
   gatsbyImageData?: Maybe<JsonQueryOperatorInput>;
   original?: Maybe<ImageSharpOriginalFilterInput>;
   resize?: Maybe<ImageSharpResizeFilterInput>;
+  fields?: Maybe<ImageSharpFieldsFilterInput>;
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
@@ -6202,6 +6269,7 @@ export type QueryMarkdownRemarkArgs = {
   frontmatter?: Maybe<MarkdownRemarkFrontmatterFilterInput>;
   excerpt?: Maybe<StringQueryOperatorInput>;
   rawMarkdownBody?: Maybe<StringQueryOperatorInput>;
+  fields?: Maybe<MarkdownRemarkFieldsFilterInput>;
   html?: Maybe<StringQueryOperatorInput>;
   htmlAst?: Maybe<JsonQueryOperatorInput>;
   excerptAst?: Maybe<JsonQueryOperatorInput>;
@@ -6241,6 +6309,7 @@ export type QueryAllDatoCmsSeoMetaTagsArgs = {
 
 
 export type QueryDatoCmsTextNodeArgs = {
+  fields?: Maybe<DatoCmsTextNodeFieldsFilterInput>;
   childrenMarkdownRemark?: Maybe<MarkdownRemarkFilterListInput>;
   childMarkdownRemark?: Maybe<MarkdownRemarkFilterInput>;
   id?: Maybe<StringQueryOperatorInput>;
@@ -6529,6 +6598,7 @@ export type QuerySitePluginArgs = {
   ssrAPIs?: Maybe<StringQueryOperatorInput>;
   pluginFilepath?: Maybe<StringQueryOperatorInput>;
   packageJson?: Maybe<SitePluginPackageJsonFilterInput>;
+  fields?: Maybe<SitePluginFieldsFilterInput>;
 };
 
 
@@ -6546,6 +6616,7 @@ export type QuerySiteBuildMetadataArgs = {
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
   buildTime?: Maybe<DateQueryOperatorInput>;
+  fields?: Maybe<SiteBuildMetadataFieldsFilterInput>;
 };
 
 
@@ -6563,6 +6634,7 @@ export type Site = Node & {
   host: Maybe<Scalars['String']>;
   polyfill: Maybe<Scalars['Boolean']>;
   pathPrefix: Maybe<Scalars['String']>;
+  fields: Maybe<SiteFields>;
   id: Scalars['ID'];
   parent: Maybe<Node>;
   children: Array<Node>;
@@ -6583,6 +6655,7 @@ export type SiteBuildMetadata = Node & {
   children: Array<Node>;
   internal: Internal;
   buildTime: Maybe<Scalars['Date']>;
+  fields: Maybe<SiteBuildMetadataFields>;
 };
 
 
@@ -6636,6 +6709,10 @@ export type SiteBuildMetadataEdge = {
   next: Maybe<SiteBuildMetadata>;
   node: SiteBuildMetadata;
   previous: Maybe<SiteBuildMetadata>;
+};
+
+export type SiteBuildMetadataFields = {
+  customField: Maybe<Scalars['String']>;
 };
 
 export enum SiteBuildMetadataFieldsEnum {
@@ -6725,8 +6802,13 @@ export enum SiteBuildMetadataFieldsEnum {
   InternalMediaType = 'internal___mediaType',
   InternalOwner = 'internal___owner',
   InternalType = 'internal___type',
-  BuildTime = 'buildTime'
+  BuildTime = 'buildTime',
+  FieldsCustomField = 'fields___customField'
 }
+
+export type SiteBuildMetadataFieldsFilterInput = {
+  customField?: Maybe<StringQueryOperatorInput>;
+};
 
 export type SiteBuildMetadataFilterInput = {
   id?: Maybe<StringQueryOperatorInput>;
@@ -6734,6 +6816,7 @@ export type SiteBuildMetadataFilterInput = {
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
   buildTime?: Maybe<DateQueryOperatorInput>;
+  fields?: Maybe<SiteBuildMetadataFieldsFilterInput>;
 };
 
 export type SiteBuildMetadataGroupConnection = {
@@ -6795,6 +6878,10 @@ export type SiteEdge = {
   previous: Maybe<Site>;
 };
 
+export type SiteFields = {
+  customField: Maybe<Scalars['String']>;
+};
+
 export enum SiteFieldsEnum {
   BuildTime = 'buildTime',
   SiteMetadataTitle = 'siteMetadata___title',
@@ -6805,6 +6892,7 @@ export enum SiteFieldsEnum {
   Host = 'host',
   Polyfill = 'polyfill',
   PathPrefix = 'pathPrefix',
+  FieldsCustomField = 'fields___customField',
   Id = 'id',
   ParentId = 'parent___id',
   ParentParentId = 'parent___parent___id',
@@ -6893,6 +6981,10 @@ export enum SiteFieldsEnum {
   InternalType = 'internal___type'
 }
 
+export type SiteFieldsFilterInput = {
+  customField?: Maybe<StringQueryOperatorInput>;
+};
+
 export type SiteFilterInput = {
   buildTime?: Maybe<DateQueryOperatorInput>;
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
@@ -6900,6 +6992,7 @@ export type SiteFilterInput = {
   host?: Maybe<StringQueryOperatorInput>;
   polyfill?: Maybe<BooleanQueryOperatorInput>;
   pathPrefix?: Maybe<StringQueryOperatorInput>;
+  fields?: Maybe<SiteFieldsFilterInput>;
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
@@ -7112,6 +7205,7 @@ export type SitePage = Node & {
   context: Maybe<SitePageContext>;
   pluginCreator: Maybe<SitePlugin>;
   pluginCreatorId: Maybe<Scalars['String']>;
+  fields: Maybe<SitePageFields>;
 };
 
 export type SitePageConnection = {
@@ -7349,6 +7443,10 @@ export type SitePageEdge = {
   previous: Maybe<SitePage>;
 };
 
+export type SitePageFields = {
+  customField: Maybe<Scalars['String']>;
+};
+
 export enum SitePageFieldsEnum {
   Path = 'path',
   Component = 'component',
@@ -7531,8 +7629,14 @@ export enum SitePageFieldsEnum {
   PluginCreatorPackageJsonPeerDependenciesName = 'pluginCreator___packageJson___peerDependencies___name',
   PluginCreatorPackageJsonPeerDependenciesVersion = 'pluginCreator___packageJson___peerDependencies___version',
   PluginCreatorPackageJsonKeywords = 'pluginCreator___packageJson___keywords',
-  PluginCreatorId = 'pluginCreatorId'
+  PluginCreatorFieldsCustomField = 'pluginCreator___fields___customField',
+  PluginCreatorId = 'pluginCreatorId',
+  FieldsCustomField = 'fields___customField'
 }
+
+export type SitePageFieldsFilterInput = {
+  customField?: Maybe<StringQueryOperatorInput>;
+};
 
 export type SitePageFilterInput = {
   path?: Maybe<StringQueryOperatorInput>;
@@ -7548,6 +7652,7 @@ export type SitePageFilterInput = {
   context?: Maybe<SitePageContextFilterInput>;
   pluginCreator?: Maybe<SitePluginFilterInput>;
   pluginCreatorId?: Maybe<StringQueryOperatorInput>;
+  fields?: Maybe<SitePageFieldsFilterInput>;
 };
 
 export type SitePageGroupConnection = {
@@ -7578,6 +7683,7 @@ export type SitePlugin = Node & {
   ssrAPIs: Maybe<Array<Maybe<Scalars['String']>>>;
   pluginFilepath: Maybe<Scalars['String']>;
   packageJson: Maybe<SitePluginPackageJson>;
+  fields: Maybe<SitePluginFields>;
 };
 
 export type SitePluginConnection = {
@@ -7623,6 +7729,10 @@ export type SitePluginEdge = {
   next: Maybe<SitePlugin>;
   node: SitePlugin;
   previous: Maybe<SitePlugin>;
+};
+
+export type SitePluginFields = {
+  customField: Maybe<Scalars['String']>;
 };
 
 export enum SitePluginFieldsEnum {
@@ -7754,8 +7864,13 @@ export enum SitePluginFieldsEnum {
   PackageJsonPeerDependencies = 'packageJson___peerDependencies',
   PackageJsonPeerDependenciesName = 'packageJson___peerDependencies___name',
   PackageJsonPeerDependenciesVersion = 'packageJson___peerDependencies___version',
-  PackageJsonKeywords = 'packageJson___keywords'
+  PackageJsonKeywords = 'packageJson___keywords',
+  FieldsCustomField = 'fields___customField'
 }
+
+export type SitePluginFieldsFilterInput = {
+  customField?: Maybe<StringQueryOperatorInput>;
+};
 
 export type SitePluginFilterInput = {
   id?: Maybe<StringQueryOperatorInput>;
@@ -7771,6 +7886,7 @@ export type SitePluginFilterInput = {
   ssrAPIs?: Maybe<StringQueryOperatorInput>;
   pluginFilepath?: Maybe<StringQueryOperatorInput>;
   packageJson?: Maybe<SitePluginPackageJsonFilterInput>;
+  fields?: Maybe<SitePluginFieldsFilterInput>;
 };
 
 export type SitePluginGroupConnection = {
@@ -7974,17 +8090,23 @@ export type WebPOptions = {
 export type GetArticlesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetArticlesQuery = { allDatoCmsArticle: { nodes: Array<(
-      Pick<DatoCmsArticle, 'originalId' | 'title' | 'excerpt'>
-      & { meta: Maybe<Pick<DatoCmsMetaField, 'firstPublishedAt'>>, featuredImage: Maybe<Pick<DatoCmsFileField, 'gatsbyImageData'>>, body: Maybe<(
-        Pick<DatoCmsDatoCmsArticleBodyStructuredText, 'value'>
-        & { blocks: Maybe<Array<Maybe<(
-          { __typename: 'DatoCmsImage' }
-          & { id: DatoCmsImage['originalId'] }
-          & { image: Maybe<Pick<DatoCmsFileField, 'url' | 'alt'>> }
-        )>>> }
-      )> }
-    )> } };
+export type GetArticlesQuery = { allDatoCmsArticle: { edges: Array<{ next: Maybe<(
+        Pick<DatoCmsArticle, 'title' | 'originalId'>
+        & { featuredImage: Maybe<Pick<DatoCmsFileField, 'gatsbyImageData'>>, meta: Maybe<Pick<DatoCmsMetaField, 'firstPublishedAt'>> }
+      )>, node: (
+        Pick<DatoCmsArticle, 'originalId' | 'title' | 'excerpt'>
+        & { meta: Maybe<Pick<DatoCmsMetaField, 'firstPublishedAt'>>, featuredImage: Maybe<Pick<DatoCmsFileField, 'gatsbyImageData'>>, body: Maybe<(
+          Pick<DatoCmsDatoCmsArticleBodyStructuredText, 'value'>
+          & { blocks: Maybe<Array<Maybe<(
+            { __typename: 'DatoCmsImage' }
+            & { id: DatoCmsImage['originalId'] }
+            & { image: Maybe<Pick<DatoCmsFileField, 'url' | 'alt'>> }
+          )>>> }
+        )> }
+      ), previous: Maybe<(
+        Pick<DatoCmsArticle, 'title' | 'originalId'>
+        & { featuredImage: Maybe<Pick<DatoCmsFileField, 'gatsbyImageData'>>, meta: Maybe<Pick<DatoCmsMetaField, 'firstPublishedAt'>> }
+      )> }> } };
 
 export type ArticleItemFieldsFragment = (
   Pick<DatoCmsArticle, 'originalId' | 'title' | 'excerpt'>
@@ -8031,14 +8153,20 @@ export type GetArticleListQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type GetArticleListQuery = { allDatoCmsArticle: { nodes: Array<ArticleItemFieldsFragment> } };
 
-export type ArticleFieldsFragment = (
-  Pick<DatoCmsArticle, 'originalId' | 'title' | 'excerpt'>
-  & { meta: Maybe<Pick<DatoCmsMetaField, 'firstPublishedAt'>>, featuredImage: Maybe<Pick<DatoCmsFileField, 'gatsbyImageData'>>, body: Maybe<(
-    Pick<DatoCmsDatoCmsArticleBodyStructuredText, 'value'>
-    & { blocks: Maybe<Array<Maybe<(
-      { __typename: 'DatoCmsImage' }
-      & { id: DatoCmsImage['originalId'] }
-      & { image: Maybe<Pick<DatoCmsFileField, 'url' | 'alt'>> }
-    )>>> }
-  )> }
-);
+export type ArticleFieldsFragment = { next: Maybe<(
+    Pick<DatoCmsArticle, 'title' | 'originalId'>
+    & { featuredImage: Maybe<Pick<DatoCmsFileField, 'gatsbyImageData'>>, meta: Maybe<Pick<DatoCmsMetaField, 'firstPublishedAt'>> }
+  )>, node: (
+    Pick<DatoCmsArticle, 'originalId' | 'title' | 'excerpt'>
+    & { meta: Maybe<Pick<DatoCmsMetaField, 'firstPublishedAt'>>, featuredImage: Maybe<Pick<DatoCmsFileField, 'gatsbyImageData'>>, body: Maybe<(
+      Pick<DatoCmsDatoCmsArticleBodyStructuredText, 'value'>
+      & { blocks: Maybe<Array<Maybe<(
+        { __typename: 'DatoCmsImage' }
+        & { id: DatoCmsImage['originalId'] }
+        & { image: Maybe<Pick<DatoCmsFileField, 'url' | 'alt'>> }
+      )>>> }
+    )> }
+  ), previous: Maybe<(
+    Pick<DatoCmsArticle, 'title' | 'originalId'>
+    & { featuredImage: Maybe<Pick<DatoCmsFileField, 'gatsbyImageData'>>, meta: Maybe<Pick<DatoCmsMetaField, 'firstPublishedAt'>> }
+  )> };

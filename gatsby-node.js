@@ -12,45 +12,58 @@ exports.onCreateBabelConfig = ({ actions }) => {
 };
 
 exports.createPages = async ({ actions, graphql }) => {
-  const { createPage } = actions;
   const { data } = await graphql(`
-    query GetArticles {
-      allDatoCmsArticle {
-        nodes {
-          meta {
-            firstPublishedAt(formatString: "YYYY.MM.DD")
+    query {
+      allDatoCmsArticle(
+        sort: { fields: meta___firstPublishedAt, order: DESC }
+      ) {
+        edges {
+          next {
+            originalId
+            title
           }
-          originalId
-          title
-          excerpt
-          featuredImage {
-            gatsbyImageData
-          }
-          body {
-            value
-            blocks {
-              ... on DatoCmsImage {
-                __typename
-                id: originalId
-                image {
-                  url
-                  alt
+          node {
+            meta {
+              firstPublishedAt(formatString: "YYYY.MM.DD")
+            }
+            originalId
+            title
+            excerpt
+            featuredImage {
+              gatsbyImageData
+            }
+            body {
+              value
+              blocks {
+                ... on DatoCmsImage {
+                  __typename
+                  id: originalId
+                  image {
+                    url
+                    alt
+                  }
                 }
               }
             }
+          }
+          previous {
+            originalId
+            title
           }
         }
       }
     }
   `);
 
-  data.allDatoCmsArticle.nodes.forEach((node) => {
-    const article = node;
+  const { createPage } = actions;
+
+  data.allDatoCmsArticle.edges.forEach((edge) => {
+    const { node } = edge;
 
     createPage({
-      path: `/news/${article.originalId}`,
+      path: `/news/${node.originalId}`,
       component: path.resolve('./src/templates/ArticleTemplate.tsx'),
-      context: node,
+      context: edge,
     });
   });
 };
