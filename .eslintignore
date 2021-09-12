@@ -1,2 +1,4 @@
-public
-src/types/generated
+site/.cache
+site/public
+site/src/types/generated
+lambda/build
