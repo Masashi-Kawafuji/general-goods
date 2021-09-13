@@ -2,6 +2,7 @@ module.exports = {
   env: {
     browser: true,
     es2020: true,
+    node: true,
   },
   parser: '@typescript-eslint/parser',
   extends: [
@@ -18,6 +19,7 @@ module.exports = {
     'prettier/prettier': 'error',
     quotes: 'off',
     '@typescript-eslint/quotes': ['error', 'single'],
+    'react/react-in-jsx-scope': 'off',
     'react/jsx-filename-extension': ['error', { extensions: ['.tsx'] }],
     'react/prop-types': ['off'],
     'react/no-danger': ['off'],
