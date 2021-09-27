@@ -91,8 +91,10 @@ const ArticleTemplate: FC<ArticlePageProps> = ({
           />
         </div>
         <div className="flex py-6 mb-10 border-t border-b border-gray-400">
-          <ArticleNavigation direction="prev" article={previous} />
-          <ArticleNavigation direction="next" article={next} />
+          {previous && (
+            <ArticleNavigation direction="prev" article={previous} />
+          )}
+          {next && <ArticleNavigation direction="next" article={next} />}
         </div>
       </Container>
     </Layout>
