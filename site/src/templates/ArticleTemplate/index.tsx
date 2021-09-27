@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { graphql, PageProps } from 'gatsby';
+import { graphql, PageProps, Link } from 'gatsby';
 import { getImage, GatsbyImage } from 'gatsby-plugin-image';
 import Layout from 'layout/Layout';
 import Head from 'components/Head';
@@ -7,12 +7,15 @@ import Container from 'components/Container';
 import { StructuredText } from 'react-datocms';
 import { ArticleFieldsFragment } from 'types/generated/graphql';
 import Divider from 'components/Divider';
+import ArticleNavigation from './ArticleNavigation';
 
 export const ARTICLE_FIELDS = graphql`
   fragment ArticleFields on DatoCmsArticleEdge {
+    previous {
+      ...ArticleNavigationFields
+    }
     next {
-      originalId
-      title
+      ...ArticleNavigationFields
     }
     node {
       meta {
@@ -37,10 +40,6 @@ export const ARTICLE_FIELDS = graphql`
           }
         }
       }
-    }
-    previous {
-      originalId
-      title
     }
   }
 `;
@@ -67,11 +66,10 @@ const ArticleTemplate: FC<ArticlePageProps> = ({
             {node.title}
           </h1>
           <p className="text-xs sm:text-sm text-darken">
-            {node.meta?.firstPublishedAt}
+            {node.meta.firstPublishedAt}
           </p>
         </div>
-        {/* <hr className="my-4 sm:my-6 border-gray-400" /> */}
-        <Divider />
+        <Divider className="my-8" />
         {image && (
           <GatsbyImage
             image={image}
@@ -79,7 +77,7 @@ const ArticleTemplate: FC<ArticlePageProps> = ({
             className="mb-4 sm:mb-6"
           />
         )}
-        <div className="prose prose-sm sm:prose min-w-full">
+        <div className="mb-32 prose prose-sm sm:prose min-w-full">
           <StructuredText
             data={node.body}
             renderBlock={({ record }) => {
@@ -91,6 +89,10 @@ const ArticleTemplate: FC<ArticlePageProps> = ({
               }
             }}
           />
+        </div>
+        <div className="flex py-6 mb-10 border-t border-b border-gray-400">
+          <ArticleNavigation direction="prev" article={previous} />
+          <ArticleNavigation direction="next" article={next} />
         </div>
       </Container>
     </Layout>

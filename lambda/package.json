@@ -4,10 +4,7 @@
   "main": "build/index.js",
   "license": "MIT",
   "scripts": {
-    "send-mail": "node build/index.js",
-    "build": "tsc",
-    "lint": "eslint --ext .ts src/",
-    "format": "eslint --ext .ts --fix src/"
+    "build": "tsc"
   },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.75",

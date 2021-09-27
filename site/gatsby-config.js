@@ -9,7 +9,7 @@ module.exports = {
     twitterUserName: '@_General_Goods_',
   },
   plugins: [
-    'gatsby-plugin-resolve-src',
+    'gatsby-plugin-root-import',
     'gatsby-plugin-image',
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',

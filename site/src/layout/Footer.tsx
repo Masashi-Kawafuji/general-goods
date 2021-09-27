@@ -6,7 +6,7 @@ const Footer: FC = () => {
 
   return (
     <footer className="mb-11 text-gray-400 text-center">
-      <Divider />
+      <Divider className="my-11" />
       <small>
         &copy; Copyright {year} - General Goods. All rights reserved.
       </small>

@@ -18,6 +18,9 @@ exports.createPages = async ({ actions, graphql }) => {
         sort: { fields: meta___firstPublishedAt, order: DESC }
       ) {
         edges {
+          previous {
+            ...ArticleNavigationFields
+          }
           next {
             originalId
             title
@@ -46,10 +49,6 @@ exports.createPages = async ({ actions, graphql }) => {
               }
             }
           }
-          previous {
-            originalId
-            title
-          }
         }
       }
     }
@@ -62,7 +61,7 @@ exports.createPages = async ({ actions, graphql }) => {
 
     createPage({
       path: `/news/${node.originalId}`,
-      component: path.resolve('./src/templates/ArticleTemplate.tsx'),
+      component: path.resolve('./src/templates/ArticleTemplate/index.tsx'),
       context: edge,
     });
   });
