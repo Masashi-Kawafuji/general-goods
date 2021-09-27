@@ -21,7 +21,7 @@ jobs:
           DATOCMS_ACCESS_TOKEN: ${{ secrets.DATOCMS_ACCESS_TOKEN }}
           LAMBDA_FUNCTION_URL: ${{ secrets.LAMBDA_FUNCTION_URL }}
           GOOGLE_ANALYTICS_TRACKING_ID: ${{ secrets.GOOGLE_ANALYTICS_TRACKING_ID }}
-        run: yarn build
+        run: yarn workspace site build
       - name: Upload Files to S3
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
