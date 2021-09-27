@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { graphql, PageProps, Link } from 'gatsby';
+import { graphql, PageProps } from 'gatsby';
 import { getImage, GatsbyImage } from 'gatsby-plugin-image';
 import Layout from 'layout/Layout';
 import Head from 'components/Head';

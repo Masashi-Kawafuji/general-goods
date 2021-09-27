@@ -19,7 +19,8 @@ exports.createPages = async ({ actions, graphql }) => {
       ) {
         edges {
           previous {
-            ...ArticleNavigationFields
+            originalId
+            title
           }
           next {
             originalId
