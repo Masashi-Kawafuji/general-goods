@@ -47,6 +47,13 @@ exports.createPages = async ({ actions, graphql }) => {
                     alt
                   }
                 }
+                ... on DatoCmsExternalvideo {
+                  __typename
+                  id: originalId
+                  externalVideo {
+                    providerUid
+                  }
+                }
               }
             }
           }

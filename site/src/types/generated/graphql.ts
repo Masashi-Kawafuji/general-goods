@@ -495,70 +495,6 @@ export type DatoCmsArticleEdge = {
 };
 
 export enum DatoCmsArticleFieldsEnum {
-  BodyBlocks = 'body___blocks',
-  BodyBlocksChildren = 'body___blocks___children',
-  BodyBlocksChildrenChildren = 'body___blocks___children___children',
-  BodyBlocksChildrenId = 'body___blocks___children___id',
-  BodyBlocksId = 'body___blocks___id',
-  BodyBlocksImageAlt = 'body___blocks___image___alt',
-  BodyBlocksImageAuthor = 'body___blocks___image___author',
-  BodyBlocksImageBasename = 'body___blocks___image___basename',
-  BodyBlocksImageBlurhash = 'body___blocks___image___blurhash',
-  BodyBlocksImageColors = 'body___blocks___image___colors',
-  BodyBlocksImageCopyright = 'body___blocks___image___copyright',
-  BodyBlocksImageCreatedAt = 'body___blocks___image___createdAt',
-  BodyBlocksImageCustomData = 'body___blocks___image___customData',
-  BodyBlocksImageExifInfo = 'body___blocks___image___exifInfo',
-  BodyBlocksImageFilename = 'body___blocks___image___filename',
-  BodyBlocksImageFormat = 'body___blocks___image___format',
-  BodyBlocksImageGatsbyImageData = 'body___blocks___image___gatsbyImageData',
-  BodyBlocksImageHeight = 'body___blocks___image___height',
-  BodyBlocksImageIsImage = 'body___blocks___image___isImage',
-  BodyBlocksImageMimeType = 'body___blocks___image___mimeType',
-  BodyBlocksImageNotes = 'body___blocks___image___notes',
-  BodyBlocksImageOriginalId = 'body___blocks___image___originalId',
-  BodyBlocksImagePath = 'body___blocks___image___path',
-  BodyBlocksImageSize = 'body___blocks___image___size',
-  BodyBlocksImageSmartTags = 'body___blocks___image___smartTags',
-  BodyBlocksImageTags = 'body___blocks___image___tags',
-  BodyBlocksImageTitle = 'body___blocks___image___title',
-  BodyBlocksImageUrl = 'body___blocks___image___url',
-  BodyBlocksImageWidth = 'body___blocks___image___width',
-  BodyBlocksInternalContent = 'body___blocks___internal___content',
-  BodyBlocksInternalContentDigest = 'body___blocks___internal___contentDigest',
-  BodyBlocksInternalDescription = 'body___blocks___internal___description',
-  BodyBlocksInternalFieldOwners = 'body___blocks___internal___fieldOwners',
-  BodyBlocksInternalIgnoreType = 'body___blocks___internal___ignoreType',
-  BodyBlocksInternalMediaType = 'body___blocks___internal___mediaType',
-  BodyBlocksInternalOwner = 'body___blocks___internal___owner',
-  BodyBlocksInternalType = 'body___blocks___internal___type',
-  BodyBlocksLocale = 'body___blocks___locale',
-  BodyBlocksMetaCreatedAt = 'body___blocks___meta___createdAt',
-  BodyBlocksMetaFirstPublishedAt = 'body___blocks___meta___firstPublishedAt',
-  BodyBlocksMetaIsValid = 'body___blocks___meta___isValid',
-  BodyBlocksMetaPublishedAt = 'body___blocks___meta___publishedAt',
-  BodyBlocksMetaStatus = 'body___blocks___meta___status',
-  BodyBlocksMetaUpdatedAt = 'body___blocks___meta___updatedAt',
-  BodyBlocksModelAllLocalesRequired = 'body___blocks___model___allLocalesRequired',
-  BodyBlocksModelApiKey = 'body___blocks___model___apiKey',
-  BodyBlocksModelChildren = 'body___blocks___model___children',
-  BodyBlocksModelCollectionAppeareance = 'body___blocks___model___collectionAppeareance',
-  BodyBlocksModelDraftModeActive = 'body___blocks___model___draftModeActive',
-  BodyBlocksModelHasSingletonItem = 'body___blocks___model___hasSingletonItem',
-  BodyBlocksModelId = 'body___blocks___model___id',
-  BodyBlocksModelModularBlock = 'body___blocks___model___modularBlock',
-  BodyBlocksModelName = 'body___blocks___model___name',
-  BodyBlocksModelOrderingDirection = 'body___blocks___model___orderingDirection',
-  BodyBlocksModelOriginalId = 'body___blocks___model___originalId',
-  BodyBlocksModelSingleton = 'body___blocks___model___singleton',
-  BodyBlocksModelSortable = 'body___blocks___model___sortable',
-  BodyBlocksModelTree = 'body___blocks___model___tree',
-  BodyBlocksOriginalId = 'body___blocks___originalId',
-  BodyBlocksParentChildren = 'body___blocks___parent___children',
-  BodyBlocksParentId = 'body___blocks___parent___id',
-  BodyBlocksSeoMetaTagsChildren = 'body___blocks___seoMetaTags___children',
-  BodyBlocksSeoMetaTagsId = 'body___blocks___seoMetaTags___id',
-  BodyBlocksSeoMetaTagsTags = 'body___blocks___seoMetaTags___tags',
   BodyLinks = 'body___links',
   BodyValue = 'body___value',
   Carousel = 'carousel',
@@ -1270,15 +1206,309 @@ export type DatoCmsColorFieldFilterListInput = {
 };
 
 export type DatoCmsDatoCmsArticleBodyStructuredText = {
-  blocks: Maybe<Array<Maybe<DatoCmsImage>>>;
+  blocks: Maybe<Array<Maybe<DatoCmsDatoCmsArticleBodyStructuredTextBlocks>>>;
   links: Maybe<Array<Maybe<Scalars['String']>>>;
   value: Maybe<Scalars['JSON']>;
 };
 
+export type DatoCmsDatoCmsArticleBodyStructuredTextBlocks = DatoCmsExternalvideo | DatoCmsImage;
+
 export type DatoCmsDatoCmsArticleBodyStructuredTextFilterInput = {
-  blocks?: Maybe<DatoCmsImageFilterListInput>;
   links?: Maybe<StringQueryOperatorInput>;
   value?: Maybe<JsonQueryOperatorInput>;
+};
+
+export type DatoCmsExternalvideo = Node & {
+  children: Array<Node>;
+  externalVideo: Maybe<DatoCmsVideoField>;
+  id: Scalars['ID'];
+  internal: Internal;
+  locale: Maybe<Scalars['String']>;
+  meta: Maybe<DatoCmsMetaField>;
+  model: Maybe<DatoCmsModel>;
+  originalId: Maybe<Scalars['String']>;
+  parent: Maybe<Node>;
+  seoMetaTags: Maybe<DatoCmsSeoMetaTags>;
+};
+
+export type DatoCmsExternalvideoConnection = {
+  distinct: Array<Scalars['String']>;
+  edges: Array<DatoCmsExternalvideoEdge>;
+  group: Array<DatoCmsExternalvideoGroupConnection>;
+  max: Maybe<Scalars['Float']>;
+  min: Maybe<Scalars['Float']>;
+  nodes: Array<DatoCmsExternalvideo>;
+  pageInfo: PageInfo;
+  sum: Maybe<Scalars['Float']>;
+  totalCount: Scalars['Int'];
+};
+
+
+export type DatoCmsExternalvideoConnectionDistinctArgs = {
+  field: DatoCmsExternalvideoFieldsEnum;
+};
+
+
+export type DatoCmsExternalvideoConnectionGroupArgs = {
+  field: DatoCmsExternalvideoFieldsEnum;
+  limit?: Maybe<Scalars['Int']>;
+  skip?: Maybe<Scalars['Int']>;
+};
+
+
+export type DatoCmsExternalvideoConnectionMaxArgs = {
+  field: DatoCmsExternalvideoFieldsEnum;
+};
+
+
+export type DatoCmsExternalvideoConnectionMinArgs = {
+  field: DatoCmsExternalvideoFieldsEnum;
+};
+
+
+export type DatoCmsExternalvideoConnectionSumArgs = {
+  field: DatoCmsExternalvideoFieldsEnum;
+};
+
+export type DatoCmsExternalvideoEdge = {
+  next: Maybe<DatoCmsExternalvideo>;
+  node: DatoCmsExternalvideo;
+  previous: Maybe<DatoCmsExternalvideo>;
+};
+
+export enum DatoCmsExternalvideoFieldsEnum {
+  Children = 'children',
+  ChildrenChildren = 'children___children',
+  ChildrenChildrenChildren = 'children___children___children',
+  ChildrenChildrenChildrenChildren = 'children___children___children___children',
+  ChildrenChildrenChildrenId = 'children___children___children___id',
+  ChildrenChildrenId = 'children___children___id',
+  ChildrenChildrenInternalContent = 'children___children___internal___content',
+  ChildrenChildrenInternalContentDigest = 'children___children___internal___contentDigest',
+  ChildrenChildrenInternalDescription = 'children___children___internal___description',
+  ChildrenChildrenInternalFieldOwners = 'children___children___internal___fieldOwners',
+  ChildrenChildrenInternalIgnoreType = 'children___children___internal___ignoreType',
+  ChildrenChildrenInternalMediaType = 'children___children___internal___mediaType',
+  ChildrenChildrenInternalOwner = 'children___children___internal___owner',
+  ChildrenChildrenInternalType = 'children___children___internal___type',
+  ChildrenChildrenParentChildren = 'children___children___parent___children',
+  ChildrenChildrenParentId = 'children___children___parent___id',
+  ChildrenId = 'children___id',
+  ChildrenInternalContent = 'children___internal___content',
+  ChildrenInternalContentDigest = 'children___internal___contentDigest',
+  ChildrenInternalDescription = 'children___internal___description',
+  ChildrenInternalFieldOwners = 'children___internal___fieldOwners',
+  ChildrenInternalIgnoreType = 'children___internal___ignoreType',
+  ChildrenInternalMediaType = 'children___internal___mediaType',
+  ChildrenInternalOwner = 'children___internal___owner',
+  ChildrenInternalType = 'children___internal___type',
+  ChildrenParentChildren = 'children___parent___children',
+  ChildrenParentChildrenChildren = 'children___parent___children___children',
+  ChildrenParentChildrenId = 'children___parent___children___id',
+  ChildrenParentId = 'children___parent___id',
+  ChildrenParentInternalContent = 'children___parent___internal___content',
+  ChildrenParentInternalContentDigest = 'children___parent___internal___contentDigest',
+  ChildrenParentInternalDescription = 'children___parent___internal___description',
+  ChildrenParentInternalFieldOwners = 'children___parent___internal___fieldOwners',
+  ChildrenParentInternalIgnoreType = 'children___parent___internal___ignoreType',
+  ChildrenParentInternalMediaType = 'children___parent___internal___mediaType',
+  ChildrenParentInternalOwner = 'children___parent___internal___owner',
+  ChildrenParentInternalType = 'children___parent___internal___type',
+  ChildrenParentParentChildren = 'children___parent___parent___children',
+  ChildrenParentParentId = 'children___parent___parent___id',
+  ExternalVideoHeight = 'externalVideo___height',
+  ExternalVideoProvider = 'externalVideo___provider',
+  ExternalVideoProviderUid = 'externalVideo___providerUid',
+  ExternalVideoThumbnailUrl = 'externalVideo___thumbnailUrl',
+  ExternalVideoTitle = 'externalVideo___title',
+  ExternalVideoUrl = 'externalVideo___url',
+  ExternalVideoWidth = 'externalVideo___width',
+  Id = 'id',
+  InternalContent = 'internal___content',
+  InternalContentDigest = 'internal___contentDigest',
+  InternalDescription = 'internal___description',
+  InternalFieldOwners = 'internal___fieldOwners',
+  InternalIgnoreType = 'internal___ignoreType',
+  InternalMediaType = 'internal___mediaType',
+  InternalOwner = 'internal___owner',
+  InternalType = 'internal___type',
+  Locale = 'locale',
+  MetaCreatedAt = 'meta___createdAt',
+  MetaFirstPublishedAt = 'meta___firstPublishedAt',
+  MetaIsValid = 'meta___isValid',
+  MetaPublishedAt = 'meta___publishedAt',
+  MetaStatus = 'meta___status',
+  MetaUpdatedAt = 'meta___updatedAt',
+  ModelAllLocalesRequired = 'model___allLocalesRequired',
+  ModelApiKey = 'model___apiKey',
+  ModelChildren = 'model___children',
+  ModelChildrenChildren = 'model___children___children',
+  ModelChildrenChildrenChildren = 'model___children___children___children',
+  ModelChildrenChildrenId = 'model___children___children___id',
+  ModelChildrenId = 'model___children___id',
+  ModelChildrenInternalContent = 'model___children___internal___content',
+  ModelChildrenInternalContentDigest = 'model___children___internal___contentDigest',
+  ModelChildrenInternalDescription = 'model___children___internal___description',
+  ModelChildrenInternalFieldOwners = 'model___children___internal___fieldOwners',
+  ModelChildrenInternalIgnoreType = 'model___children___internal___ignoreType',
+  ModelChildrenInternalMediaType = 'model___children___internal___mediaType',
+  ModelChildrenInternalOwner = 'model___children___internal___owner',
+  ModelChildrenInternalType = 'model___children___internal___type',
+  ModelChildrenParentChildren = 'model___children___parent___children',
+  ModelChildrenParentId = 'model___children___parent___id',
+  ModelCollectionAppeareance = 'model___collectionAppeareance',
+  ModelDraftModeActive = 'model___draftModeActive',
+  ModelFieldsChildren = 'model___fields___children',
+  ModelFieldsChildrenChildren = 'model___fields___children___children',
+  ModelFieldsChildrenId = 'model___fields___children___id',
+  ModelFieldsId = 'model___fields___id',
+  ModelFieldsInternalContent = 'model___fields___internal___content',
+  ModelFieldsInternalContentDigest = 'model___fields___internal___contentDigest',
+  ModelFieldsInternalDescription = 'model___fields___internal___description',
+  ModelFieldsInternalFieldOwners = 'model___fields___internal___fieldOwners',
+  ModelFieldsInternalIgnoreType = 'model___fields___internal___ignoreType',
+  ModelFieldsInternalMediaType = 'model___fields___internal___mediaType',
+  ModelFieldsInternalOwner = 'model___fields___internal___owner',
+  ModelFieldsInternalType = 'model___fields___internal___type',
+  ModelFieldsParentChildren = 'model___fields___parent___children',
+  ModelFieldsParentId = 'model___fields___parent___id',
+  ModelFieldsTags = 'model___fields___tags',
+  ModelHasSingletonItem = 'model___hasSingletonItem',
+  ModelId = 'model___id',
+  ModelInternalContent = 'model___internal___content',
+  ModelInternalContentDigest = 'model___internal___contentDigest',
+  ModelInternalDescription = 'model___internal___description',
+  ModelInternalFieldOwners = 'model___internal___fieldOwners',
+  ModelInternalIgnoreType = 'model___internal___ignoreType',
+  ModelInternalMediaType = 'model___internal___mediaType',
+  ModelInternalOwner = 'model___internal___owner',
+  ModelInternalType = 'model___internal___type',
+  ModelModularBlock = 'model___modularBlock',
+  ModelName = 'model___name',
+  ModelOrderingDirection = 'model___orderingDirection',
+  ModelOriginalId = 'model___originalId',
+  ModelParentChildren = 'model___parent___children',
+  ModelParentChildrenChildren = 'model___parent___children___children',
+  ModelParentChildrenId = 'model___parent___children___id',
+  ModelParentId = 'model___parent___id',
+  ModelParentInternalContent = 'model___parent___internal___content',
+  ModelParentInternalContentDigest = 'model___parent___internal___contentDigest',
+  ModelParentInternalDescription = 'model___parent___internal___description',
+  ModelParentInternalFieldOwners = 'model___parent___internal___fieldOwners',
+  ModelParentInternalIgnoreType = 'model___parent___internal___ignoreType',
+  ModelParentInternalMediaType = 'model___parent___internal___mediaType',
+  ModelParentInternalOwner = 'model___parent___internal___owner',
+  ModelParentInternalType = 'model___parent___internal___type',
+  ModelParentParentChildren = 'model___parent___parent___children',
+  ModelParentParentId = 'model___parent___parent___id',
+  ModelSingleton = 'model___singleton',
+  ModelSortable = 'model___sortable',
+  ModelTree = 'model___tree',
+  OriginalId = 'originalId',
+  ParentChildren = 'parent___children',
+  ParentChildrenChildren = 'parent___children___children',
+  ParentChildrenChildrenChildren = 'parent___children___children___children',
+  ParentChildrenChildrenId = 'parent___children___children___id',
+  ParentChildrenId = 'parent___children___id',
+  ParentChildrenInternalContent = 'parent___children___internal___content',
+  ParentChildrenInternalContentDigest = 'parent___children___internal___contentDigest',
+  ParentChildrenInternalDescription = 'parent___children___internal___description',
+  ParentChildrenInternalFieldOwners = 'parent___children___internal___fieldOwners',
+  ParentChildrenInternalIgnoreType = 'parent___children___internal___ignoreType',
+  ParentChildrenInternalMediaType = 'parent___children___internal___mediaType',
+  ParentChildrenInternalOwner = 'parent___children___internal___owner',
+  ParentChildrenInternalType = 'parent___children___internal___type',
+  ParentChildrenParentChildren = 'parent___children___parent___children',
+  ParentChildrenParentId = 'parent___children___parent___id',
+  ParentId = 'parent___id',
+  ParentInternalContent = 'parent___internal___content',
+  ParentInternalContentDigest = 'parent___internal___contentDigest',
+  ParentInternalDescription = 'parent___internal___description',
+  ParentInternalFieldOwners = 'parent___internal___fieldOwners',
+  ParentInternalIgnoreType = 'parent___internal___ignoreType',
+  ParentInternalMediaType = 'parent___internal___mediaType',
+  ParentInternalOwner = 'parent___internal___owner',
+  ParentInternalType = 'parent___internal___type',
+  ParentParentChildren = 'parent___parent___children',
+  ParentParentChildrenChildren = 'parent___parent___children___children',
+  ParentParentChildrenId = 'parent___parent___children___id',
+  ParentParentId = 'parent___parent___id',
+  ParentParentInternalContent = 'parent___parent___internal___content',
+  ParentParentInternalContentDigest = 'parent___parent___internal___contentDigest',
+  ParentParentInternalDescription = 'parent___parent___internal___description',
+  ParentParentInternalFieldOwners = 'parent___parent___internal___fieldOwners',
+  ParentParentInternalIgnoreType = 'parent___parent___internal___ignoreType',
+  ParentParentInternalMediaType = 'parent___parent___internal___mediaType',
+  ParentParentInternalOwner = 'parent___parent___internal___owner',
+  ParentParentInternalType = 'parent___parent___internal___type',
+  ParentParentParentChildren = 'parent___parent___parent___children',
+  ParentParentParentId = 'parent___parent___parent___id',
+  SeoMetaTagsChildren = 'seoMetaTags___children',
+  SeoMetaTagsChildrenChildren = 'seoMetaTags___children___children',
+  SeoMetaTagsChildrenChildrenChildren = 'seoMetaTags___children___children___children',
+  SeoMetaTagsChildrenChildrenId = 'seoMetaTags___children___children___id',
+  SeoMetaTagsChildrenId = 'seoMetaTags___children___id',
+  SeoMetaTagsChildrenInternalContent = 'seoMetaTags___children___internal___content',
+  SeoMetaTagsChildrenInternalContentDigest = 'seoMetaTags___children___internal___contentDigest',
+  SeoMetaTagsChildrenInternalDescription = 'seoMetaTags___children___internal___description',
+  SeoMetaTagsChildrenInternalFieldOwners = 'seoMetaTags___children___internal___fieldOwners',
+  SeoMetaTagsChildrenInternalIgnoreType = 'seoMetaTags___children___internal___ignoreType',
+  SeoMetaTagsChildrenInternalMediaType = 'seoMetaTags___children___internal___mediaType',
+  SeoMetaTagsChildrenInternalOwner = 'seoMetaTags___children___internal___owner',
+  SeoMetaTagsChildrenInternalType = 'seoMetaTags___children___internal___type',
+  SeoMetaTagsChildrenParentChildren = 'seoMetaTags___children___parent___children',
+  SeoMetaTagsChildrenParentId = 'seoMetaTags___children___parent___id',
+  SeoMetaTagsId = 'seoMetaTags___id',
+  SeoMetaTagsInternalContent = 'seoMetaTags___internal___content',
+  SeoMetaTagsInternalContentDigest = 'seoMetaTags___internal___contentDigest',
+  SeoMetaTagsInternalDescription = 'seoMetaTags___internal___description',
+  SeoMetaTagsInternalFieldOwners = 'seoMetaTags___internal___fieldOwners',
+  SeoMetaTagsInternalIgnoreType = 'seoMetaTags___internal___ignoreType',
+  SeoMetaTagsInternalMediaType = 'seoMetaTags___internal___mediaType',
+  SeoMetaTagsInternalOwner = 'seoMetaTags___internal___owner',
+  SeoMetaTagsInternalType = 'seoMetaTags___internal___type',
+  SeoMetaTagsParentChildren = 'seoMetaTags___parent___children',
+  SeoMetaTagsParentChildrenChildren = 'seoMetaTags___parent___children___children',
+  SeoMetaTagsParentChildrenId = 'seoMetaTags___parent___children___id',
+  SeoMetaTagsParentId = 'seoMetaTags___parent___id',
+  SeoMetaTagsParentInternalContent = 'seoMetaTags___parent___internal___content',
+  SeoMetaTagsParentInternalContentDigest = 'seoMetaTags___parent___internal___contentDigest',
+  SeoMetaTagsParentInternalDescription = 'seoMetaTags___parent___internal___description',
+  SeoMetaTagsParentInternalFieldOwners = 'seoMetaTags___parent___internal___fieldOwners',
+  SeoMetaTagsParentInternalIgnoreType = 'seoMetaTags___parent___internal___ignoreType',
+  SeoMetaTagsParentInternalMediaType = 'seoMetaTags___parent___internal___mediaType',
+  SeoMetaTagsParentInternalOwner = 'seoMetaTags___parent___internal___owner',
+  SeoMetaTagsParentInternalType = 'seoMetaTags___parent___internal___type',
+  SeoMetaTagsParentParentChildren = 'seoMetaTags___parent___parent___children',
+  SeoMetaTagsParentParentId = 'seoMetaTags___parent___parent___id',
+  SeoMetaTagsTags = 'seoMetaTags___tags'
+}
+
+export type DatoCmsExternalvideoFilterInput = {
+  children?: Maybe<NodeFilterListInput>;
+  externalVideo?: Maybe<DatoCmsVideoFieldFilterInput>;
+  id?: Maybe<StringQueryOperatorInput>;
+  internal?: Maybe<InternalFilterInput>;
+  locale?: Maybe<StringQueryOperatorInput>;
+  meta?: Maybe<DatoCmsMetaFieldFilterInput>;
+  model?: Maybe<DatoCmsModelFilterInput>;
+  originalId?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  seoMetaTags?: Maybe<DatoCmsSeoMetaTagsFilterInput>;
+};
+
+export type DatoCmsExternalvideoGroupConnection = {
+  edges: Array<DatoCmsExternalvideoEdge>;
+  field: Scalars['String'];
+  fieldValue: Maybe<Scalars['String']>;
+  nodes: Array<DatoCmsExternalvideo>;
+  pageInfo: PageInfo;
+  totalCount: Scalars['Int'];
+};
+
+export type DatoCmsExternalvideoSortInput = {
+  fields?: Maybe<Array<Maybe<DatoCmsExternalvideoFieldsEnum>>>;
+  order?: Maybe<Array<Maybe<SortOrderEnum>>>;
 };
 
 export type DatoCmsFaviconMetaTags = Node & {
@@ -2175,10 +2405,6 @@ export type DatoCmsImageFilterInput = {
   seoMetaTags?: Maybe<DatoCmsSeoMetaTagsFilterInput>;
 };
 
-export type DatoCmsImageFilterListInput = {
-  elemMatch?: Maybe<DatoCmsImageFilterInput>;
-};
-
 export type DatoCmsImageGroupConnection = {
   edges: Array<DatoCmsImageEdge>;
   field: Scalars['String'];
@@ -2814,11 +3040,6 @@ export type DatoCmsScheduleEdge = {
 };
 
 export enum DatoCmsScheduleFieldsEnum {
-  ArticleBodyBlocks = 'article___body___blocks',
-  ArticleBodyBlocksChildren = 'article___body___blocks___children',
-  ArticleBodyBlocksId = 'article___body___blocks___id',
-  ArticleBodyBlocksLocale = 'article___body___blocks___locale',
-  ArticleBodyBlocksOriginalId = 'article___body___blocks___originalId',
   ArticleBodyLinks = 'article___body___links',
   ArticleBodyValue = 'article___body___value',
   ArticleCarousel = 'article___carousel',
@@ -4316,6 +4537,16 @@ export type DatoCmsVideoField = {
   title: Maybe<Scalars['String']>;
   url: Maybe<Scalars['String']>;
   width: Maybe<Scalars['Int']>;
+};
+
+export type DatoCmsVideoFieldFilterInput = {
+  height?: Maybe<IntQueryOperatorInput>;
+  provider?: Maybe<StringQueryOperatorInput>;
+  providerUid?: Maybe<StringQueryOperatorInput>;
+  thumbnailUrl?: Maybe<StringQueryOperatorInput>;
+  title?: Maybe<StringQueryOperatorInput>;
+  url?: Maybe<StringQueryOperatorInput>;
+  width?: Maybe<IntQueryOperatorInput>;
 };
 
 export enum DatoImagePlaceholder {
@@ -5952,6 +6183,7 @@ export type Query = {
   allDatoCmsAbout: DatoCmsAboutConnection;
   allDatoCmsArticle: DatoCmsArticleConnection;
   allDatoCmsAsset: DatoCmsAssetConnection;
+  allDatoCmsExternalvideo: DatoCmsExternalvideoConnection;
   allDatoCmsFaviconMetaTags: DatoCmsFaviconMetaTagsConnection;
   allDatoCmsField: DatoCmsFieldConnection;
   allDatoCmsImage: DatoCmsImageConnection;
@@ -5973,6 +6205,7 @@ export type Query = {
   datoCmsAbout: Maybe<DatoCmsAbout>;
   datoCmsArticle: Maybe<DatoCmsArticle>;
   datoCmsAsset: Maybe<DatoCmsAsset>;
+  datoCmsExternalvideo: Maybe<DatoCmsExternalvideo>;
   datoCmsFaviconMetaTags: Maybe<DatoCmsFaviconMetaTags>;
   datoCmsField: Maybe<DatoCmsField>;
   datoCmsImage: Maybe<DatoCmsImage>;
@@ -6015,6 +6248,14 @@ export type QueryAllDatoCmsAssetArgs = {
   limit?: Maybe<Scalars['Int']>;
   skip?: Maybe<Scalars['Int']>;
   sort?: Maybe<DatoCmsAssetSortInput>;
+};
+
+
+export type QueryAllDatoCmsExternalvideoArgs = {
+  filter?: Maybe<DatoCmsExternalvideoFilterInput>;
+  limit?: Maybe<Scalars['Int']>;
+  skip?: Maybe<Scalars['Int']>;
+  sort?: Maybe<DatoCmsExternalvideoSortInput>;
 };
 
 
@@ -6226,6 +6467,20 @@ export type QueryDatoCmsAssetArgs = {
   url?: Maybe<StringQueryOperatorInput>;
   video?: Maybe<DatoCmsAssetVideoFilterInput>;
   width?: Maybe<IntQueryOperatorInput>;
+};
+
+
+export type QueryDatoCmsExternalvideoArgs = {
+  children?: Maybe<NodeFilterListInput>;
+  externalVideo?: Maybe<DatoCmsVideoFieldFilterInput>;
+  id?: Maybe<StringQueryOperatorInput>;
+  internal?: Maybe<InternalFilterInput>;
+  locale?: Maybe<StringQueryOperatorInput>;
+  meta?: Maybe<DatoCmsMetaFieldFilterInput>;
+  model?: Maybe<DatoCmsModelFilterInput>;
+  originalId?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  seoMetaTags?: Maybe<DatoCmsSeoMetaTagsFilterInput>;
 };
 
 
@@ -7174,10 +7429,38 @@ export type SitePageContextNode = {
 };
 
 export type SitePageContextNodeBody = {
+  blocks: Maybe<Array<Maybe<SitePageContextNodeBodyBlocks>>>;
   value: Maybe<SitePageContextNodeBodyValue>;
 };
 
+export type SitePageContextNodeBodyBlocks = {
+  _xtypename: Maybe<Scalars['String']>;
+  id: Maybe<Scalars['String']>;
+  image: Maybe<SitePageContextNodeBodyBlocksImage>;
+};
+
+export type SitePageContextNodeBodyBlocksFilterInput = {
+  _xtypename?: Maybe<StringQueryOperatorInput>;
+  id?: Maybe<StringQueryOperatorInput>;
+  image?: Maybe<SitePageContextNodeBodyBlocksImageFilterInput>;
+};
+
+export type SitePageContextNodeBodyBlocksFilterListInput = {
+  elemMatch?: Maybe<SitePageContextNodeBodyBlocksFilterInput>;
+};
+
+export type SitePageContextNodeBodyBlocksImage = {
+  alt: Maybe<Scalars['String']>;
+  url: Maybe<Scalars['String']>;
+};
+
+export type SitePageContextNodeBodyBlocksImageFilterInput = {
+  alt?: Maybe<StringQueryOperatorInput>;
+  url?: Maybe<StringQueryOperatorInput>;
+};
+
 export type SitePageContextNodeBodyFilterInput = {
+  blocks?: Maybe<SitePageContextNodeBodyBlocksFilterListInput>;
   value?: Maybe<SitePageContextNodeBodyValueFilterInput>;
 };
 
@@ -7193,6 +7476,7 @@ export type SitePageContextNodeBodyValueDocument = {
 
 export type SitePageContextNodeBodyValueDocumentChildren = {
   children: Maybe<Array<Maybe<SitePageContextNodeBodyValueDocumentChildrenChildren>>>;
+  item: Maybe<Scalars['String']>;
   level: Maybe<Scalars['Int']>;
   style: Maybe<Scalars['String']>;
   type: Maybe<Scalars['String']>;
@@ -7266,6 +7550,7 @@ export type SitePageContextNodeBodyValueDocumentChildrenChildrenMetaFilterListIn
 
 export type SitePageContextNodeBodyValueDocumentChildrenFilterInput = {
   children?: Maybe<SitePageContextNodeBodyValueDocumentChildrenChildrenFilterListInput>;
+  item?: Maybe<StringQueryOperatorInput>;
   level?: Maybe<IntQueryOperatorInput>;
   style?: Maybe<StringQueryOperatorInput>;
   type?: Maybe<StringQueryOperatorInput>;
@@ -7414,6 +7699,7 @@ export enum SitePageFieldsEnum {
   ComponentChunkName = 'componentChunkName',
   ContextNextOriginalId = 'context___next___originalId',
   ContextNextTitle = 'context___next___title',
+  ContextNodeBodyBlocks = 'context___node___body___blocks',
   ContextNodeExcerpt = 'context___node___excerpt',
   ContextNodeMetaFirstPublishedAt = 'context___node___meta___firstPublishedAt',
   ContextNodeOriginalId = 'context___node___originalId',
@@ -7995,7 +8281,7 @@ export type WebPOptions = {
 export type Unnamed_1_QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type Unnamed_1_Query = { allDatoCmsArticle: { edges: Array<{ next: Maybe<{ originalId: Maybe<string>, title: Maybe<string> }>, node: { originalId: Maybe<string>, title: Maybe<string>, excerpt: Maybe<string>, meta: Maybe<{ firstPublishedAt: Maybe<any> }>, featuredImage: Maybe<{ gatsbyImageData: Maybe<any> }>, body: Maybe<{ value: Maybe<any>, blocks: Maybe<Array<Maybe<{ __typename: 'DatoCmsImage', id: Maybe<string>, image: Maybe<{ url: Maybe<string>, alt: Maybe<string> }> }>>> }> }, previous: Maybe<{ originalId: Maybe<string>, title: Maybe<string> }> }> } };
+export type Unnamed_1_Query = { allDatoCmsArticle: { edges: Array<{ previous: Maybe<{ originalId: Maybe<string>, title: Maybe<string> }>, next: Maybe<{ originalId: Maybe<string>, title: Maybe<string> }>, node: { originalId: Maybe<string>, title: Maybe<string>, excerpt: Maybe<string>, meta: Maybe<{ firstPublishedAt: Maybe<any> }>, featuredImage: Maybe<{ gatsbyImageData: Maybe<any> }>, body: Maybe<{ value: Maybe<any>, blocks: Maybe<Array<Maybe<{ __typename: 'DatoCmsImage', id: Maybe<string>, image: Maybe<{ url: Maybe<string>, alt: Maybe<string> }> } | {}>>> }> } }> } };
 
 export type ArticleItemFieldsFragment = { originalId: Maybe<string>, title: Maybe<string>, excerpt: Maybe<string>, meta: Maybe<{ firstPublishedAt: Maybe<any> }>, featuredImage: Maybe<{ gatsbyImageData: Maybe<any>, alt: Maybe<string> }> };
 
@@ -8032,4 +8318,4 @@ export type GetArticleListQuery = { allDatoCmsArticle: { nodes: Array<{ original
 
 export type ArticleNavigationFieldsFragment = { originalId: Maybe<string>, title: Maybe<string> };
 
-export type ArticleFieldsFragment = { next: Maybe<{ originalId: Maybe<string>, title: Maybe<string> }>, node: { originalId: Maybe<string>, title: Maybe<string>, excerpt: Maybe<string>, meta: Maybe<{ firstPublishedAt: Maybe<any> }>, featuredImage: Maybe<{ gatsbyImageData: Maybe<any> }>, body: Maybe<{ value: Maybe<any>, blocks: Maybe<Array<Maybe<{ __typename: 'DatoCmsImage', id: Maybe<string>, image: Maybe<{ url: Maybe<string>, alt: Maybe<string> }> }>>> }> }, previous: Maybe<{ originalId: Maybe<string>, title: Maybe<string> }> };
+export type ArticleFieldsFragment = { previous: Maybe<{ originalId: Maybe<string>, title: Maybe<string> }>, next: Maybe<{ originalId: Maybe<string>, title: Maybe<string> }>, node: { originalId: Maybe<string>, title: Maybe<string>, excerpt: Maybe<string>, meta: Maybe<{ firstPublishedAt: Maybe<any> }>, featuredImage: Maybe<{ gatsbyImageData: Maybe<any> }>, body: Maybe<{ value: Maybe<any>, blocks: Maybe<Array<Maybe<{ __typename: 'DatoCmsExternalvideo', id: Maybe<string>, externalVideo: Maybe<{ providerUid: Maybe<string> }> } | { __typename: 'DatoCmsImage', id: Maybe<string>, image: Maybe<{ url: Maybe<string>, alt: Maybe<string> }> }>>> }> } };

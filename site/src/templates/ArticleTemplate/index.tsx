@@ -38,6 +38,13 @@ export const ARTICLE_FIELDS = graphql`
               alt
             }
           }
+          ... on DatoCmsExternalvideo {
+            __typename
+            id: originalId
+            externalVideo {
+              providerUid
+            }
+          }
         }
       }
     }
@@ -50,6 +57,7 @@ const ArticleTemplate: FC<ArticlePageProps> = ({
   pageContext: { next, node, previous },
 }) => {
   const image = getImage(node.featuredImage.gatsbyImageData);
+  console.log(node.body.blocks);
 
   return (
     <Layout>
@@ -84,6 +92,22 @@ const ArticleTemplate: FC<ArticlePageProps> = ({
               switch (record.__typename) {
                 case 'DatoCmsImage':
                   return <img src={record.image.url} alt={record.image.alt} />;
+                case 'DatoCmsExternalvideo':
+                  return (
+                    <div
+                      className="relative"
+                      style={{ paddingBottom: '56.25%' }}
+                    >
+                      <iframe
+                        className="absolute top-0 left-0 w-full h-full"
+                        src={`https://www.youtube.com/embed/${record.externalVideo.providerUid}`}
+                        title="YouTube video player"
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      />
+                    </div>
+                  );
                 default:
                   return null;
               }
